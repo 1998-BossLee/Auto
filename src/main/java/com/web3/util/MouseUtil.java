@@ -24,8 +24,14 @@ public class MouseUtil {
 
     public static void main(String[] args) throws Exception{
         findCoordinate();
+
+        int x = 1067, y=85;
+        moveToAndClick(robot, x, y);
+        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
+        //openUrl(robot, url, x, y);
     }
 
+    //用于测试
     private static void findCoordinate() throws Exception {
         System.out.println("请在 3 秒内将鼠标移动到目标位置...");
         TimeUnit.SECONDS.sleep(3); // 等待 3 秒
@@ -38,6 +44,9 @@ public class MouseUtil {
         System.out.println("鼠标当前位置: X=" + point.x + ", Y=" + point.y);
     }
 
+    /**
+     * 移动鼠标到指定位置
+     */
     public static void move(Robot robot, int targetX, int targetY) throws Exception {
         Point currentPos = MouseInfo.getPointerInfo().getLocation();
         // 设置移动步长
@@ -59,6 +68,7 @@ public class MouseUtil {
         }
     }
 
+    //移动鼠标到指定位置并且左键点击对焦
     private static void moveToAndClick(Robot robot, int x, int y) throws Exception {
         move(robot, x, y);
         //robot.mouseMove(x, y);
@@ -67,10 +77,15 @@ public class MouseUtil {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
 
+    //移动到网址位置，对焦，删除原url，输入url，回车
     private static void openUrl(Robot robot, String url, int x, int y) throws Exception {
-
+        moveToAndClick(robot, x, y);
+        pressDelete(robot, x, y);
+        typeString(robot, url);
+        //回车减
     }
 
+    //【back】删除文本
     private static void pressDelete(Robot robot, int x, int y) {
         int times = 10;
         for (int i = 0; i < times; i++) {
@@ -80,7 +95,7 @@ public class MouseUtil {
         }
     }
 
-
+    //输入文本
     private static void typeString(Robot robot, String input) {
         for (char c : input.toCharArray()) {
             int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
