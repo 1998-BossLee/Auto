@@ -1,3 +1,5 @@
+package com.web3.util;
+
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -5,12 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author: liyangjin
- * @create: 2025-03-04 16:45
+ * @create: 2025-03-04 17:11
  * @Description:
  */
 public class MouseUtil {
-
-
     static Robot robot;
 
     static {
@@ -89,8 +89,5 @@ public class MouseUtil {
             robot.delay(50);
         }
     }
-
-
-
 
 }
