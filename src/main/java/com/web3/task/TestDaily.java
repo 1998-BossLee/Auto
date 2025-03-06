@@ -1,5 +1,7 @@
 package com.web3.task;
 
+import com.web3.util.MouseUtil;
+
 /**
  * @author: liyangjin
  * @create: 2025-03-05 11:13
@@ -7,7 +9,14 @@ package com.web3.task;
  */
 public class TestDaily {
 
-    public static void googleSepoliaEth() {
+    public static void main(String[] args) throws Exception {
+        String evm = "0x6393B782e36a6333787850A910db6b7Da70aeA86";
+        googleSepoliaEth(evm);
+    }
+
+    public static void googleSepoliaEth(String evm) throws Exception{
+        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
+        MouseUtil.openUrl(url);
 
     }
 

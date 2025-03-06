@@ -25,10 +25,10 @@ public class MouseUtil {
     public static void main(String[] args) throws Exception {
         findCoordinate();
 
-        int x = 1067, y = 85;
-        moveToAndClick(robot, x, y);
-        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
-        openUrl(robot, url, x, y);
+//        int x = 1067, y = 85;
+//        moveToAndClick( x, y);
+//        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
+//        openUrl( url);
     }
 
     // 用于测试，获取当前鼠标坐标
@@ -43,7 +43,7 @@ public class MouseUtil {
     /**
      * 平滑移动鼠标到指定位置
      */
-    public static void move(Robot robot, int targetX, int targetY) throws Exception {
+    public static void move(int targetX, int targetY) throws Exception {
         Point currentPos = MouseInfo.getPointerInfo().getLocation();
         int step = 10;
         double distance = currentPos.distance(targetX, targetY);
@@ -69,8 +69,8 @@ public class MouseUtil {
     }
 
     // 移动鼠标到指定位置并左键点击
-    private static void moveToAndClick(Robot robot, int x, int y) throws Exception {
-        move(robot, x, y);
+    private static void moveToAndClick(int x, int y) throws Exception {
+        move(x, y);
         robot.delay(500);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -79,8 +79,9 @@ public class MouseUtil {
     /**
      * 移动到网址输入框位置，对焦，删除原 URL，输入新的 URL 并按回车
      */
-    private static void openUrl(Robot robot, String url, int x, int y) throws Exception {
-        moveToAndClick(robot, x, y);
+    public static void openUrl(String url) throws Exception {
+        int x = 1076, y=85;
+        moveToAndClick(x, y);
         pressDelete(robot);
         typeString(robot, url);
         // 模拟按下回车键
@@ -126,16 +127,28 @@ public class MouseUtil {
             if (KeyEvent.CHAR_UNDEFINED == keyCode) {
                 continue;
             }
+
             // 针对大写字母，按住 Shift 键
             boolean isUpperCase = Character.isUpperCase(c);
             if (isUpperCase) {
                 robot.keyPress(KeyEvent.VK_SHIFT);
             }
-            robot.keyPress(keyCode);
-            robot.keyRelease(keyCode);
+
+            // 特殊字符处理
+            if (c == ':') {
+                robot.keyPress(KeyEvent.VK_SHIFT); // 冒号需要按住 Shift
+                robot.keyPress(KeyEvent.VK_SEMICOLON); // 输入分号
+                robot.keyRelease(KeyEvent.VK_SEMICOLON);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            } else {
+                robot.keyPress(keyCode);
+                robot.keyRelease(keyCode);
+            }
+
             if (isUpperCase) {
                 robot.keyRelease(KeyEvent.VK_SHIFT);
             }
+
             robot.delay(50);
         }
         robot.keyPress(KeyEvent.VK_DELETE);
