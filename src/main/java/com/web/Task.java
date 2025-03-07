@@ -1,8 +1,8 @@
-package com.web3;
+package com.web;
 
 import java.util.List;
 
-import static com.web3.Constants.OPEN_URL;
+import static com.web.Constants.OPEN_URL;
 
 /**
  * @author: liyangjin

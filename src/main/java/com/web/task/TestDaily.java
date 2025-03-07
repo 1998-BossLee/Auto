@@ -1,6 +1,4 @@
-package com.web3.task;
-
-import com.web3.MouseUtil;
+package com.web.task;
 
 /**
  * @author: liyangjin

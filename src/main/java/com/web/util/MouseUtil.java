@@ -1,11 +1,13 @@
-package com.web3;
+package com.web.util;
+
+import com.web.Task;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-import static com.web3.Constants.*;
+import static com.web.Constants.*;
 
 /**
  * @author:
@@ -89,7 +91,7 @@ public class MouseUtil {
         // 模拟按下回车键
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(7000);
+        robot.delay(10000);
     }
 
     // 删除文本（全选后连续按 DELETE 键）

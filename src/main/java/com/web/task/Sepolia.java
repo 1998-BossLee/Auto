@@ -1,17 +1,17 @@
-package com.web3.task;
+package com.web.task;
 
-import com.web3.*;
+import com.web.*;
 import java.util.*;
 
-import static com.web3.Constants.*;
-import static com.web3.Constants.MOVE_AND_CLICK;
+import static com.web.Constants.*;
+import static com.web.Constants.MOVE_AND_CLICK;
 
 /**
  * @author: liyangjin
  * @create: 2025-03-07 03:00
  * @Description:
  */
-public class SepoliaTask {
+public class Sepolia {
 
     public static List<Task> getSepoliaTask(Account account) {
         List<Task> taskList = new ArrayList<>();

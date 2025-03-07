@@ -1,7 +1,7 @@
-package com.web3;
+package com.web;
 
-import com.web3.task.MonadTask;
-import com.web3.task.SepoliaTask;
+import com.web.task.Monad;
+import com.web.task.Sepolia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ public class Main {
 
     private static List<Task> initTask(Account account) {
         List<Task> taskList = new ArrayList<>();
-        taskList.addAll(SepoliaTask.getSepoliaTask(account));
-        taskList.addAll(MonadTask.getMonadTask(account));
+        taskList.addAll(Sepolia.getSepoliaTask(account));
+        taskList.addAll(Monad.getMonadTask(account));
 
 
 
