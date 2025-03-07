@@ -7,15 +7,15 @@ package com.web;
  */
 public class Account {
 
-    public String id;
+    public String name;
     public String evm;
     public int x;
     public int y;
     //大号还是小号，1-小号 >1是大号
     public int quality;
 
-    public Account(String id, String evm, int x, int y, int quality) {
-        this.id = id;
+    public Account(String name, String evm, int x, int y, int quality) {
+        this.name = name;
         this.evm = evm;
         this.x = x;
         this.y = y;

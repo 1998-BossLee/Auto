@@ -1,5 +1,6 @@
 package com.web.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.web.Task;
 
 import java.awt.*;
@@ -16,20 +17,20 @@ import static com.web.Constants.*;
  */
 public class MouseUtil {
     static Robot robot;
+    static JSONObject config;
 
-    static {
-        try {
-            robot = new Robot();
-        } catch (Exception e) {
-            System.err.println("创建机器人失败");
-            e.printStackTrace();
-        }
+    public static void init() throws Exception {
+        robot = new Robot();
+        config = FileUtil.readConfig();
     }
 
     public static void main(String[] args) throws Exception {
-        //findCoordinate();
+        init();
+        findCoordinate();
+        findCoordinate();
+
         robot.delay(1000);
-        robot.mouseWheel(-20);
+        //robot.mouseWheel(-20);
 //        int x = 1067, y = 85;
 //        moveToAndClick( x, y);
 //        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
@@ -38,8 +39,8 @@ public class MouseUtil {
 
     // 用于测试，获取当前鼠标坐标
     private static void findCoordinate() throws Exception {
-        System.out.println("请在 3 秒内将鼠标移动到目标位置...");
-        TimeUnit.SECONDS.sleep(3);
+        System.out.println("请在 5 秒内将鼠标移动到目标位置...");
+        TimeUnit.SECONDS.sleep(5);
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         Point point = pointerInfo.getLocation();
         System.out.println("鼠标当前位置: X=" + point.x + ", Y=" + point.y);
@@ -85,6 +86,8 @@ public class MouseUtil {
      * 移动到网址输入框位置，对焦，删除原 URL，输入新的 URL 并按回车
      */
     public static void openUrl(Task.Action action) throws Exception {
+        action.x = config.getInteger("urlX");
+        action.y = config.getInteger("urlY");
         moveToAndClick(action);
         pressDelete(robot);
         typeString(robot, action.text);
@@ -183,7 +186,7 @@ public class MouseUtil {
         }
     }
 
-    public void executeAction(Task.Action task) throws Exception {
+    public static void executeAction(Task.Action task) throws Exception {
         robot.delay(1000);
         switch (task.op) {
             case OPEN_URL:

@@ -2,9 +2,14 @@ package com.web;
 
 import com.web.task.Monad;
 import com.web.task.Sepolia;
+import com.web.util.FileUtil;
+import com.web.util.MouseUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static com.web.Constants.*;
 
 /**
  * @author: liyangjin
@@ -13,31 +18,37 @@ import java.util.List;
  */
 public class Main {
 
-    static List<Account> accountList = initAccount();
+    static List<Account> accountList = FileUtil.readAccountFile();
     static List<Task> taskList;
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) throws Exception {
+        MouseUtil.init();
+        for (Account account : accountList) {
+            if (account.evm == null || account.evm.isEmpty()) {
+                continue;
+            }
+            System.out.println("current account name:" + account.name);
+            Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0) ;
+            MouseUtil.executeAction(startAccountAction);
+            taskList = initTask(account);
+            Collections.shuffle(taskList);
+
+            for (Task task : taskList) {
+                System.out.println("current task:" + task.name);
+                for (Task.Action action : task.actionList) {
+                    MouseUtil.executeAction(action);
+                }
+            }
+        }
     }
 
-    private static List<Account> initAccount() {
-        List<Account> accountList = new ArrayList<>();
-        accountList.add(new Account("1", "0x6393B782e36a6333787850A910db6b7Da70aeA86", 0, 0, 1));
-        return accountList;
-    }
 
     private static List<Task> initTask(Account account) {
-        List<Task> taskList = new ArrayList<>();
+        taskList = new ArrayList<>();
         taskList.addAll(Sepolia.getSepoliaTask(account));
-        taskList.addAll(Monad.getMonadTask(account));
+        //taskList.addAll(Monad.getMonadTask(account));
 
-
-
-
-
-
-
-
+        System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
 
