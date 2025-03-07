@@ -1,9 +1,11 @@
-package com.web3.util;
+package com.web3;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
+
+import static com.web3.Constants.*;
 
 /**
  * @author:
@@ -23,8 +25,9 @@ public class MouseUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        findCoordinate();
-
+        //findCoordinate();
+        robot.delay(1000);
+        robot.mouseWheel(-20);
 //        int x = 1067, y = 85;
 //        moveToAndClick( x, y);
 //        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
@@ -69,9 +72,9 @@ public class MouseUtil {
     }
 
     // 移动鼠标到指定位置并左键点击
-    private static void moveToAndClick(int x, int y) throws Exception {
-        move(x, y);
-        robot.delay(500);
+    private static void moveToAndClick(Task.Action action) throws Exception {
+        move(action.x, action.y);
+        robot.delay(200);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
@@ -79,14 +82,14 @@ public class MouseUtil {
     /**
      * 移动到网址输入框位置，对焦，删除原 URL，输入新的 URL 并按回车
      */
-    public static void openUrl(String url) throws Exception {
-        int x = 1076, y=85;
-        moveToAndClick(x, y);
+    public static void openUrl(Task.Action action) throws Exception {
+        moveToAndClick(action);
         pressDelete(robot);
-        typeString(robot, url);
+        typeString(robot, action.text);
         // 模拟按下回车键
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(7000);
     }
 
     // 删除文本（全选后连续按 DELETE 键）
@@ -97,7 +100,6 @@ public class MouseUtil {
         robot.keyPress(KeyEvent.VK_DELETE);
         robot.keyRelease(KeyEvent.VK_DELETE);
     }
-
 
 
     // 全选文本（Ctrl+A 或 Command+A）
@@ -155,6 +157,11 @@ public class MouseUtil {
         robot.keyRelease(KeyEvent.VK_DELETE);
     }
 
+    public static void scrollDown(int scrollAmount) {
+        // 模拟鼠标滚轮，scrollAmount 为负值表示向下滚动，正值表示向上滚动
+        robot.mouseWheel(scrollAmount);
+    }
+
     // 切换到英文输入法
     private static void switchToEnglishInputMethod(Robot robot) {
         // 检测操作系统
@@ -173,4 +180,25 @@ public class MouseUtil {
             robot.keyRelease(KeyEvent.VK_CONTROL);
         }
     }
+
+    public void executeAction(Task.Action task) throws Exception {
+        robot.delay(1000);
+        switch (task.op) {
+            case OPEN_URL:
+                openUrl(task);
+                break;
+            case MOVE_AND_CLICK:
+                moveToAndClick(task);
+                break;
+            case INPUT_TEXT:
+                typeString(robot, task.text);
+                break;
+            case SCROLL_DOWN:
+                scrollDown(task.h);
+            case SLEEP:
+                robot.delay(task.h);
+                break;
+        }
+    }
+
 }
