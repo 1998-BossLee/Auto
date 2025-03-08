@@ -1,6 +1,7 @@
 package com.web;
 
-import com.web.task.Monad;
+import com.web.model.Account;
+import com.web.model.Task;
 import com.web.task.Sepolia;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
@@ -22,7 +23,6 @@ public class Main {
     static List<Task> taskList;
 
     public static void main(String[] args) throws Exception {
-        MouseUtil.init();
         for (Account account : accountList) {
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;

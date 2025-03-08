@@ -1,6 +1,8 @@
 package com.web.task;
 
-import com.web.*;
+import com.web.model.Account;
+import com.web.model.Task;
+
 import java.util.*;
 
 import static com.web.Constants.*;

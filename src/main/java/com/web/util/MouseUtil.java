@@ -1,7 +1,7 @@
 package com.web.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.web.Task;
+import com.web.model.Task;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -19,16 +19,23 @@ public class MouseUtil {
     static Robot robot;
     static JSONObject config;
 
-    public static void init() throws Exception {
-        robot = new Robot();
-        config = FileUtil.readConfig();
+    static {
+        try {
+            robot = new Robot();
+            config = FileUtil.readConfig();
+        } catch (Exception e) {
+            System.err.println("MouseUtil static init error");
+            e.printStackTrace();
+        }
+
     }
 
-    public static void main(String[] args) throws Exception {
-        init();
-        findCoordinate();
-        findCoordinate();
 
+    public static void main(String[] args) throws Exception {
+        findCoordinate();
+        findCoordinate();
+        findCoordinate();
+        findCoordinate();
         robot.delay(1000);
         //robot.mouseWheel(-20);
 //        int x = 1067, y = 85;

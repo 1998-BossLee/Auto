@@ -3,7 +3,7 @@ package com.web.util;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.web.Account;
+import com.web.model.Account;
 
 import java.io.IOException;
 import java.nio.file.Files;
