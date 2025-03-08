@@ -2,7 +2,7 @@ package com.web.model;
 
 import java.util.List;
 
-import static com.web.constant.Constants.OPEN_URL;
+import static com.web.constant.Constants.*;
 
 /**
  * @author: liyangjin
@@ -37,6 +37,53 @@ public class Task {
                 this.x = 1067;
                 this.y = 85;
             }
+        }
+
+        public Action() {
+
+        }
+
+        public static Action buildOpenUrlAction(String url, int ms) {
+            Action action = new Action();
+            action.op = OPEN_URL;
+            action.text = url;
+            action.h = ms;
+            return action;
+        }
+
+        public static Action buildMoveClickAction(int x, int y) {
+            Action action = new Action();
+            action.op = MOVE_AND_CLICK;
+            action.x = x;
+            action.y = y;
+            return action;
+        }
+
+        public static Action buildInputTextAction(String text) {
+            Action action = new Action();
+            action.op = INPUT_TEXT;
+            action.text = text;
+            return action;
+        }
+
+        public static Action buildScrollDownAction(int h) {
+            Action action = new Action();
+            action.op = SCROLL_DOWN;
+            action.h = h;
+            return action;
+        }
+
+        public static Action buildSleepAction(int ms) {
+            Action action = new Action();
+            action.op = SLEEP;
+            action.h = ms;
+            return action;
+        }
+
+        public static Action buildSignAction() {
+            Action action = new Action();
+            action.op = SIGN;
+            return action;
         }
 
     }

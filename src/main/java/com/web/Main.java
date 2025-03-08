@@ -3,6 +3,7 @@ package com.web;
 import com.web.model.Account;
 import com.web.model.Task;
 import com.web.task.DeSpeed;
+import com.web.task.Monad;
 import com.web.task.Sepolia;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
@@ -26,6 +27,10 @@ public class Main {
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
         for (Account account : accountList) {
+            if (!"ads-5".equals(account.name)) {
+                //单测任务
+                continue;
+            }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
             }
@@ -50,9 +55,9 @@ public class Main {
 
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
-        taskList.addAll(Sepolia.getSepoliaTask(account));
-        //taskList.addAll(Monad.getMonadTask(account));
-        taskList.addAll(DeSpeed.getMonadTask(account));
+        //taskList.addAll(Sepolia.getSepoliaTask(account));
+        taskList.addAll(Monad.getMonadTask(account));
+        //taskList.addAll(DeSpeed.getMonadTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }

@@ -98,7 +98,6 @@ public class MouseUtil {
         // 模拟按下回车键
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(10000);
     }
 
     // 删除文本（全选后连续按 DELETE 键）
@@ -190,22 +189,27 @@ public class MouseUtil {
         }
     }
 
-    public static void executeAction(Task.Action task) throws Exception {
+    public static void executeAction(Task.Action action) throws Exception {
         robot.delay(1000);
-        switch (task.op) {
+        switch (action.op) {
             case OPEN_URL:
-                openUrl(task);
+                openUrl(action);
                 break;
             case MOVE_AND_CLICK:
-                moveToAndClick(task);
+                moveToAndClick(action);
                 break;
             case INPUT_TEXT:
-                typeString(robot, task.text);
+                typeString(robot, action.text);
                 break;
             case SCROLL_DOWN:
-                scrollDown(task.h);
+                scrollDown(action.h);
             case SLEEP:
-                robot.delay(task.h);
+                robot.delay(action.h);
+            case SIGN:
+                action.x = config.getInteger("signX");
+                action.y = config.getInteger("signY");
+                robot.delay(5000);
+                moveToAndClick(action);
                 break;
         }
     }

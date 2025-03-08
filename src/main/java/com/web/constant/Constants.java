@@ -9,6 +9,7 @@ public interface Constants {
     String INPUT_TEXT = "inputText";
     String SCROLL_DOWN = "scrollDown";
     String SLEEP = "sleep";
+    String SIGN = "sign";
 
     HashSet<String> DP_ACCOUNTS = new HashSet<>() {
         {
