@@ -8,7 +8,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
-import static com.web.Constants.*;
+import static com.web.constant.Constants.*;
 
 /**
  * @author:
@@ -32,9 +32,6 @@ public class MouseUtil {
 
 
     public static void main(String[] args) throws Exception {
-        findCoordinate();
-        findCoordinate();
-        findCoordinate();
         findCoordinate();
         robot.delay(1000);
         //robot.mouseWheel(-20);

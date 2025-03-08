@@ -2,6 +2,7 @@ package com.web;
 
 import com.web.model.Account;
 import com.web.model.Task;
+import com.web.task.DeSpeed;
 import com.web.task.Sepolia;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.web.Constants.*;
+import static com.web.constant.Constants.*;
 
 /**
  * @author: liyangjin
@@ -22,6 +23,7 @@ public class Main {
     static List<Account> accountList = FileUtil.readAccountFile();
     static List<Task> taskList;
 
+    //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
         for (Account account : accountList) {
             if (account.evm == null || account.evm.isEmpty()) {
@@ -38,6 +40,9 @@ public class Main {
                 for (Task.Action action : task.actionList) {
                     MouseUtil.executeAction(action);
                 }
+                //任务之间睡眠5秒
+                Task.Action action = new Task.Action(SLEEP, "", 0,0, 5000);
+                MouseUtil.executeAction(action);
             }
         }
     }
@@ -47,7 +52,7 @@ public class Main {
         taskList = new ArrayList<>();
         taskList.addAll(Sepolia.getSepoliaTask(account));
         //taskList.addAll(Monad.getMonadTask(account));
-
+        taskList.addAll(DeSpeed.getMonadTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }

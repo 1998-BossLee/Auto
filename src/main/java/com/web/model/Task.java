@@ -2,7 +2,7 @@ package com.web.model;
 
 import java.util.List;
 
-import static com.web.Constants.OPEN_URL;
+import static com.web.constant.Constants.OPEN_URL;
 
 /**
  * @author: liyangjin
@@ -11,7 +11,7 @@ import static com.web.Constants.OPEN_URL;
  */
 public class Task {
 
-    public int id;
+    public String id;
     public String name;
     public int type; // 0-日常 1-一次性
     public List<Action> actionList;
@@ -41,7 +41,7 @@ public class Task {
 
     }
 
-    public Task(int id, String name, int type) {
+    public Task(String id, String name, int type) {
         this.id = id;
         this.name = name;
         this.type = type;

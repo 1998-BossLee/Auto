@@ -5,8 +5,8 @@ import com.web.model.Task;
 
 import java.util.*;
 
-import static com.web.Constants.*;
-import static com.web.Constants.MOVE_AND_CLICK;
+import static com.web.constant.Constants.*;
+import static com.web.constant.Constants.MOVE_AND_CLICK;
 
 /**
  * @author: liyangjin
@@ -20,7 +20,7 @@ public class Monad {
         List<Task> taskList = new ArrayList<>();
 
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
-        Task task = new Task(102, "monad官网领水", 0);
+        Task task = new Task("monad-1", "monad官网领水", 0);
         taskList.add(task);
         List<Task.Action> actionList = new ArrayList<>();
         actionList.add(new Task.Action(OPEN_URL, "https://testnet.monad.xyz/", 0, 0, 0));
@@ -35,7 +35,7 @@ public class Monad {
         task.actionList = actionList;
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
-        task = new Task(103, "monad-morkie领水", 0);
+        task = new Task("monad-2", "monad-morkie领水", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(new Task.Action(OPEN_URL, "https://faucet.morkie.xyz/monad#google_vignette", 0, 0, 0));
@@ -45,7 +45,7 @@ public class Monad {
         task.actionList = actionList;
 
         //六连击
-        task = new Task(104, "monad-talentum领水", 0);
+        task = new Task("monad-3", "monad-talentum领水", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(new Task.Action(OPEN_URL, "https://monad.talentum.id/", 0, 0, 0));
@@ -58,7 +58,7 @@ public class Monad {
         task.actionList = actionList;
 
 
-        task = new Task(105, "monad-talentum签到", 0);
+        task = new Task("monad-4", "monad-talentum签到", 0);
 
 
 
