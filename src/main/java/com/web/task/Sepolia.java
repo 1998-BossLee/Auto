@@ -20,10 +20,10 @@ public class Sepolia {
 
         Task task = new Task("Sepolia-1", "谷歌领水", 0);
         List<Task.Action> actionList = new ArrayList<>();
-        actionList.add(new Task.Action(OPEN_URL, "https://cloud.google.com/application/web3/faucet/ethereum/sepolia",  0, 0, 0));
-        actionList.add(new Task.Action(MOVE_AND_CLICK, "", 1251, 454, 0));
-        actionList.add(new Task.Action(INPUT_TEXT, account.evm, 0, 0, 0));
-        actionList.add(new Task.Action(MOVE_AND_CLICK, "", 883, 536, 0));
+        actionList.add(Task.Action.buildOpenUrlAction("https://cloud.google.com/application/web3/faucet/ethereum/sepolia", 20 * 1000));
+        actionList.add(Task.Action.buildInputTextAction(1251, 454, account.evm));
+        actionList.add(Task.Action.buildMoveClickAction(883, 536));
+        actionList.add(Task.Action.buildSleepAction(10 * 1000));
         task.actionList = actionList;
         taskList.add(task);
         return taskList;

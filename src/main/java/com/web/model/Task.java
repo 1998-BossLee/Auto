@@ -59,9 +59,11 @@ public class Task {
             return action;
         }
 
-        public static Action buildInputTextAction(String text) {
+        public static Action buildInputTextAction(int x, int y, String text) {
             Action action = new Action();
             action.op = INPUT_TEXT;
+            action.x = x;
+            action.y = y;
             action.text = text;
             return action;
         }

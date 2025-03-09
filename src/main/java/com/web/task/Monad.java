@@ -63,9 +63,12 @@ public class Monad {
 
 
         task = new Task("monad-4", "monad-talentum签到", 0);
+
+
+
         List<String> urls = new ArrayList<>();
-        urls.add("https://monad.talentum.id/tasks/task/2739");
-        urls.add("https://monad.talentum.id/tasks/task/2797");
+        //urls.add("https://monad.talentum.id/tasks/task/2739");
+        //urls.add("https://monad.talentum.id/tasks/task/2797");
         urls.add("https://monad.talentum.id/tasks/task/2745");
         urls.add("https://monad.talentum.id/tasks/task/2750");
         urls.add("https://monad.talentum.id/tasks/task/2760");
@@ -77,23 +80,43 @@ public class Monad {
         urls.add("https://monad.talentum.id/tasks/task/2778");
         Collections.shuffle(urls);
         for (String url : urls) {
-//            task = new Task("monad-5", "monad-talentum-11个NFT", 0);
-//            actionList = new ArrayList<>();
-//            actionList.add(new Task.Action(OPEN_URL, url, 1457, 929, 0));
-
+            task = new Task("monad-5", "monad-talentum-11个NFT", 0);
+            actionList = new ArrayList<>();
+            //【start work】-【Mint】-【sign】-【verify】-【claim reward】
+            actionList.add(Task.Action.buildOpenUrlAction(url, 15*1000));
+            actionList.add(Task.Action.buildMoveClickAction(1511,  932));
+            actionList.add(Task.Action.buildMoveClickAction(744, 815));
+            actionList.add(Task.Action.buildSignAction());
+            actionList.add(Task.Action.buildSleepAction(5000));
+            actionList.add(Task.Action.buildMoveClickAction(1049, 815));
+            actionList.add(Task.Action.buildMoveClickAction(1511,  932));
+            actionList.add(Task.Action.buildSleepAction(5000));
+            task.actionList = actionList;
         }
 
 
         //打开url、移动到输入框对焦、输入质押金额、质押、签名
-        task = new Task("monad-6", "monad-stake质押", 0);
-        taskList.add(task);
+        task = new Task("monad-6", "monad-Stake", 0);
+        //taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/", 7 * 1000));
-        actionList.add(Task.Action.buildMoveClickAction(980, 318));
-        actionList.add(Task.Action.buildInputTextAction(random(account, 0.001, 0.01, 4)));
+        actionList.add(Task.Action.buildInputTextAction(980, 318, random(account, 0.001, 0.01, 4)));
         actionList.add(Task.Action.buildMoveClickAction(948, 563));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
+
+        //注意换币过程会弹出来价格变动
+        task = new Task("monad-7", "monad-Swap", 0);
+
+        //第一次需要手动对币对授权或者无脑加一个授权按钮的点击
+        task = new Task("monad-8", "monad-Liquidity", 0);
+
+
+
+        //投票
+        task = new Task("monad-8", "monad-Liquidity", 0);
+
+
 
         return taskList;
     }

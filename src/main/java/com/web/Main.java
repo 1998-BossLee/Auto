@@ -27,7 +27,7 @@ public class Main {
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
         for (Account account : accountList) {
-            if (!"ads-5".equals(account.name)) {
+            if (!"ads-4".equals(account.name)) {
                 //单测任务
                 continue;
             }
@@ -57,7 +57,7 @@ public class Main {
         taskList = new ArrayList<>();
         //taskList.addAll(Sepolia.getSepoliaTask(account));
         taskList.addAll(Monad.getMonadTask(account));
-        //taskList.addAll(DeSpeed.getMonadTask(account));
+        //taskList.addAll(DeSpeed.getDeSpeedTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }

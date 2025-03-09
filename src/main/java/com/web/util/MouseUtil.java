@@ -199,6 +199,7 @@ public class MouseUtil {
                 moveToAndClick(action);
                 break;
             case INPUT_TEXT:
+                moveToAndClick(action);
                 typeString(robot, action.text);
                 break;
             case SCROLL_DOWN:
