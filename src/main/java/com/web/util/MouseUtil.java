@@ -34,7 +34,7 @@ public class MouseUtil {
     public static void main(String[] args) throws Exception {
         findCoordinate();
         robot.delay(1000);
-        //robot.mouseWheel(-20);
+        //robot.mouseWheel(10);
 //        int x = 1067, y = 85;
 //        moveToAndClick( x, y);
 //        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
@@ -92,12 +92,14 @@ public class MouseUtil {
     public static void openUrl(Task.Action action) throws Exception {
         action.x = config.getInteger("urlX");
         action.y = config.getInteger("urlY");
+        System.out.println("openUrl " + action.text);
         moveToAndClick(action);
         pressDelete(robot);
         typeString(robot, action.text);
         // 模拟按下回车键
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(action.h * 1000);
     }
 
     // 删除文本（全选后连续按 DELETE 键）
@@ -134,7 +136,8 @@ public class MouseUtil {
         //switchToEnglishInputMethod(robot);
         for (char c : input.toCharArray()) {
             int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-            if (KeyEvent.CHAR_UNDEFINED == keyCode) {
+            if (KeyEvent.CHAR_UNDEFINED == keyCode || keyCode == 0) {
+                System.out.println("无法识别字符：" + c);
                 continue;
             }
 
@@ -149,6 +152,26 @@ public class MouseUtil {
                 robot.keyPress(KeyEvent.VK_SHIFT); // 冒号需要按住 Shift
                 robot.keyPress(KeyEvent.VK_SEMICOLON); // 输入分号
                 robot.keyRelease(KeyEvent.VK_SEMICOLON);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            } else if (c == '#') {
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_3);
+                robot.keyRelease(KeyEvent.VK_3);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            } else if (c == '_') {  // 手动处理下划线 _
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_MINUS);  // "-" 键
+                robot.keyRelease(KeyEvent.VK_MINUS);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            } else if (c == '!') {
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+            } else if (c == '@') {
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_2);
+                robot.keyRelease(KeyEvent.VK_2);
                 robot.keyRelease(KeyEvent.VK_SHIFT);
             } else {
                 robot.keyPress(keyCode);
@@ -191,6 +214,7 @@ public class MouseUtil {
 
     public static void executeAction(Task.Action action) throws Exception {
         robot.delay(1000);
+        //System.out.println(String.format("executeAction op=%s text=%s x=%s y=%s h=%s", action.op, action.text, action.x, action.y, action.h));
         switch (action.op) {
             case OPEN_URL:
                 openUrl(action);
@@ -204,8 +228,10 @@ public class MouseUtil {
                 break;
             case SCROLL_DOWN:
                 scrollDown(action.h);
+                break;
             case SLEEP:
-                robot.delay(action.h);
+                robot.delay(action.h * 1000);
+                break;
             case SIGN:
                 action.x = config.getInteger("signX");
                 action.y = config.getInteger("signY");

@@ -43,11 +43,11 @@ public class Task {
 
         }
 
-        public static Action buildOpenUrlAction(String url, int ms) {
+        public static Action buildOpenUrlAction(String url, int second) {
             Action action = new Action();
             action.op = OPEN_URL;
             action.text = url;
-            action.h = ms;
+            action.h = second;
             return action;
         }
 
@@ -75,10 +75,10 @@ public class Task {
             return action;
         }
 
-        public static Action buildSleepAction(int ms) {
+        public static Action buildSleepAction(int second) {
             Action action = new Action();
             action.op = SLEEP;
-            action.h = ms;
+            action.h = second;
             return action;
         }
 

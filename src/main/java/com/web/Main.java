@@ -2,14 +2,13 @@ package com.web;
 
 import com.web.model.Account;
 import com.web.model.Task;
-import com.web.task.DeSpeed;
-import com.web.task.Monad;
-import com.web.task.Sepolia;
+import com.web.task.*;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import static com.web.constant.Constants.*;
@@ -24,10 +23,29 @@ public class Main {
     static List<Account> accountList = FileUtil.readAccountFile();
     static List<Task> taskList;
 
+    private static List<Task> initTask(Account account) {
+        taskList = new ArrayList<>();
+        taskList.addAll(Sepolia.getDailyTasks(account));
+        taskList.addAll(Monad.getDailyTasks(account));
+        taskList.addAll(DeSpeed.getDailyTasks(account));
+        taskList.addAll(LayerEdge.getDailyTasks(account));
+        taskList.addAll(Human.getDailyTasks(account));
+        System.out.println("Main.initTask success size=" + taskList.size());
+        return taskList;
+    }
+
+    static HashSet<String> testAccounts = new HashSet<>(){
+        {
+            add("ads-1");
+            add("ads-2");
+        }
+    };
+
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
+        Collections.shuffle(accountList);
         for (Account account : accountList) {
-            if (!"ads-4".equals(account.name)) {
+            if (!testAccounts.contains(account.name)) {
                 //单测任务
                 continue;
             }
@@ -46,21 +64,14 @@ public class Main {
                     MouseUtil.executeAction(action);
                 }
                 //任务之间睡眠5秒
-                Task.Action action = new Task.Action(SLEEP, "", 0,0, 5000);
+                Task.Action action = new Task.Action(SLEEP, "", 0,0, 5);
                 MouseUtil.executeAction(action);
             }
         }
     }
 
 
-    private static List<Task> initTask(Account account) {
-        taskList = new ArrayList<>();
-        //taskList.addAll(Sepolia.getSepoliaTask(account));
-        taskList.addAll(Monad.getMonadTask(account));
-        //taskList.addAll(DeSpeed.getDeSpeedTask(account));
-        System.out.println("Main.initTask success size=" + taskList.size());
-        return taskList;
-    }
+
 
 
 }
