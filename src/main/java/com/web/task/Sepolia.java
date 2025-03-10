@@ -24,6 +24,7 @@ public class Sepolia {
         task.actionList = actionList;
         taskList.add(task);
         taskList.add(task);
+        taskList.add(task);
         return taskList;
     }
 }

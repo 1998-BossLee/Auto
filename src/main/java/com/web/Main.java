@@ -6,10 +6,9 @@ import com.web.task.*;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import static com.web.constant.Constants.*;
 
@@ -25,11 +24,12 @@ public class Main {
 
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
-        taskList.addAll(Sepolia.getDailyTasks(account));
-        taskList.addAll(Monad.getDailyTasks(account));
+//        taskList.addAll(Sepolia.getDailyTasks(account));
+//        taskList.addAll(Monad.getDailyTasks(account));
         taskList.addAll(DeSpeed.getDailyTasks(account));
         taskList.addAll(LayerEdge.getDailyTasks(account));
-        taskList.addAll(Human.getDailyTasks(account));
+//        taskList.addAll(Human.getDailyTasks(account));
+//        taskList.addAll(Monad.getRandomTasks(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
@@ -43,16 +43,18 @@ public class Main {
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
+//        randomSleepMinutes(60, 120);
         Collections.shuffle(accountList);
         for (Account account : accountList) {
             if (!testAccounts.contains(account.name)) {
                 //单测任务
-                continue;
+                //continue;
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
             }
-            System.out.println("current account name:" + account.name);
+//            randomSleepMinutes(5, 20);
+            System.out.println(getCurrentTime() + " current account name:" + account.name);
             Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0) ;
             MouseUtil.executeAction(startAccountAction);
             taskList = initTask(account);
@@ -68,6 +70,21 @@ public class Main {
                 MouseUtil.executeAction(action);
             }
         }
+    }
+
+    private static void randomSleepMinutes(int min, int max) throws Exception {
+        Random random = new Random();
+        long randomMinutes = random.nextInt(max - min + 1) + min;
+        Thread.sleep(randomMinutes * 60 * 1000);
+    }
+
+    public static String getCurrentTime() {
+        // 获取当前时间
+        LocalDateTime now = LocalDateTime.now();
+        // 定义日期时间格式
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // 格式化当前时间
+        return now.format(formatter);
     }
 
 
