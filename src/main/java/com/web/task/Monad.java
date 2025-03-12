@@ -110,7 +110,7 @@ public class Monad {
 
 
     //不算做完，单号，挨个手动做。
-    public static List<Task> getOnceTasks(Account account) {
+    public static List<Task> getTalentumNFTTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
@@ -148,6 +148,26 @@ public class Monad {
         }
 
         return taskList;
+    }
+
+    public static List<Task> getTalentumVisitTasks(Account account) {
+        List<Task> taskList = new ArrayList<>();
+        Task task;
+        List<Task.Action> actionList;
+        Map<String, String> map = new HashMap<>();
+        //taskId - x,x,y
+        //最平常的
+        map.put("2734,2906,2923,2927,2956,2816,2957", "2932");
+        map.put("2917", "");
+        map.put("2918", "");
+        map.put("2931", "");
+        map.put("2837", "");
+        map.put("2815", "");
+        return taskList;
+    }
+
+    public static List<Task> getTalentumFollowXTasks(Account account) {
+return null;
     }
 
     public static List<Task> getRandomTasks(Account account) {
