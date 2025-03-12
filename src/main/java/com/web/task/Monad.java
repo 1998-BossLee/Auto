@@ -19,36 +19,53 @@ public class Monad {
         List<Task.Action> actionList;
 
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
-//        task = new Task("monad-1", "monad官网领水", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 20));
-//        actionList.add(Task.Action.buildMoveClickAction(1754, 227));
-//        actionList.add(Task.Action.buildScrollDownAction(10));
-//        actionList.add(Task.Action.buildInputTextAction(1234, 392, account.evm));
-//        actionList.add(Task.Action.buildMoveClickAction(1161, 491));
-//        actionList.add(Task.Action.buildSleepAction(5));
-//        actionList.add(Task.Action.buildMoveClickAction(1343, 567));
-//        actionList.add(Task.Action.buildSleepAction(10));
-//        task.actionList = actionList;
+        task = new Task("monad-1", "monad官网领水", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1754, 227));
+        actionList.add(Task.Action.buildScrollDownAction(-20));
+        actionList.add(Task.Action.buildScrollDownAction(10));
+        actionList.add(Task.Action.buildInputTextAction(1234, 392, account.evm));
+        actionList.add(Task.Action.buildMoveClickAction(1161, 491));
+        actionList.add(Task.Action.buildSleepAction(5));
+        actionList.add(Task.Action.buildMoveClickAction(1343, 567));
+        actionList.add(Task.Action.buildSleepAction(10));
+        task.actionList = actionList;
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
 //        task = new Task("monad-2", "monad-morkie领水A", 0);
+//        taskList.add(task);
 //        taskList.add(task);
 //        actionList = new ArrayList<>();
 //        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 20));
 //        actionList.add(Task.Action.buildInputTextAction(850, 649, account.evm));
 //        actionList.add(Task.Action.buildMoveClickAction(910, 700));
-//        actionList.add(Task.Action.buildSleepAction(5));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(910, 700));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(910, 700));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(910, 700));
+//        actionList.add(Task.Action.buildSleepAction(30));
 //        task.actionList = actionList;
 //
 //        task = new Task("monad-2", "monad-morkie领水B", 0);
+//        taskList.add(task);
 //        taskList.add(task);
 //        actionList = new ArrayList<>();
 //        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 20));
 //        actionList.add(Task.Action.buildInputTextAction(923, 679, account.evm));
 //        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(5));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
+//        actionList.add(Task.Action.buildSleepAction(30));
 //        task.actionList = actionList;
 
 //
@@ -139,7 +156,7 @@ public class Monad {
         List<Task.Action> actionList;
         //打开url、移动到输入框对焦、输入质押金额、质押、签名
         task = new Task("monad-6", "monad-Stake", 0);
-        //taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/", 10));
         actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.001, 0.01, 4)));
@@ -170,10 +187,8 @@ public class Monad {
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
-        task = new Task("monad-7", "monad-Swap", 0);
-
-
-        return taskList;
+        Collections.shuffle(taskList);
+        return taskList.subList(0, 1);
     }
 
 

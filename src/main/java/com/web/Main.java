@@ -25,9 +25,9 @@ public class Main {
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
 //        taskList.addAll(Sepolia.getDailyTasks(account));
-//        taskList.addAll(Monad.getDailyTasks(account));
-        taskList.addAll(DeSpeed.getDailyTasks(account));
-        taskList.addAll(LayerEdge.getDailyTasks(account));
+        taskList.addAll(Monad.getDailyTasks(account));
+//        taskList.addAll(DeSpeed.getDailyTasks(account));
+//        taskList.addAll(LayerEdge.getDailyTasks(account));
 //        taskList.addAll(Human.getDailyTasks(account));
 //        taskList.addAll(Monad.getRandomTasks(account));
         System.out.println("Main.initTask success size=" + taskList.size());
@@ -75,7 +75,7 @@ public class Main {
     private static void randomSleepMinutes(int min, int max) throws Exception {
         Random random = new Random();
         long randomMinutes = random.nextInt(max - min + 1) + min;
-        Thread.sleep(randomMinutes * 60 * 1000);
+        //Thread.sleep(randomMinutes * 60 * 1000);
     }
 
     public static String getCurrentTime() {
