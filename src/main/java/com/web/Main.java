@@ -25,19 +25,24 @@ public class Main {
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
 //        taskList.addAll(Sepolia.getDailyTasks(account));
-        taskList.addAll(Monad.getDailyTasks(account));
 //        taskList.addAll(DeSpeed.getDailyTasks(account));
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
 //        taskList.addAll(Human.getDailyTasks(account));
-//        taskList.addAll(Monad.getRandomTasks(account));
+        taskList.addAll(Monad.getTalentumVisitTasks());
+        taskList.addAll(Monad.getRandomTasks(account));
+        taskList.addAll(Monad.getDailyTasks(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
 
     static HashSet<String> testAccounts = new HashSet<>(){
         {
-            add("ads-1");
-            add("ads-2");
+//            add("ads-1");
+//            add("ads-2");
+            add("ads-4");
+            add("ads-5");
+            add("ads-6");
+//            add("hub-41");
         }
     };
 
@@ -48,7 +53,7 @@ public class Main {
         for (Account account : accountList) {
             if (!testAccounts.contains(account.name)) {
                 //单测任务
-                //continue;
+                continue;
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -58,7 +63,7 @@ public class Main {
             Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0) ;
             MouseUtil.executeAction(startAccountAction);
             taskList = initTask(account);
-            Collections.shuffle(taskList);
+            //Collections.shuffle(taskList);
 
             for (Task task : taskList) {
                 System.out.println("current task:" + task.name);

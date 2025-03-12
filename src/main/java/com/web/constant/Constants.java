@@ -10,6 +10,8 @@ public interface Constants {
     String SCROLL_DOWN = "scrollDown";
     String SLEEP = "sleep";
     String SIGN = "sign";
+    String CANCEL_SIGN = "cancelSign";
+    String CLOSE_WINDOW = "closeWindow";
 
     HashSet<String> DP_ACCOUNTS = new HashSet<>() {
         {

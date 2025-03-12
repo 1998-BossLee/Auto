@@ -34,6 +34,7 @@ public class MouseUtil {
     public static void main(String[] args) throws Exception {
         findCoordinate();
         robot.delay(1000);
+        closeWindow();
         //robot.mouseWheel(10);
 //        int x = 1067, y = 85;
 //        moveToAndClick( x, y);
@@ -212,6 +213,22 @@ public class MouseUtil {
         }
     }
 
+    //ctrl+w
+    private static void closeWindow() {
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("mac")) {
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_W);
+            robot.keyRelease(KeyEvent.VK_W);
+            robot.keyRelease(KeyEvent.VK_META);
+        } else {
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_W);
+            robot.keyRelease(KeyEvent.VK_W);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+        }
+    }
+
     public static void executeAction(Task.Action action) throws Exception {
         robot.delay(1000);
         //System.out.println(String.format("executeAction op=%s text=%s x=%s y=%s h=%s", action.op, action.text, action.x, action.y, action.h));
@@ -238,6 +255,16 @@ public class MouseUtil {
                 robot.delay(5000);
                 moveToAndClick(action);
                 break;
+            case CANCEL_SIGN:
+                action.x = config.getInteger("cancelSignX");
+                action.y = config.getInteger("cancelSignY");
+                robot.delay(5000);
+                moveToAndClick(action);
+                break;
+            case CLOSE_WINDOW:
+                closeWindow();
+                break;
+
         }
     }
 

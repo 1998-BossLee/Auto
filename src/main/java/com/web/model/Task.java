@@ -88,6 +88,18 @@ public class Task {
             return action;
         }
 
+        public static Action buildCancelSignAction() {
+            Action action = new Action();
+            action.op = CANCEL_SIGN;
+            return action;
+        }
+
+        public static Action buildCloseWindowAction() {
+            Action action = new Action();
+            action.op = CLOSE_WINDOW;
+            return action;
+        }
+
     }
 
     public Task(String id, String name, int type) {
