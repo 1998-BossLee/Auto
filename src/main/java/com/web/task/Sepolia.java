@@ -21,10 +21,12 @@ public class Sepolia {
         actionList.add(Task.Action.buildInputTextAction(1251, 454, account.evm));
         actionList.add(Task.Action.buildMoveClickAction(883, 536));
         actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildMoveClickAction(883, 536));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildMoveClickAction(883, 536));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildMoveClickAction(883, 536));
         task.actionList = actionList;
-        taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
         return taskList;
     }
 }

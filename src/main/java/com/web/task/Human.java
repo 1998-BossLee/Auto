@@ -21,6 +21,8 @@ public class Human {
         actionList.add(Task.Action.buildInputTextAction(940, 716, account.evm));
         actionList.add(Task.Action.buildMoveClickAction(1213, 705));
         actionList.add(Task.Action.buildSleepAction(5));
+        actionList.add(Task.Action.buildMoveClickAction(1213, 705));
+        actionList.add(Task.Action.buildSleepAction(5));
         task.actionList = actionList;
         taskList.add(task);
         return taskList;

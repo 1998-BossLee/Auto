@@ -22,13 +22,13 @@ public class Monad {
         task = new Task("monad-1", "monad官网领水", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 30));
         actionList.add(Task.Action.buildMoveClickAction(1754, 227));
         actionList.add(Task.Action.buildScrollDownAction(-20));
         actionList.add(Task.Action.buildScrollDownAction(10));
         actionList.add(Task.Action.buildInputTextAction(1234, 392, account.evm));
         actionList.add(Task.Action.buildMoveClickAction(1161, 491));
-        actionList.add(Task.Action.buildSleepAction(5));
+        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildMoveClickAction(1343, 567));
         actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
