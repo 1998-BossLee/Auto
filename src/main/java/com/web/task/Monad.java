@@ -27,12 +27,15 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 30));
         actionList.add(Task.Action.buildMoveClickAction(1754, 227));
         actionList.add(Task.Action.buildScrollDownAction(-20));
+        actionList.add(Task.Action.buildMoveClickAction(1754, 327));
         actionList.add(Task.Action.buildScrollDownAction(10));
-        actionList.add(Task.Action.buildInputTextAction(1234, 392, account.evm));
-        actionList.add(Task.Action.buildMoveClickAction(1161, 491));
-        actionList.add(Task.Action.buildSleepAction(10));
-        actionList.add(Task.Action.buildMoveClickAction(1343, 567));
-        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildInputTextAction(1300, 320, account.evm));
+        for (int i = 1; i <= 4; i++) {
+            actionList.add(Task.Action.buildMoveClickAction(1155, 420));
+            actionList.add(Task.Action.buildSleepAction(3));
+            actionList.add(Task.Action.buildMoveClickAction(1300, 500));
+            actionList.add(Task.Action.buildSleepAction(20));
+        }
         task.actionList = actionList;
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
@@ -40,31 +43,15 @@ public class Monad {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 20));
-        actionList.add(Task.Action.buildInputTextAction(950, 640, account.evm));
-        for (int i = 1; i <= 5; i++) {
-            actionList.add(Task.Action.buildMoveClickAction(950, 700));
-            actionList.add(Task.Action.buildSleepAction(30));
+        actionList.add(Task.Action.buildMoveClickAction(950, 570));
+        actionList.add(Task.Action.buildInputTextAction(950, 570, account.evm));
+        for (int i = 1; i <= 4; i++) {
+            actionList.add(Task.Action.buildMoveClickAction(950, 640));
+            actionList.add(Task.Action.buildSleepAction(10));
         }
         task.actionList = actionList;
 
-//        task = new Task("monad-2", "monad-morkie领水B", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 20));
-//        actionList.add(Task.Action.buildInputTextAction(923, 679, account.evm));
-//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        actionList.add(Task.Action.buildMoveClickAction(945, 738));
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        task.actionList = actionList;
 
-//
         //六连击
         task = new Task("monad-3", "monad-talentum领水", 0);
         taskList.add(task);
@@ -75,8 +62,9 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
         actionList.add(Task.Action.buildMoveClickAction(950, 780));
-        actionList.add(Task.Action.buildSleepAction(15));
+        actionList.add(Task.Action.buildSleepAction(30));
         actionList.add(Task.Action.buildMoveClickAction(950, 665));
+        actionList.add(Task.Action.buildSleepAction(20));
         task.actionList = actionList;
 
 
@@ -139,7 +127,7 @@ public class Monad {
         return taskList;
     }
 
-    public static List<Task> getTalentumVisitTasks() {
+    public static List<Task> getTalentumVisitTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
@@ -237,39 +225,45 @@ public class Monad {
         task.actionList = actionList;
 
 
-        task = new Task("monad-8", "magma-stake", 0);
-        //taskList.add(task);
-        actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.magmastaking.xyz/", 15));
-        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
-        actionList.add(Task.Action.buildMoveClickAction(0, 0));
-        actionList.add(Task.Action.buildSignAction());
-        task.actionList = actionList;
+        //美国IP不能用
+//        task = new Task("monad-8", "magma-stake", 0);
+//        //taskList.add(task);
+//        actionList = new ArrayList<>();
+//        actionList.add(Task.Action.buildOpenUrlAction("https://www.magmastaking.xyz/", 15));
+//        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
+//        actionList.add(Task.Action.buildMoveClickAction(0, 0));
+//        actionList.add(Task.Action.buildSignAction());
+//        task.actionList = actionList;
 
 
         //0.005 gas
         task = new Task("monad-9", "aicraft-vote", 0);
-//        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen?ref=HYT2KQRSDE", 15));
-        actionList.add(Task.Action.buildMoveClickAction(0, 0));
-        actionList.add(Task.Action.buildScrollDownAction(0));
-        int[] aicraftVoteX = {};
-        int[] aicraftVoteY = {};
-        actionList.add(Task.Action.buildMoveClickAction(aicraftVoteX[random.nextInt(aicraftVoteX.length)], aicraftVoteY[random.nextInt(aicraftVoteY.length)]));
+        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 300));
+        actionList.add(Task.Action.buildScrollDownAction(17));
+        int[] aicraftVoteYs = {190, 750};
+        int x = 250 + 310 * (random.nextInt(100) % 6), y = aicraftVoteYs[random.nextInt(100) % aicraftVoteYs.length];
+        System.out.println("x=" + x + " y=" + y);
+        actionList.add(Task.Action.buildMoveClickAction(x, y));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(5));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
         //0.002 gas
         task = new Task("monad-9", "bebop-swap", 0);
-//        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON", 15)); //选好mon和wmon了
-        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
-        actionList.add(Task.Action.buildMoveClickAction(0, 0)); //注意页面变化
+        actionList.add(Task.Action.buildInputTextAction(1000, 360, random(account, 0.001, 0.07, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 635)); //Wrap
         actionList.add(Task.Action.buildSleepAction(15)); //等得比较久
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
+        //反操作 https://bebop.xyz/trade?network=monad&sell=WMON&buy=MON
+
 
         //clober gas太贵做不起 https://alpha.clober.io/earn?chain=10143
 
@@ -285,21 +279,28 @@ public class Monad {
 
         //https://monad-test.kinza.finance/#/details/MON 还有其他任务
         task = new Task("monad-11", "kinza-supply", 0);
-//        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://monad-test.kinza.finance/#/details/MON", 15)); //选好mon和wmon了
-        actionList.add(Task.Action.buildMoveClickAction(0, 0));
-        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
-        actionList.add(Task.Action.buildMoveClickAction(0, 0));
+        actionList.add(Task.Action.buildMoveClickAction(1550, 750));
+        actionList.add(Task.Action.buildInputTextAction(800, 410, random(account, 0.01, 0.03, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 675));
         actionList.add(Task.Action.buildSignAction());
-
-
+        actionList.add(Task.Action.buildSleepAction(15)); //等得比较久
+        task.actionList = actionList;
 
 
         Collections.shuffle(taskList);
-        return taskList;
+        return taskList.subList(0, 3);
     }
 
+    public static List<Task> getTestTasks(Account account) {
+        List<Task> taskList = new ArrayList<>();
+        Task task;
+        List<Task.Action> actionList;
+
+        return taskList;
+    }
 
     static Random random = new Random();
 
@@ -309,5 +310,7 @@ public class Monad {
         System.out.println("random " + s);
         return s;
     }
+
+
 
 }

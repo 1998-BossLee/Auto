@@ -24,25 +24,30 @@ public class Main {
 
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
-//        taskList.addAll(Sepolia.getDailyTasks(account));
+        taskList.addAll(Sepolia.getDailyTasks(account));
 //        taskList.addAll(DeSpeed.getDailyTasks(account));
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
 //        taskList.addAll(Human.getDailyTasks(account));
-        taskList.addAll(Monad.getTalentumVisitTasks());
+        taskList.addAll(Monad.getTalentumVisitTasks(account));
         taskList.addAll(Monad.getRandomTasks(account));
         taskList.addAll(Monad.getDailyTasks(account));
+//        taskList.addAll(Monad.getTestTasks(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
 
-    static HashSet<String> testAccounts = new HashSet<>(){
+    static HashSet<String> testAccounts = new HashSet<>() {
         {
 //            add("ads-1");
 //            add("ads-2");
-            add("ads-4");
-            add("ads-5");
-            add("ads-6");
+//            add("ads-4");
+//            add("ads-5");
+//            add("ads-6");
 //            add("hub-41");
+            add("hub-42");
+//            add("hub-43");
+//            add("hub-44");
+//            add("hub-45");
         }
     };
 
@@ -50,17 +55,17 @@ public class Main {
     public static void main(String[] args) throws Exception {
 //        randomSleepMinutes(60, 120);
         Collections.shuffle(accountList);
-        for (Account account : accountList) {
+        for (int i = 0; i < accountList.size(); i++) {
+            Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-                //单测任务
-                continue;
+//                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
             }
-//            randomSleepMinutes(5, 20);
-            System.out.println(getCurrentTime() + " current account name:" + account.name);
-            Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0) ;
+            randomSleepMinutes(5, 10);
+            System.out.println(String.format("%s %s/%s account:%s", getCurrentTime(), i+1, accountList.size(), account.name));
+            Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
             MouseUtil.executeAction(startAccountAction);
             taskList = initTask(account);
             //Collections.shuffle(taskList);
@@ -71,7 +76,7 @@ public class Main {
                     MouseUtil.executeAction(action);
                 }
                 //任务之间睡眠5秒
-                Task.Action action = new Task.Action(SLEEP, "", 0,0, 5);
+                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 5);
                 MouseUtil.executeAction(action);
             }
         }
@@ -91,9 +96,6 @@ public class Main {
         // 格式化当前时间
         return now.format(formatter);
     }
-
-
-
 
 
 }

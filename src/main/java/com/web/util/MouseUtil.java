@@ -6,6 +6,8 @@ import com.web.model.Task;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static com.web.constant.Constants.*;
@@ -32,10 +34,19 @@ public class MouseUtil {
 
 
     public static void main(String[] args) throws Exception {
-        findCoordinate();
-        robot.delay(1000);
-        closeWindow();
-        //robot.mouseWheel(10);
+        String s= "https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON ?!@#$%^&*()";
+        typeString(robot, s);
+//        robot.keyPress(KeyEvent.VK_SHIFT);
+//        robot.keyPress(KeyEvent.VK_SLASH);  // "/" 键
+//        robot.keyRelease(KeyEvent.VK_SLASH);
+//        robot.keyRelease(KeyEvent.VK_SHIFT);
+//        findCoordinate();
+//        robot.delay(1000);
+////        closeWindow();
+//        moveToAndClick(Task.Action.buildMoveClickAction(1700, 300));
+//        robot.mouseWheel(17);
+//        moveToAndClick(Task.Action.buildMoveClickAction(1754, 327));
+//        robot.mouseWheel(10);
 //        int x = 1067, y = 85;
 //        moveToAndClick( x, y);
 //        String url = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
@@ -133,11 +144,17 @@ public class MouseUtil {
     }
 
     // 输入文本（注意：此方法简单处理字符，对于部分特殊字符可能需要额外处理）
+    private static final Set<Character> cantFindCharacters = new HashSet<>(){
+        {
+            add('?');
+            add('%');
+        }
+    };
     private static void typeString(Robot robot, String input) {
         //switchToEnglishInputMethod(robot);
         for (char c : input.toCharArray()) {
             int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-            if (KeyEvent.CHAR_UNDEFINED == keyCode || keyCode == 0) {
+            if (!cantFindCharacters.contains(c) && (KeyEvent.CHAR_UNDEFINED == keyCode || keyCode == 0)) {
                 System.out.println("无法识别字符：" + c);
                 continue;
             }
@@ -149,34 +166,89 @@ public class MouseUtil {
             }
 
             // 特殊字符处理
-            if (c == ':') {
-                robot.keyPress(KeyEvent.VK_SHIFT); // 冒号需要按住 Shift
-                robot.keyPress(KeyEvent.VK_SEMICOLON); // 输入分号
-                robot.keyRelease(KeyEvent.VK_SEMICOLON);
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            } else if (c == '#') {
-                robot.keyPress(KeyEvent.VK_SHIFT);
-                robot.keyPress(KeyEvent.VK_3);
-                robot.keyRelease(KeyEvent.VK_3);
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            } else if (c == '_') {  // 手动处理下划线 _
-                robot.keyPress(KeyEvent.VK_SHIFT);
-                robot.keyPress(KeyEvent.VK_MINUS);  // "-" 键
-                robot.keyRelease(KeyEvent.VK_MINUS);
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            } else if (c == '!') {
-                robot.keyPress(KeyEvent.VK_SHIFT);
-                robot.keyPress(KeyEvent.VK_1);
-                robot.keyRelease(KeyEvent.VK_1);
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            } else if (c == '@') {
-                robot.keyPress(KeyEvent.VK_SHIFT);
-                robot.keyPress(KeyEvent.VK_2);
-                robot.keyRelease(KeyEvent.VK_2);
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            } else {
-                robot.keyPress(keyCode);
-                robot.keyRelease(keyCode);
+
+            switch (c) {
+                case '!':
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_1);
+                    robot.keyRelease(KeyEvent.VK_1);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '@':  // @ = Shift + 2
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_2);
+                    robot.keyRelease(KeyEvent.VK_2);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '#':  // @ = Shift + 3
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_3);
+                    robot.keyRelease(KeyEvent.VK_3);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '$':  // $ = Shift + 4
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_4);
+                    robot.keyRelease(KeyEvent.VK_4);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '%':  // % = Shift + 5
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_5);
+                    robot.keyRelease(KeyEvent.VK_5);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '^':  // ^ = Shift + 6
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_6);
+                    robot.keyRelease(KeyEvent.VK_6);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '&':  // & = Shift + 7
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_7);
+                    robot.keyRelease(KeyEvent.VK_7);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '*':  // * = Shift + 8
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_8);
+                    robot.keyRelease(KeyEvent.VK_8);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '(':  // ( = Shift + 9
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_9);
+                    robot.keyRelease(KeyEvent.VK_9);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case ')':  // ) = Shift + 0
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_0);
+                    robot.keyRelease(KeyEvent.VK_0);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case ':':
+                    robot.keyPress(KeyEvent.VK_SHIFT); // 冒号需要按住 Shift
+                    robot.keyPress(KeyEvent.VK_SEMICOLON); // 输入分号
+                    robot.keyRelease(KeyEvent.VK_SEMICOLON);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '_':
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_MINUS);  // "-" 键
+                    robot.keyRelease(KeyEvent.VK_MINUS);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                case '?':
+                    robot.keyPress(KeyEvent.VK_SHIFT);
+                    robot.keyPress(KeyEvent.VK_SLASH);  // "/" 键
+                    robot.keyRelease(KeyEvent.VK_SLASH);
+                    robot.keyRelease(KeyEvent.VK_SHIFT);
+                    break;
+                default:
+                    robot.keyPress(keyCode);
+                    robot.keyRelease(keyCode);
             }
 
             if (isUpperCase) {
