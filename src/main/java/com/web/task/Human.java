@@ -14,9 +14,11 @@ import java.util.List;
 public class Human {
     public static List<Task> getDailyTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
+        List<Task.Action> actionList;
 
         Task task = new Task("human-1", "human领水", 0);
-        List<Task.Action> actionList = new ArrayList<>();
+        taskList.add(task);
+        actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://faucet.testnet.humanity.org/", 20));
         actionList.add(Task.Action.buildInputTextAction(940, 716, account.evm));
         actionList.add(Task.Action.buildMoveClickAction(1213, 705));
@@ -25,6 +27,20 @@ public class Human {
         actionList.add(Task.Action.buildSleepAction(5));
         task.actionList = actionList;
         taskList.add(task);
+
+        task = new Task("human-2", "human签到", 0);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.humanity.org/dashboard", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1000, 700));//sign in as google
+        actionList.add(Task.Action.buildSleepAction(30)); //wait for sign in
+        actionList.add(Task.Action.buildMoveClickAction(950, 785));//close
+        actionList.add(Task.Action.buildMoveClickAction(700, 1015));//claim daily reward
+        actionList.add(Task.Action.buildSleepAction(30));
+        task.actionList = actionList;
         return taskList;
     }
 }

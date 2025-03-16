@@ -34,7 +34,7 @@ public class MouseUtil {
 
 
     public static void main(String[] args) throws Exception {
-        String s= "https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON ?!@#$%^&*()";
+        String s = "https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON ?!@#$%^&*()";
         typeString(robot, s);
 //        robot.keyPress(KeyEvent.VK_SHIFT);
 //        robot.keyPress(KeyEvent.VK_SLASH);  // "/" 键
@@ -144,12 +144,13 @@ public class MouseUtil {
     }
 
     // 输入文本（注意：此方法简单处理字符，对于部分特殊字符可能需要额外处理）
-    private static final Set<Character> cantFindCharacters = new HashSet<>(){
+    private static final Set<Character> cantFindCharacters = new HashSet<>() {
         {
             add('?');
             add('%');
         }
     };
+
     private static void typeString(Robot robot, String input) {
         //switchToEnglishInputMethod(robot);
         for (char c : input.toCharArray()) {
@@ -319,7 +320,7 @@ public class MouseUtil {
                 scrollDown(action.h);
                 break;
             case SLEEP:
-                robot.delay(action.h * 1000);
+                Thread.sleep(action.h * 1000L);
                 break;
             case SIGN:
                 action.x = config.getInteger("signX");

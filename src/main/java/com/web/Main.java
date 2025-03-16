@@ -24,14 +24,15 @@ public class Main {
 
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
-        taskList.addAll(Sepolia.getDailyTasks(account));
+//        taskList.addAll(Sepolia.getDailyTasks(account));
 //        taskList.addAll(DeSpeed.getDailyTasks(account));
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
 //        taskList.addAll(Human.getDailyTasks(account));
-        taskList.addAll(Monad.getTalentumVisitTasks(account));
-        taskList.addAll(Monad.getRandomTasks(account));
-        taskList.addAll(Monad.getDailyTasks(account));
+//        taskList.addAll(Monad.getTalentumVisitTasks(account));
+//        taskList.addAll(Monad.getRandomTasks(account));
+//        taskList.addAll(Monad.getDailyTasks(account));
 //        taskList.addAll(Monad.getTestTasks(account));
+        taskList.addAll(Monad.getMonadAINFTTasks());
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
@@ -68,7 +69,7 @@ public class Main {
             Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
             MouseUtil.executeAction(startAccountAction);
             taskList = initTask(account);
-            //Collections.shuffle(taskList);
+            Collections.shuffle(taskList);
 
             for (Task task : taskList) {
                 System.out.println("current task:" + task.name);

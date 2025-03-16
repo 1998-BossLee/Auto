@@ -19,6 +19,7 @@ public class LayerEdge {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://dashboard.layeredge.io/", 30));
+        actionList.add(Task.Action.buildMoveClickAction(950, 660)); //最近会弹出来一个提示按钮
         actionList.add(Task.Action.buildMoveClickAction(1057, 222));
         actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildMoveClickAction(1057, 680));
