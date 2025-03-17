@@ -324,6 +324,7 @@ public class Monad {
     public static List<Task> getManualOperationTasks() {
         //owlto 部署合约，手动一次，必须小狐狸
         //https://owlto.finance/deploy/?chain=MonadTestnet
+        //https://contracts.mintair.xyz/ 以后og也可以部署
         return null;
     }
 
