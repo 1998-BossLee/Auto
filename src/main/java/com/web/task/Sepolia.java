@@ -26,4 +26,7 @@ public class Sepolia {
         task.actionList = actionList;
         return taskList;
     }
+
+    //https://www.alchemy.com/faucets/ethereum-sepolia 需要手动领，真人验证难度大，0.1e/72h
+    //https://console.optimism.io/faucet 要github 0.1e/24h
 }

@@ -87,27 +87,17 @@ public class Monad {
     }
 
 
-    //不算做完，单号，挨个手动做。
-    public static List<Task> getTalentumNFTTasks(Account account) {
+    //只能做一次的任务，例如NFT
+    public static List<Task> getNonceTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
         //暂时没水，不做
-        List<String> urls = new ArrayList<>();
-        urls.add("https://monad.talentum.id/tasks/task/2739");
-        urls.add("https://monad.talentum.id/tasks/task/2797");
-        urls.add("https://monad.talentum.id/tasks/task/2745");
-        urls.add("https://monad.talentum.id/tasks/task/2750");
-        urls.add("https://monad.talentum.id/tasks/task/2760");
-        urls.add("https://monad.talentum.id/tasks/task/2779");
-        urls.add("https://monad.talentum.id/tasks/task/2812");
-        urls.add("https://monad.talentum.id/tasks/task/2813");
-        urls.add("https://monad.talentum.id/tasks/task/2857");
-        urls.add("https://monad.talentum.id/tasks/task/2838");
-        urls.add("https://monad.talentum.id/tasks/task/2778");
-        Collections.shuffle(urls);
-        for (String url : urls) {
-            task = new Task("monad-5", "monad-talentum-11个NFT", 0);
+        String s = "2739,2797,2745,2750,2760,2779,2812,2813,2857,2838,2778";
+        String[] taskIds = s.split(",");
+        for (String taskId : taskIds) {
+            String url = "https://monad.talentum.id/tasks/task/" + taskId;
+            task = new Task("monad-5", "monad-talentum-NFT-" + taskId, 1);
             taskList.add(task);
             actionList = new ArrayList<>();
             //【start work】-【Mint】-【sign】-【verify】-【claim reward】
@@ -125,7 +115,8 @@ public class Monad {
             task.actionList = actionList;
         }
 
-        return taskList;
+
+        return taskList.subList(0, 2);
     }
 
     public static List<Task> getTalentumVisitTasks(Account account) {
