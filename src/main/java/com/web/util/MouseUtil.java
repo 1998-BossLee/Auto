@@ -337,6 +337,18 @@ public class MouseUtil {
             case CLOSE_WINDOW:
                 closeWindow();
                 break;
+            case META_MASK_SIGN:
+                action.x = config.getInteger("metaMaskX");
+                action.y = config.getInteger("metaMaskY");
+                robot.delay(5000);
+                moveToAndClick(action);
+                break;
+            case CANCEL_META_MASK_SIGN:
+                action.x = config.getInteger("cancelMetaMaskX");
+                action.y = config.getInteger("cancelMetaMaskY");
+                robot.delay(5000);
+                moveToAndClick(action);
+                break;
 
         }
     }

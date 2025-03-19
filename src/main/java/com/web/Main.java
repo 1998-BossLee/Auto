@@ -21,18 +21,19 @@ public class Main {
 
     static List<Account> accountList = FileUtil.readAccountFile();
     static List<Task> taskList;
+    static Set<String> finishedTasks = FileUtil.readFinishedTask();
 
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
-//        taskList.addAll(Sepolia.getDailyTasks(account));
-//        taskList.addAll(DeSpeed.getDailyTasks(account));
-//        taskList.addAll(LayerEdge.getDailyTasks(account));
-//        taskList.addAll(Human.getDailyTasks(account));
+        taskList.addAll(Sepolia.getDailyTasks(account));
+        taskList.addAll(DeSpeed.getDailyTasks(account));
+        taskList.addAll(LayerEdge.getDailyTasks(account));
+        taskList.addAll(Human.getDailyTasks(account));
 //        taskList.addAll(Monad.getTalentumVisitTasks(account));
-//        taskList.addAll(Monad.getRandomTasks(account));
-//        taskList.addAll(Monad.getDailyTasks(account));
+        taskList.addAll(Monad.getRandomTasks(account));
+        taskList.addAll(Monad.getDailyTasks(account));
 //        taskList.addAll(Monad.getTestTasks(account));
-        taskList.addAll(Monad.getMonadAINFTTasks());
+//        taskList.addAll(Monad.getMonadAINFTTasks());
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
@@ -64,8 +65,7 @@ public class Main {
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
             }
-            randomSleepMinutes(5, 10);
-            System.out.println(String.format("%s %s/%s account:%s", getCurrentTime(), i+1, accountList.size(), account.name));
+            System.out.println(String.format("%s %s/%s account:%s", getCurrentTime(), i + 1, accountList.size(), account.name));
             Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
             MouseUtil.executeAction(startAccountAction);
             taskList = initTask(account);
@@ -73,6 +73,9 @@ public class Main {
 
             for (Task task : taskList) {
                 System.out.println("current task:" + task.name);
+                if (!needToExecuteTask(account.name, task)) {
+                    continue;
+                }
                 for (Task.Action action : task.actionList) {
                     MouseUtil.executeAction(action);
                 }
@@ -80,13 +83,14 @@ public class Main {
                 Task.Action action = new Task.Action(SLEEP, "", 0, 0, 5);
                 MouseUtil.executeAction(action);
             }
+            randomSleepMinutes(5, 10);
         }
     }
 
     private static void randomSleepMinutes(int min, int max) throws Exception {
         Random random = new Random();
         long randomMinutes = random.nextInt(max - min + 1) + min;
-        //Thread.sleep(randomMinutes * 60 * 1000);
+        Thread.sleep(randomMinutes * 60 * 1000);
     }
 
     public static String getCurrentTime() {
@@ -96,6 +100,19 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         // 格式化当前时间
         return now.format(formatter);
+    }
+
+    private static boolean needToExecuteTask(String accountName, Task task) {
+        if (task.type == TaskType.DAILY) {
+            return true;
+        }
+        String taskUid = accountName + "_" + task.id + "_" + task.name;
+        if (finishedTasks.contains(taskUid)) {
+            System.out.println("task finished:" + taskUid + " skip");
+            return false;
+        }
+        FileUtil.appendFinishedTask(taskUid);
+        return true;
     }
 
 

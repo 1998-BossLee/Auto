@@ -177,13 +177,15 @@ public class Monad {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
+
         //打开url、移动到输入框对焦、输入质押金额、质押、签名
         task = new Task("monad-6", "aPrior-stake", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/", 20));
-        //TODO 打勾，同一。
-        actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.001, 0.007, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(660, 444));//打勾
+        actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
+        actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.005, 0.01, 4)));
         actionList.add(Task.Action.buildSleepAction(10));//需要一点时间计算质押对应的金额
         actionList.add(Task.Action.buildMoveClickAction(950, 655));
         actionList.add(Task.Action.buildSleepAction(25));
@@ -193,10 +195,29 @@ public class Monad {
         task.actionList = actionList;
 
 
-        task = new Task("monad-6", "aPrior-withdrawals", 0);
-        //taskList.add(task);
+        task = new Task("monad-6", "aPrior-withdrawals-request", 0);
+        taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/withdrawals", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/withdrawals?tab=request", 20));
+        actionList.add(Task.Action.buildMoveClickAction(660, 444));//打勾
+        actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
+        actionList.add(Task.Action.buildInputTextAction(950, 500, random(account, 0.001, 0.005, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 750));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+
+        task = new Task("monad-6", "aPrior-withdrawals-claim", 0);
+
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/withdrawals?tab=claim", 20));
+        actionList.add(Task.Action.buildMoveClickAction(660, 444));//打勾
+        actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
+        actionList.add(Task.Action.buildMoveClickAction(660, 490));
+        actionList.add(Task.Action.buildMoveClickAction(950, 670));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
 
@@ -270,13 +291,25 @@ public class Monad {
 
         //0.003gas 这个要研究一下
         task = new Task("monad-10", "shmonad-stake", 0);
-//        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15)); //选好mon和wmon了
-        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
-        actionList.add(Task.Action.buildMoveClickAction(0, 0)); //注意页面变化
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
+        actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.005, 0.01, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
+        task = new Task("monad-10", "shmonad-redeem", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1000, 350));
+        actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.001, 0.005, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
 
         //https://monad-test.kinza.finance/#/details/MON 还有其他任务
         task = new Task("monad-11", "kinza-supply", 0);
@@ -292,7 +325,7 @@ public class Monad {
 
 
         Collections.shuffle(taskList);
-        return taskList.subList(0, 3);
+        return taskList.subList(0, 2);
     }
 
     public static List<Task> getMonadAINFTTasks() {
@@ -304,7 +337,7 @@ public class Monad {
         refUrls.add("https://monai.gg/nft?ref-code=8EM4H5");
         refUrls.add("https://monai.gg/nft?ref-code=ME3CNK");
         Collections.shuffle(refUrls);
-        task = new Task("monad-12", "monai-nft-week1", 0);
+        task = new Task("monad-12", "monai-nft-week1", 1);
         taskList.add(task);
         actionList.add(Task.Action.buildOpenUrlAction(refUrls.get(0), 15)); //选好mon和wmon了
         actionList.add(Task.Action.buildMoveClickAction(885,585));
@@ -343,6 +376,11 @@ public class Monad {
         String s = String.format("%." + digit + "f", d);
         System.out.println("random " + s);
         return s;
+    }
+
+    //x分之一的概率
+    private static boolean randomBoolean(int x) {
+        return random.nextInt(x) == 0;
     }
 
 

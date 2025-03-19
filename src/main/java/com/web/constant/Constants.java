@@ -12,6 +12,8 @@ public interface Constants {
     String SIGN = "sign";
     String CANCEL_SIGN = "cancelSign";
     String CLOSE_WINDOW = "closeWindow";
+    String META_MASK_SIGN = "metaMaskSign";
+    String CANCEL_META_MASK_SIGN = "cancelMetaMaskSign";
 
     HashSet<String> DP_ACCOUNTS = new HashSet<>() {
         {
@@ -27,5 +29,10 @@ public interface Constants {
             add("hub-45");
         }
     };
+
+    interface TaskType {
+        int DAILY = 0;
+        int NONCE = 1;
+    }
 
 }
