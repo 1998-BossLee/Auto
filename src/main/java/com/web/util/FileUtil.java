@@ -65,7 +65,7 @@ public class FileUtil {
     public static void appendFinishedTask(String taskUid) {
         String filePath = "data/finishedTask.txt";
         try {
-            Files.writeString(Paths.get(filePath), taskUid + "\n", java.nio.file.StandardOpenOption.APPEND);
+            Files.writeString(Paths.get(filePath), "\n" + taskUid, java.nio.file.StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,8 +73,13 @@ public class FileUtil {
 
 
     public static void main(String[] args) {
-        System.out.println(readAccountFile());
-        System.out.println(readConfig());
+        Set<String> finishedTasks = readFinishedTask();
+        System.out.println(finishedTasks);
+        String taskUid = "task-124";
+        appendFinishedTask(taskUid);
+        finishedTasks = readFinishedTask();
+        System.out.println(finishedTasks);
+        System.out.println(finishedTasks.contains("hub-2_monad-1_monad官网领水"));
     }
 
 }

@@ -169,7 +169,7 @@ public class Monad {
         Task task;
         List<Task.Action> actionList;
 
-        //打开url、移动到输入框对焦、输入质押金额、质押、签名
+        //1000w融资
         task = new Task("monad-6", "aPrior-stake", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -280,7 +280,8 @@ public class Monad {
 
         //clober gas太贵做不起 https://alpha.clober.io/earn?chain=10143
 
-        //0.003gas 这个要研究一下
+
+        //0.003gas 这个要研究一下 830w融资
         task = new Task("monad-10", "shmonad-stake", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -314,6 +315,13 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(25)); //等得比较久
         task.actionList = actionList;
 
+        //200w融资 https://www.kuru.io/markets  卡死
+
+        //360w融资 https://monad.curvance.com/monad 操作很多
+
+        //400w融资 https://kintsu.xyz/staking
+
+        //质押 https://testnet-preview.monorail.xyz/
 
         Collections.shuffle(taskList);
         return taskList.subList(0, 2);
