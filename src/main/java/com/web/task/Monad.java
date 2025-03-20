@@ -69,19 +69,9 @@ public class Monad {
         task.actionList = actionList;
 
 
-//
-//
-//
-//
-//        //第一次需要手动对币对授权或者无脑加一个授权按钮的点击
-//        task = new Task("monad-8", "monad-Liquidity", 0);
-//
-//
-//
-//        //投票
-//        task = new Task("monad-8", "monad-Liquidity", 0);
-//
-//
+        //monadAI领水 https://monai.gg/faucet 0.125/24h
+        //10POL的NFT https://faucet.nerzo.xyz/ 0.15/24h
+
 
         return taskList;
     }
@@ -350,6 +340,12 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
+
+        //morkie假任务系列
+        //https://morkie.xyz/nads
+        //https://morkie.xyz/monad
+        //https://morkie.xyz/monhog
+
         return taskList;
     }
 
