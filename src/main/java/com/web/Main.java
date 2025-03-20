@@ -44,13 +44,23 @@ public class Main {
 //            add("ads-2");
 //            add("ads-4");
 //            add("ads-5");
-//            add("ads-6");
+            add("ads-6");
 //            add("hub-41");
-            add("hub-42");
+//            add("hub-42");
 //            add("hub-43");
 //            add("hub-44");
 //            add("hub-45");
         }
+    };
+
+    static HashSet<String> testTaskNames = new HashSet<>() {
+        {
+            add("owlto-deploy");
+            add("contracts-deploy");
+            add("kuru-lite-sawp");
+            add("kinsu-staking");
+        }
+
     };
 
     //TODO 提前打开一个没有用的页面
@@ -60,7 +70,7 @@ public class Main {
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-//                continue;//打开就是单测任务
+                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -72,6 +82,9 @@ public class Main {
             Collections.shuffle(taskList);
 
             for (Task task : taskList) {
+                if (!testTaskNames.contains(task.name)) {
+                    continue;//打开就是单测任务
+                }
                 System.out.println("current task:" + task.name);
                 if (!needToExecuteTask(account.name, task)) {
                     continue;
@@ -80,10 +93,10 @@ public class Main {
                     MouseUtil.executeAction(action);
                 }
                 //任务之间睡眠5秒
-                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 5);
+                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
                 MouseUtil.executeAction(action);
             }
-            randomSleepMinutes(5, 10);
+//            randomSleepMinutes(5, 10);
         }
     }
 

@@ -331,7 +331,7 @@ public class MouseUtil {
             case CANCEL_SIGN:
                 action.x = config.getInteger("cancelSignX");
                 action.y = config.getInteger("cancelSignY");
-                robot.delay(5000);
+                robot.delay(15000);
                 moveToAndClick(action);
                 break;
             case CLOSE_WINDOW:

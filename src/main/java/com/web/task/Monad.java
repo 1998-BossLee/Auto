@@ -22,7 +22,7 @@ public class Monad {
 
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
         task = new Task("monad-1", "monad官网领水", 0);
-        taskList.add(task);
+        //taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 30));
         actionList.add(Task.Action.buildMoveClickAction(1754, 227));
@@ -95,7 +95,6 @@ public class Monad {
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));
             actionList.add(Task.Action.buildSleepAction(15));
             actionList.add(Task.Action.buildMoveClickAction(744, 815));
-            actionList.add(Task.Action.buildSleepAction(5));
             actionList.add(Task.Action.buildSignAction());
             actionList.add(Task.Action.buildSleepAction(15));
             actionList.add(Task.Action.buildMoveClickAction(1049, 815));
@@ -169,7 +168,7 @@ public class Monad {
         actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.005, 0.01, 4)));
         actionList.add(Task.Action.buildSleepAction(10));//需要一点时间计算质押对应的金额
         actionList.add(Task.Action.buildMoveClickAction(950, 655));
-        actionList.add(Task.Action.buildSleepAction(25));
+        actionList.add(Task.Action.buildSleepAction(15));
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildCancelSignAction());
@@ -184,12 +183,10 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
         actionList.add(Task.Action.buildInputTextAction(950, 500, random(account, 0.001, 0.005, 4)));
         actionList.add(Task.Action.buildMoveClickAction(950, 750));
-        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
         task = new Task("monad-6", "aPrior-withdrawals-claim", 0);
-
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://stake.apr.io/withdrawals?tab=claim", 20));
@@ -197,7 +194,6 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
         actionList.add(Task.Action.buildMoveClickAction(660, 490));
         actionList.add(Task.Action.buildMoveClickAction(950, 670));
-        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -223,7 +219,6 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(5));
         actionList.add(Task.Action.buildMoveClickAction(1096, 500));
         actionList.add(Task.Action.buildMoveClickAction(950, 785));
-        actionList.add(Task.Action.buildSleepAction(5));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -262,7 +257,7 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON", 15)); //选好mon和wmon了
         actionList.add(Task.Action.buildInputTextAction(1000, 360, random(account, 0.001, 0.07, 4)));
         actionList.add(Task.Action.buildMoveClickAction(950, 635)); //Wrap
-        actionList.add(Task.Action.buildSleepAction(15)); //等得比较久
+        actionList.add(Task.Action.buildSleepAction(5)); //等得比较久
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
         //反操作 https://bebop.xyz/trade?network=monad&sell=WMON&buy=MON
@@ -278,7 +273,6 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
         actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.005, 0.01, 4)));
         actionList.add(Task.Action.buildMoveClickAction(950, 700));
-        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -289,7 +283,6 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1000, 350));
         actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.001, 0.005, 4)));
         actionList.add(Task.Action.buildMoveClickAction(950, 700));
-        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -305,41 +298,96 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(25)); //等得比较久
         task.actionList = actionList;
 
+
+        //owlto
+        task = new Task("monad-13", "owlto-deploy", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://owlto.finance/deploy/?chain=MonadTestnet", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1300, 730));
+        actionList.add(Task.Action.buildSleepAction(10)); //等得比较久
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+
+
+        //https://contracts.mintair.xyz/ 以后og也可以部署
+        task = new Task("monad-13", "contracts-deploy", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://contracts.mintair.xyz/", 20));
+        actionList.add(Task.Action.buildMoveClickAction(875, 575));
+        actionList.add(Task.Action.buildMoveClickAction(950, 780));//switch chian
+        actionList.add(Task.Action.buildMoveClickAction(950, 780));//deploy
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+
+
+
         //200w融资 https://www.kuru.io/markets  卡死
+        task = new Task("monad-14", "kuru-lite-sawp", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.kuru.io/swap?from=0x0000000000000000000000000000000000000000&to=0xf817257fed379853cDe0fa4F97AB987181B1E5Ea", 20));
+        int[] kuruSwapCoinYs = {530, 600, 670, 740};
+        if (!randomBoolean(5)) {
+            //4/5的概率进来选其他币，因此外面的USDC也有1/5的概率被选到
+            actionList.add(Task.Action.buildMoveClickAction(800, 515));
+            int kuruSwapCoinY = kuruSwapCoinYs[random.nextInt(4)];
+            actionList.add(Task.Action.buildMoveClickAction(950, kuruSwapCoinY));//选币
+        }
+        actionList.add(Task.Action.buildInputTextAction(950, 330, random(account, 0.03, 0.07, 4))); //输入mon
+        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildMoveClickAction(950, 660));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(10));
+        task.actionList = actionList;
+        //TODO 过一段时间再把币换回来
 
-        //360w融资 https://monad.curvance.com/monad 操作很多
-
-        //400w融资 https://kintsu.xyz/staking
+        //400w融资
+        task = new Task("monad-15", "kinsu-staking", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://kintsu.xyz/staking", 20));
+        actionList.add(Task.Action.buildInputTextAction(950, 670, random(account, 0.02, 0.1, 4))); //输入mon
+        actionList.add(Task.Action.buildMoveClickAction(950, 950));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+        // TODO 换回来，巨亏 https://pandaria.lfj.gg/monad-testnet/swap?outputCurrency=MON&inputCurrency=0x07AabD925866E8353407E67C1D157836f7Ad923e
 
         //质押 https://testnet-preview.monorail.xyz/
 
+
+        //360w融资 https://monad.curvance.com/monad 操作很多
+
+
         Collections.shuffle(taskList);
-        return taskList.subList(0, 2);
+//        return taskList.subList(0, random.nextInt(4));
+        return taskList;
     }
 
     public static List<Task> getMonadAINFTTasks() {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList = new ArrayList<>();
-        List<String> refUrls = new ArrayList<>();
-        refUrls.add("https://monai.gg/nft?ref-code=WGVGJA");
-        refUrls.add("https://monai.gg/nft?ref-code=8EM4H5");
-        refUrls.add("https://monai.gg/nft?ref-code=ME3CNK");
-        Collections.shuffle(refUrls);
-        task = new Task("monad-12", "monai-nft-week1", 1);
-        taskList.add(task);
-        actionList.add(Task.Action.buildOpenUrlAction(refUrls.get(0), 15)); //选好mon和wmon了
-        actionList.add(Task.Action.buildMoveClickAction(885,585));
-        actionList.add(Task.Action.buildCloseWindowAction());
-        actionList.add(Task.Action.buildMoveClickAction(885, 650));
-        actionList.add(Task.Action.buildCloseWindowAction());
-        actionList.add(Task.Action.buildMoveClickAction(885, 715));
-        actionList.add(Task.Action.buildCloseWindowAction());
-        actionList.add(Task.Action.buildSleepAction(30));
-        actionList.add(Task.Action.buildMoveClickAction(1200, 860));
-        actionList.add(Task.Action.buildSleepAction(10));
-        actionList.add(Task.Action.buildSignAction());
-        task.actionList = actionList;
+//        List<String> refUrls = new ArrayList<>();
+//        refUrls.add("https://monai.gg/nft?ref-code=WGVGJA");
+//        refUrls.add("https://monai.gg/nft?ref-code=8EM4H5");
+//        refUrls.add("https://monai.gg/nft?ref-code=ME3CNK");
+//        Collections.shuffle(refUrls);
+//        task = new Task("monad-12", "monai-nft-week1", 1);
+//        taskList.add(task);
+//        actionList.add(Task.Action.buildOpenUrlAction(refUrls.get(0), 15)); //选好mon和wmon了
+//        actionList.add(Task.Action.buildMoveClickAction(885,585));
+//        actionList.add(Task.Action.buildCloseWindowAction());
+//        actionList.add(Task.Action.buildMoveClickAction(885, 650));
+//        actionList.add(Task.Action.buildCloseWindowAction());
+//        actionList.add(Task.Action.buildMoveClickAction(885, 715));
+//        actionList.add(Task.Action.buildCloseWindowAction());
+//        actionList.add(Task.Action.buildSleepAction(30));
+//        actionList.add(Task.Action.buildMoveClickAction(1200, 860));
+//        actionList.add(Task.Action.buildSignAction());
+//        task.actionList = actionList;
 
         //morkie假任务系列
         //https://morkie.xyz/nads
@@ -350,9 +398,7 @@ public class Monad {
     }
 
     public static List<Task> getManualOperationTasks() {
-        //owlto 部署合约，手动一次，必须小狐狸
-        //https://owlto.finance/deploy/?chain=MonadTestnet
-        //https://contracts.mintair.xyz/ 以后og也可以部署
+
         return null;
     }
 
