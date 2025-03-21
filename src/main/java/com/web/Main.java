@@ -26,14 +26,15 @@ public class Main {
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
         taskList.addAll(Sepolia.getDailyTasks(account));
-        taskList.addAll(DeSpeed.getDailyTasks(account));
-        taskList.addAll(LayerEdge.getDailyTasks(account));
-        taskList.addAll(Human.getDailyTasks(account));
+//        taskList.addAll(DeSpeed.getDailyTasks(account));
+//        taskList.addAll(LayerEdge.getDailyTasks(account));
+//        taskList.addAll(Human.getDailyTasks(account));
 //        taskList.addAll(Monad.getTalentumVisitTasks(account));
-        taskList.addAll(Monad.getRandomTasks(account));
+//        taskList.addAll(Monad.getRandomTasks(account));
         taskList.addAll(Monad.getDailyTasks(account));
 //        taskList.addAll(Monad.getTestTasks(account));
 //        taskList.addAll(Monad.getMonadAINFTTasks());
+        taskList.addAll(Monad.getNonceTasks(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
@@ -55,10 +56,11 @@ public class Main {
 
     static HashSet<String> testTaskNames = new HashSet<>() {
         {
-            add("owlto-deploy");
-            add("contracts-deploy");
-            add("kuru-lite-sawp");
-            add("kinsu-staking");
+//            add("owlto-deploy");
+//            add("contracts-deploy");
+//            add("kuru-lite-sawp");
+//            add("kinsu-staking");
+            add("magiceden-NFT-1");
         }
 
     };
@@ -70,7 +72,7 @@ public class Main {
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-                continue;//打开就是单测任务
+//                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -83,7 +85,7 @@ public class Main {
 
             for (Task task : taskList) {
                 if (!testTaskNames.contains(task.name)) {
-                    continue;//打开就是单测任务
+//                    continue;//打开就是单测任务
                 }
                 System.out.println("current task:" + task.name);
                 if (!needToExecuteTask(account.name, task)) {
@@ -96,7 +98,7 @@ public class Main {
                 Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
                 MouseUtil.executeAction(action);
             }
-//            randomSleepMinutes(5, 10);
+            randomSleepMinutes(10, 50);
         }
     }
 
