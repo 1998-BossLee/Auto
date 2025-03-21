@@ -1,0 +1,5 @@
+1. 获取钱包
+window.okxwallet
+2. 各网络弹出来连接
+window.okxwallet.request({ method: 'eth_requestAccounts' })
+window.okxwallet.solana.connect()

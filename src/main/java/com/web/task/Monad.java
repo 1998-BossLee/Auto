@@ -136,8 +136,8 @@ public class Monad {
         map.put("2815", 820);
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String[] taskIds = entry.getKey().split(",");
-            int y = entry.getValue();
             for (String taskId : taskIds) {
+            int y = entry.getValue();
                 task = new Task("monad-5", "monad-talentum-visit", 0);
                 if (taskId.equals("2918")) {
                     continue;

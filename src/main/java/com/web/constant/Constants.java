@@ -35,4 +35,17 @@ public interface Constants {
         int NONCE = 1;
     }
 
+    interface MonadTaskId {
+        String MONAD_FAUCET = "monadFaucet";
+        String MONAD_FAUCET_MORKIE = "monadFaucetMorkie";
+        String MONAD_FAUCET_TALENTUM = "monadFaucetTalentum";
+        String MONAD_FAUCET_MONAI = "monadFaucetMonai";
+        String MONAD_FAUCET_NERZO = "monadFaucetNerzo";
+
+        String MONAD_NFT_TALENTUM = "monadNFTTalentum";
+        String MONAD_NFT_MONAI = "monadNFTMonai";
+        String MONAD_NFT_NERZO = "monadNFTNerzo";
+
+    }
+
 }
