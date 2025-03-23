@@ -100,7 +100,7 @@ public class Monad {
         String s = "2739,2797,2745,2750,2760,2779,2812,2813,2857,2838,2778";
         List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
         Collections.shuffle(talentumNFTTaskIds);
-        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, 3);
+        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 2));
         for (String talentumNFTTaskId : talentumNFTTaskIds) {
             String url = "https://monad.talentum.id/tasks/task/" + talentumNFTTaskId;
             task = new Task(TaskConstant.Monad.NFT_TALENTUM, talentumNFTTaskId, 1);
@@ -143,15 +143,16 @@ public class Monad {
             actionList.add(Task.Action.buildScrollDownAction(3));
             actionList.add(Task.Action.buildMoveClickAction(1505, 760));//
             actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1800, 816));
+            actionList.add(Task.Action.buildMoveClickAction(1505, 816));
             actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1800, 872));
+            actionList.add(Task.Action.buildMoveClickAction(1505, 872));
             actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1800, 930));
+            actionList.add(Task.Action.buildMoveClickAction(1505, 930));
             actionList.add(Task.Action.buildCloseWindowAction());
             actionList.add(Task.Action.buildSleepAction(15));
             actionList.add(Task.Action.buildMoveClickAction(1200, 620));//Mint NFT
             actionList.add(Task.Action.buildSignAction());
+            task.actionList = actionList;
         }
 
         List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
@@ -173,6 +174,7 @@ public class Monad {
             actionList.add(Task.Action.buildSleepAction(15));
             actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
             actionList.add(Task.Action.buildSignAction());
+            task.actionList = actionList;
         }
 
         return taskList;
@@ -307,8 +309,10 @@ public class Monad {
         //0.005 gas
         task = new Task(TaskConstant.Monad.AICRAFT, "vote", 0);
         taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 25));
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(17));
         int[] aicraftVoteYs = {190, 750};
