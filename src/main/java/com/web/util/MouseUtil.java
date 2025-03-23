@@ -34,8 +34,8 @@ public class MouseUtil {
 
 
     public static void main(String[] args) throws Exception {
-        String s = "https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON ?!@#$%^&*()";
-        typeString(robot, s);
+//        String s = "https://bebop.xyz/trade?network=monad&sell=MON&buy=WMON ?!@#$%^&*()";
+//        typeString(robot, s);
 //        robot.keyPress(KeyEvent.VK_SHIFT);
 //        robot.keyPress(KeyEvent.VK_SLASH);  // "/" 键
 //        robot.keyRelease(KeyEvent.VK_SLASH);
@@ -43,8 +43,8 @@ public class MouseUtil {
 //        findCoordinate();
 //        robot.delay(1000);
 ////        closeWindow();
-//        moveToAndClick(Task.Action.buildMoveClickAction(1700, 300));
-//        robot.mouseWheel(17);
+        moveToAndClick(Task.Action.buildMoveClickAction(1800, 200));
+        robot.mouseWheel(3);
 //        moveToAndClick(Task.Action.buildMoveClickAction(1754, 327));
 //        robot.mouseWheel(10);
 //        int x = 1067, y = 85;
@@ -335,12 +335,13 @@ public class MouseUtil {
                 moveToAndClick(action);
                 break;
             case CLOSE_WINDOW:
+                robot.delay(5000);
                 closeWindow();
                 break;
             case META_MASK_SIGN:
                 action.x = config.getInteger("metaMaskX");
                 action.y = config.getInteger("metaMaskY");
-                robot.delay(5000);
+                robot.delay(15000);
                 moveToAndClick(action);
                 break;
             case CANCEL_META_MASK_SIGN:

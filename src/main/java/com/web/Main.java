@@ -1,5 +1,6 @@
 package com.web;
 
+import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 import com.web.task.*;
@@ -26,15 +27,12 @@ public class Main {
     private static List<Task> initTask(Account account) {
         taskList = new ArrayList<>();
         taskList.addAll(Sepolia.getDailyTasks(account));
-//        taskList.addAll(DeSpeed.getDailyTasks(account));
-//        taskList.addAll(LayerEdge.getDailyTasks(account));
-//        taskList.addAll(Human.getDailyTasks(account));
-//        taskList.addAll(Monad.getTalentumVisitTasks(account));
-//        taskList.addAll(Monad.getRandomTasks(account));
-        taskList.addAll(Monad.getDailyTasks(account));
-//        taskList.addAll(Monad.getTestTasks(account));
-//        taskList.addAll(Monad.getMonadAINFTTasks());
-        taskList.addAll(Monad.getNonceTasks(account));
+        taskList.addAll(DeSpeed.getDailyTasks(account));
+        taskList.addAll(LayerEdge.getDailyTasks(account));
+        taskList.addAll(Human.getDailyTasks(account));
+        taskList.addAll(Newton.getDailyTasks());
+
+        taskList.addAll(Monad.getAllTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
         return taskList;
     }
@@ -45,24 +43,48 @@ public class Main {
 //            add("ads-2");
 //            add("ads-4");
 //            add("ads-5");
-            add("ads-6");
+//            add("ads-6");
 //            add("hub-41");
 //            add("hub-42");
 //            add("hub-43");
 //            add("hub-44");
-//            add("hub-45");
+            add("hub-45");
         }
     };
 
-    static HashSet<String> testTaskNames = new HashSet<>() {
+    static HashSet<String> taskIds = new HashSet<>() {
         {
-//            add("owlto-deploy");
-//            add("contracts-deploy");
-//            add("kuru-lite-sawp");
-//            add("kinsu-staking");
-            add("magiceden-NFT-1");
+//            add(TaskConstant.Monad.FAUCET);
+//            add(TaskConstant.Monad.FAUCET_MORKIE);
+//            add(TaskConstant.Monad.FAUCET_TALENTUM);
+//            add(TaskConstant.Monad.FAUCET_MONAI);
+//            add(TaskConstant.Monad.FAUCET_NERZO);
+//            add(TaskConstant.Monad.NFT_TALENTUM);
+//            add(TaskConstant.Monad.NFT_MONAI);
+//            add(TaskConstant.Monad.NFT_NERZO);
+//            add(TaskConstant.Monad.NFT_MAGICEDEN);
+            add(TaskConstant.Monad.NFT_MORKIE);
+            add(TaskConstant.Monad.NFT_NERZO);
+//            add(TaskConstant.Monad.VISIT_TALENTUM);
+//            add(TaskConstant.Monad.A_PRIOR);
+//            add(TaskConstant.Monad.BEAN);
+//            add(TaskConstant.Monad.AICRAFT);
+//            add(TaskConstant.Monad.BEBOP);
+//            add(TaskConstant.Monad.SHMONAD);
+//            add(TaskConstant.Monad.KINZA);
+//            add(TaskConstant.Monad.OWLTO);
+//            add(TaskConstant.Monad.MINTAIR);
+//            add(TaskConstant.Monad.KURU);
+//            add(TaskConstant.Monad.KINSU);
+            add(TaskConstant.Monad.MONORAIL);
+//
+//            add(TaskConstant.DeSpeed.SIGN);
+//            add(TaskConstant.Human.SIGN);
+//            add(TaskConstant.Human.FAUCET);
+//            add(TaskConstant.Sepolia.FAUCET);
+//            add(TaskConstant.Newton.SING);
+//            add(TaskConstant.LayerEdge.SING);
         }
-
     };
 
     //TODO 提前打开一个没有用的页面
@@ -72,7 +94,7 @@ public class Main {
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-//                continue;//打开就是单测任务
+                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -84,21 +106,19 @@ public class Main {
             Collections.shuffle(taskList);
 
             for (Task task : taskList) {
-                if (!testTaskNames.contains(task.name)) {
-//                    continue;//打开就是单测任务
+                if (!taskIds.contains(task.id)) {
+                    continue;//打开就是单测任务
                 }
-                System.out.println("current task:" + task.name);
+                System.out.println("current task:" + task.id + "-" + task.name);
                 if (!needToExecuteTask(account.name, task)) {
                     continue;
                 }
                 for (Task.Action action : task.actionList) {
                     MouseUtil.executeAction(action);
                 }
-                //任务之间睡眠5秒
                 Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
                 MouseUtil.executeAction(action);
             }
-            randomSleepMinutes(10, 50);
         }
     }
 

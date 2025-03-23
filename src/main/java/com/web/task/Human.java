@@ -1,5 +1,6 @@
 package com.web.task;
 
+import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 
@@ -16,7 +17,7 @@ public class Human {
         List<Task> taskList = new ArrayList<>();
         List<Task.Action> actionList;
 
-        Task task = new Task("human-1", "human领水", 0);
+        Task task = new Task(TaskConstant.Human.FAUCET, "", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://faucet.testnet.humanity.org/", 20));
@@ -28,7 +29,7 @@ public class Human {
         task.actionList = actionList;
         taskList.add(task);
 
-        task = new Task("human-2", "human签到", 0);
+        task = new Task(TaskConstant.Human.SIGN, "", 0);
         taskList.add(task);
         taskList.add(task);
         taskList.add(task);
