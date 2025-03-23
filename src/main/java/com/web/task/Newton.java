@@ -8,7 +8,10 @@ import java.util.List;
 /**
  * @author: liyangjin
  * @create: 2025-03-07 16:26
- * @Description: 邀请链接 https://magicnewton.com/portal?referral=y2plzju0abl4khub
+ * @Description: 邀请链接
+ * https://magicnewton.com/portal?referral=y2plzju0abl4khub
+ * https://magicnewton.com/portal?referral=g1vi2js2ic1cxme8
+ * https://magicnewton.com/portal?referral=14eewt7ytjmh49hz
  * 7天最多推荐5个人，共250积分
  */
 public class Newton {
@@ -17,11 +20,13 @@ public class Newton {
         List<Task> taskList = new java.util.ArrayList<>();
         Task task = new Task("newton-1", "roll", 0);
         List<Task.Action> actionList = new java.util.ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.magicnewton.com/portal/rewards", 20));
-
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.magicnewton.com/portal/rewards", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+        actionList.add(Task.Action.buildMoveClickAction(950, 730));
+        actionList.add(Task.Action.buildMoveClickAction(950, 620));
+        actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
         taskList.add(task);
         return taskList;
-
     }
 }
