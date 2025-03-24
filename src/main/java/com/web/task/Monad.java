@@ -186,6 +186,85 @@ public class Monad {
         return taskList;
     }
 
+    /**
+     *
+     "https://monad.talentum.id/tasks/task/2734", V
+     "https://monad.talentum.id/tasks/task/2746", X
+     "https://monad.talentum.id/tasks/task/2756", X
+     "https://monad.talentum.id/tasks/task/2767", X
+     "https://monad.talentum.id/tasks/task/2782", X
+
+     "https://monad.talentum.id/tasks/task/2788", X
+     "https://monad.talentum.id/tasks/task/2804", X
+     "https://monad.talentum.id/tasks/task/2805", X
+     "https://monad.talentum.id/tasks/task/2833", X
+     "https://monad.talentum.id/tasks/task/2843", DC
+
+     "https://monad.talentum.id/tasks/task/2905", @cyclenetwork_GO
+     "https://monad.talentum.id/tasks/task/2910", @RugRumble
+     "https://monad.talentum.id/tasks/task/2917", V
+     "https://monad.talentum.id/tasks/task/2922", @Bean_DEX
+     "https://monad.talentum.id/tasks/task/2926", @Monadex_labs
+
+     "https://monad.talentum.id/tasks/task/2930", @fizenapp
+     "https://monad.talentum.id/tasks/task/2940", 持有NFT，pass
+     "https://monad.talentum.id/tasks/task/2756", @SkyTradeNetwork
+     "https://monad.talentum.id/tasks/task/2746", @kizzymobile
+     "https://monad.talentum.id/tasks/task/2782", @jigsawdefi
+
+     "https://monad.talentum.id/tasks/task/2870", @monadverse
+     "https://monad.talentum.id/tasks/task/2724", @monad_xyz
+     "https://monad.talentum.id/tasks/task/2906", V
+     "https://monad.talentum.id/tasks/task/2911", t.me/rugrumble
+     "https://monad.talentum.id/tasks/task/2918", V 大图，单独做
+
+     "https://monad.talentum.id/tasks/task/2923", V
+     "https://monad.talentum.id/tasks/task/2927", V
+     "https://monad.talentum.id/tasks/task/2931", V
+     "https://monad.talentum.id/tasks/task/2956", V
+     "https://monad.talentum.id/tasks/task/2963", NFT
+
+     "https://monad.talentum.id/tasks/task/2962", NFT Mint Drake Poap
+     "https://monad.talentum.id/tasks/task/2837", V
+     "https://monad.talentum.id/tasks/task/2932", V
+     "https://monad.talentum.id/tasks/task/2815", V
+     "https://monad.talentum.id/tasks/task/2928", 不让做
+
+     "https://monad.talentum.id/tasks/task/2816", V
+     "https://monad.talentum.id/tasks/task/2924", 不让做
+     "https://monad.talentum.id/tasks/task/2957", V
+     "https://monad.talentum.id/tasks/task/2921", 不让做
+     "https://monad.talentum.id/tasks/task/2876", @lootgo_official
+     *
+     * ---------------
+     *
+     * "https://monad.talentum.id/tasks/task/2964", V
+     * "https://monad.talentum.id/tasks/task/2912", V
+     * "https://monad.talentum.id/tasks/task/2907", V
+     * "https://monad.talentum.id/tasks/task/2958", X @naddotfun
+     * "https://monad.talentum.id/tasks/task/2933", 不让做
+     *
+     * "https://monad.talentum.id/tasks/task/2842", @TalentumID
+     * "https://monad.talentum.id/tasks/task/2908", 不让座
+     * "https://monad.talentum.id/tasks/task/2929", NFT
+     * "https://monad.talentum.id/tasks/task/2817", V
+     * "https://monad.talentum.id/tasks/task/2925", NFT
+     *
+     * "https://monad.talentum.id/tasks/task/2913", no
+     * "https://monad.talentum.id/tasks/task/2920", NFT
+     * "https://monad.talentum.id/tasks/task/2959", NFT
+     * "https://monad.talentum.id/tasks/task/2914", NFT
+     * "https://monad.talentum.id/tasks/task/2934", NFT
+     *
+     * "https://monad.talentum.id/tasks/task/2909", NFT
+     * "https://monad.talentum.id/tasks/task/2862", V
+     * "https://monad.talentum.id/tasks/task/2867", @chuienko
+     * "https://monad.talentum.id/tasks/task/2880", 拥有0.1的$DAK
+     * "https://monad.talentum.id/tasks/task/2991", no
+     *
+     * "https://monad.talentum.id/tasks/task/2844", @Kintsu_xyz
+     */
+
     public static List<Task> getTalentumVisitTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
         Task task;
