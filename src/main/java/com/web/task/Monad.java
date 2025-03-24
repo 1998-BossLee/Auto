@@ -18,7 +18,7 @@ public class Monad {
 
     public static List<Task> getAllTask(Account account) {
         List<Task> taskList = new ArrayList<>();
-//        taskList.addAll(Monad.getTalentumVisitTasks(account));
+        taskList.addAll(Monad.getTalentumVisitTasks(account));
         taskList.addAll(Monad.getRandomTasks(account));
         taskList.addAll(Monad.getDailyTasks(account));
         taskList.addAll(Monad.getTestTasks(account));
@@ -196,10 +196,11 @@ public class Monad {
         int workX = 550, verifyX = 1050;
         map.put("2734,2906,2923,2927,2956,2816,2957", 710);
         map.put("2917", 780);
-        //map.put("2918", 780); //需要下滑动
+        //map.put("2918", 780); //需要下滑动 https://monad.talentum.id/tasks/task/2918
         map.put("2931", 800);
         map.put("2837", 750);
         map.put("2815", 820);
+
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String[] taskIds = entry.getKey().split(",");
             for (String taskId : taskIds) {

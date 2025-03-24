@@ -39,51 +39,56 @@ public class Main {
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
-            add("ads-1");
-            add("ads-2");
-            add("ads-4");
-            add("ads-5");
-            add("ads-6");
-            add("hub-41");
-            add("hub-42");
-            add("hub-43");
-            add("hub-44");
-            add("hub-45");
+//            add("ads-1");
+//            add("ads-2");
+//            add("ads-4");
+//            add("ads-5");
+//            add("ads-6");
+//            add("hub-41");
+//            add("hub-42");
+//            add("hub-43");
+//            add("hub-44");
+//            add("hub-45");
+            add("hub-46");
+//            add("hub-47");
+//            add("hub-48");
+//            add("hub-49");
+//            add("hub-50");
         }
     };
 
     static HashSet<String> taskIds = new HashSet<>() {
         {
-            add(TaskConstant.Monad.FAUCET);
-            add(TaskConstant.Monad.FAUCET_MORKIE);
-            add(TaskConstant.Monad.FAUCET_TALENTUM);
-            add(TaskConstant.Monad.FAUCET_MONAI);
-            add(TaskConstant.Monad.FAUCET_NERZO);
-            add(TaskConstant.Monad.NFT_TALENTUM);
-            add(TaskConstant.Monad.NFT_MONAI);
-            add(TaskConstant.Monad.NFT_NERZO);
-            add(TaskConstant.Monad.NFT_MAGICEDEN);
-            add(TaskConstant.Monad.NFT_MORKIE);
-            add(TaskConstant.Monad.NFT_NERZO);
+//            add(TaskConstant.Monad.FAUCET);
+//            add(TaskConstant.Monad.FAUCET_MORKIE);
+//            add(TaskConstant.Monad.FAUCET_TALENTUM);
+//            add(TaskConstant.Monad.FAUCET_MONAI);
+//            add(TaskConstant.Monad.FAUCET_NERZO);
+//            add(TaskConstant.Monad.NFT_TALENTUM);
+//            add(TaskConstant.Monad.NFT_MONAI);
+//            add(TaskConstant.Monad.NFT_NERZO);
+//            add(TaskConstant.Monad.NFT_MAGICEDEN);
+//            add(TaskConstant.Monad.NFT_MORKIE);
+//            add(TaskConstant.Monad.NFT_NERZO);
             add(TaskConstant.Monad.VISIT_TALENTUM);
-            add(TaskConstant.Monad.A_PRIOR);
-            add(TaskConstant.Monad.BEAN);
-            add(TaskConstant.Monad.AICRAFT);
-            add(TaskConstant.Monad.BEBOP);
-            add(TaskConstant.Monad.SHMONAD);
-            add(TaskConstant.Monad.KINZA);
-            add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.MINTAIR);
-            add(TaskConstant.Monad.KURU);
-            add(TaskConstant.Monad.KINSU);
-            add(TaskConstant.Monad.MONORAIL);
-
-            add(TaskConstant.DeSpeed.SIGN);
-            add(TaskConstant.Human.SIGN);
-            add(TaskConstant.Human.FAUCET);
-            add(TaskConstant.Sepolia.FAUCET);
-            add(TaskConstant.Newton.SING);
-            add(TaskConstant.LayerEdge.SING);
+//            add(TaskConstant.Monad.A_PRIOR);h
+//            add(TaskConstant.Monad.BEAN);
+//            add(TaskConstant.Monad.AICRAFT);
+//            add(TaskConstant.Monad.BEBOP);
+//            add(TaskConstant.Monad.SHMONAD);
+//            add(TaskConstant.Monad.KINZA);
+//            add(TaskConstant.Monad.OWLTO);
+//            add(TaskConstant.Monad.MINTAIR);
+//            add(TaskConstant.Monad.KURU);
+//            add(TaskConstant.Monad.KINSU);
+//            add(TaskConstant.Monad.MONORAIL);
+//
+//            add(TaskConstant.DeSpeed.SIGN);
+//            add(TaskConstant.Human.SIGN);
+//            add(TaskConstant.Human.FAUCET);
+//            add(TaskConstant.Sepolia.FAUCET);
+//            add(TaskConstant.Newton.SING);
+//            add(TaskConstant.LayerEdge.SING);
         }
     };
 
@@ -94,7 +99,7 @@ public class Main {
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-//                continue;//打开就是单测任务
+                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -107,7 +112,7 @@ public class Main {
 
             for (Task task : taskList) {
                 if (!taskIds.contains(task.id)) {
-//                    continue;//打开就是单测任务
+                    continue;//打开就是单测任务
                 }
                 System.out.println("current task:" + task.id + "-" + task.name);
                 if (!needToExecuteTask(account.name, task)) {
