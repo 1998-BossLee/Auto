@@ -94,8 +94,8 @@ public class Monad {
     //只能做一次的任务，例如NFT
     public static List<Task> getNonceTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
-//        Task task;
-//        List<Task.Action> actionList;
+        Task task;
+        List<Task.Action> actionList;
 //        //暂时没水，不做
 //        String s = "2739,2797,2745,2750,2760,2779,2812,2813,2857,2838,2778";
 //        List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
@@ -155,27 +155,33 @@ public class Monad {
 //            task.actionList = actionList;
 //        }
 //
-//        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
-//        Collections.shuffle(nerzoNFTs);
-//        nerzoNFTs = nerzoNFTs.subList(0, 1);
-//        for (String nerzoNFT : nerzoNFTs) {
-//            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
-//            taskList.add(task);
-//            actionList = new ArrayList<>();
-//            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 570));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 610));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 650));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 690));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
-//            actionList.add(Task.Action.buildSignAction());
-//            task.actionList = actionList;
-//        }
+        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
+        Collections.shuffle(nerzoNFTs);
+        nerzoNFTs = nerzoNFTs.subList(0, 1);
+        for (String nerzoNFT : nerzoNFTs) {
+            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
+            //两种位置
+            if (nerzoNFT.equals("unlocked") || nerzoNFT.equals("monad")) {
+
+            } else {
+
+            }
+            actionList.add(Task.Action.buildMoveClickAction(1620, 570));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1620, 610));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1620, 650));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1620, 690));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildSleepAction(15));
+            actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
+            actionList.add(Task.Action.buildSignAction());
+            task.actionList = actionList;
+        }
 
         return taskList;
     }
