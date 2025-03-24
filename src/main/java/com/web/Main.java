@@ -39,16 +39,16 @@ public class Main {
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
-//            add("ads-1");
-//            add("ads-2");
-//            add("ads-4");
-//            add("ads-5");
-//            add("ads-6");
-//            add("hub-41");
+            add("ads-1");
+            add("ads-2");
+            add("ads-4");
+            add("ads-5");
+            add("ads-6");
+            add("hub-41");
             add("hub-42");
-//            add("hub-43");
-//            add("hub-44");
-//            add("hub-45");
+            add("hub-43");
+            add("hub-44");
+            add("hub-45");
         }
     };
 
@@ -94,7 +94,7 @@ public class Main {
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
-                continue;//打开就是单测任务
+//                continue;//打开就是单测任务
             }
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
@@ -107,7 +107,7 @@ public class Main {
 
             for (Task task : taskList) {
                 if (!taskIds.contains(task.id)) {
-                    continue;//打开就是单测任务
+//                    continue;//打开就是单测任务
                 }
                 System.out.println("current task:" + task.id + "-" + task.name);
                 if (!needToExecuteTask(account.name, task)) {
