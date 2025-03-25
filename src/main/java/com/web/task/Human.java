@@ -1,5 +1,6 @@
 package com.web.task;
 
+import com.web.constant.Constants;
 import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
@@ -15,8 +16,10 @@ import java.util.List;
 public class Human {
     public static List<Task> getDailyTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
+        if (!Constants.DP_ACCOUNTS.contains(account.name)) {
+            return taskList;
+        }
         List<Task.Action> actionList;
-
         Task task = new Task(TaskConstant.Human.FAUCET, "", 0);
         taskList.add(task);
         actionList = new ArrayList<>();

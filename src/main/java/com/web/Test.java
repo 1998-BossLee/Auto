@@ -16,11 +16,10 @@ public class Test {
      */
     public static void calculate() {
         //等差计算浏览器坐标
-        int y = 10;
-        int a = 1, b = 20, n = 20;
-        for (int i = a; i <= n; i++) {
-            int x = a + (b - a) / (n - 1) * (i - 1);
-            System.out.println("i=" + i + " x=" + x + " y=" + y);
+        int d = 40;//(1160-400)/19
+        for (int i = 0; i < 20; i++) {
+            int x = 400 + i * d;
+            System.out.println("i=" + i + " x=" + x);
         }
     }
 

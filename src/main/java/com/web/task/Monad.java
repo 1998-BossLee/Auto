@@ -96,29 +96,41 @@ public class Monad {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
-//        //暂时没水，不做
-//        String s = "2739,2797,2745,2750,2760,2779,2812,2813,2857,2838,2778";
-//        List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
-//        Collections.shuffle(talentumNFTTaskIds);
-//        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 2));
-//        for (String talentumNFTTaskId : talentumNFTTaskIds) {
-//            String url = "https://monad.talentum.id/tasks/task/" + talentumNFTTaskId;
-//            task = new Task(TaskConstant.Monad.NFT_TALENTUM, talentumNFTTaskId, 1);
-//            taskList.add(task);
-//            actionList = new ArrayList<>();
-//            //【start work】-【Mint】-【sign】-【verify】-【claim reward】
-//            actionList.add(Task.Action.buildOpenUrlAction(url, 15));
-//            actionList.add(Task.Action.buildMoveClickAction(1511, 932));
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(744, 815));
-//            actionList.add(Task.Action.buildSignAction());
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1049, 815));
-//            actionList.add(Task.Action.buildSleepAction(10));
-//            actionList.add(Task.Action.buildMoveClickAction(1511, 932));
-//            actionList.add(Task.Action.buildSleepAction(10));
-//            task.actionList = actionList;
-//        }
+        //暂时没水，不做
+        String s = "2739,2745,2750,2760,2779,2812,2813,2857,2838,2778,2929,2925,2920,2959,2914,2934,2909";
+        List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
+        Collections.shuffle(talentumNFTTaskIds);
+        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
+        for (String talentumNFTTaskId : talentumNFTTaskIds) {
+            String url = "https://monad.talentum.id/tasks/task/" + talentumNFTTaskId;
+            task = new Task(TaskConstant.Monad.NFT_TALENTUM, talentumNFTTaskId, 0);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction(url, 20));
+            actionList.add(Task.Action.buildMoveClickAction(1511, 932));// 【start work】
+            actionList.add(Task.Action.buildSleepAction(15));
+
+            //位置可能不一样，为了方便直接两个坐标都走一遍
+            //坐标1
+            actionList.add(Task.Action.buildMoveClickAction(550, 815));//【Mint】
+            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildSignAction());//【sign】
+            actionList.add(Task.Action.buildSleepAction(15));
+            actionList.add(Task.Action.buildMoveClickAction(1050, 815));//【verify】
+            actionList.add(Task.Action.buildSleepAction(10));
+            //坐标2
+            actionList.add(Task.Action.buildMoveClickAction(550, 850));//【Mint】
+            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildSignAction());//【sign】
+            actionList.add(Task.Action.buildSleepAction(15));
+            actionList.add(Task.Action.buildMoveClickAction(1050, 850));//【verify】
+            actionList.add(Task.Action.buildSleepAction(10));
+
+
+            actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
+            actionList.add(Task.Action.buildSleepAction(10));
+            task.actionList = actionList;
+        }
 
 //        task = new Task(TaskConstant.Monad.NFT_MAGICEDEN, "1", 1);
 //        taskList.add(task);
@@ -155,115 +167,38 @@ public class Monad {
 //            task.actionList = actionList;
 //        }
 //
-        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
-        Collections.shuffle(nerzoNFTs);
-        nerzoNFTs = nerzoNFTs.subList(0, 1);
-        for (String nerzoNFT : nerzoNFTs) {
-            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
-            taskList.add(task);
-            actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
-            //两种位置
-            if (nerzoNFT.equals("unlocked") || nerzoNFT.equals("monad")) {
-
-            } else {
-
-            }
-            actionList.add(Task.Action.buildMoveClickAction(1620, 570));
-            actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1620, 610));
-            actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1620, 650));
-            actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1620, 690));
-            actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildSleepAction(15));
-            actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
-            actionList.add(Task.Action.buildSignAction());
-            task.actionList = actionList;
-        }
+//        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
+//        Collections.shuffle(nerzoNFTs);
+//        nerzoNFTs = nerzoNFTs.subList(0, 1);
+//        for (String nerzoNFT : nerzoNFTs) {
+//            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
+//            taskList.add(task);
+//            actionList = new ArrayList<>();
+//            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
+//            //两种位置
+//            if (nerzoNFT.equals("unlocked") || nerzoNFT.equals("monad")) {
+//
+//            } else {
+//
+//            }
+//            actionList.add(Task.Action.buildMoveClickAction(1620, 570));
+//            actionList.add(Task.Action.buildCloseWindowAction());
+//            actionList.add(Task.Action.buildMoveClickAction(1620, 610));
+//            actionList.add(Task.Action.buildCloseWindowAction());
+//            actionList.add(Task.Action.buildMoveClickAction(1620, 650));
+//            actionList.add(Task.Action.buildCloseWindowAction());
+//            actionList.add(Task.Action.buildMoveClickAction(1620, 690));
+//            actionList.add(Task.Action.buildCloseWindowAction());
+//            actionList.add(Task.Action.buildSleepAction(15));
+//            actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
+//            actionList.add(Task.Action.buildSignAction());
+//            task.actionList = actionList;
+//        }
 
         return taskList;
     }
 
-    /**
-     *
-     "https://monad.talentum.id/tasks/task/2734", V
-     "https://monad.talentum.id/tasks/task/2746", X
-     "https://monad.talentum.id/tasks/task/2756", X
-     "https://monad.talentum.id/tasks/task/2767", X
-     "https://monad.talentum.id/tasks/task/2782", X
 
-     "https://monad.talentum.id/tasks/task/2788", X
-     "https://monad.talentum.id/tasks/task/2804", X
-     "https://monad.talentum.id/tasks/task/2805", X
-     "https://monad.talentum.id/tasks/task/2833", X
-     "https://monad.talentum.id/tasks/task/2843", DC
-
-     "https://monad.talentum.id/tasks/task/2905", @cyclenetwork_GO
-     "https://monad.talentum.id/tasks/task/2910", @RugRumble
-     "https://monad.talentum.id/tasks/task/2917", V
-     "https://monad.talentum.id/tasks/task/2922", @Bean_DEX
-     "https://monad.talentum.id/tasks/task/2926", @Monadex_labs
-
-     "https://monad.talentum.id/tasks/task/2930", @fizenapp
-     "https://monad.talentum.id/tasks/task/2940", 持有NFT，pass
-     "https://monad.talentum.id/tasks/task/2756", @SkyTradeNetwork
-     "https://monad.talentum.id/tasks/task/2746", @kizzymobile
-     "https://monad.talentum.id/tasks/task/2782", @jigsawdefi
-
-     "https://monad.talentum.id/tasks/task/2870", @monadverse
-     "https://monad.talentum.id/tasks/task/2724", @monad_xyz
-     "https://monad.talentum.id/tasks/task/2906", V
-     "https://monad.talentum.id/tasks/task/2911", t.me/rugrumble
-     "https://monad.talentum.id/tasks/task/2918", V 大图，单独做
-
-     "https://monad.talentum.id/tasks/task/2923", V
-     "https://monad.talentum.id/tasks/task/2927", V
-     "https://monad.talentum.id/tasks/task/2931", V
-     "https://monad.talentum.id/tasks/task/2956", V
-     "https://monad.talentum.id/tasks/task/2963", NFT
-
-     "https://monad.talentum.id/tasks/task/2962", NFT Mint Drake Poap
-     "https://monad.talentum.id/tasks/task/2837", V
-     "https://monad.talentum.id/tasks/task/2932", V
-     "https://monad.talentum.id/tasks/task/2815", V
-     "https://monad.talentum.id/tasks/task/2928", 不让做
-
-     "https://monad.talentum.id/tasks/task/2816", V
-     "https://monad.talentum.id/tasks/task/2924", 不让做
-     "https://monad.talentum.id/tasks/task/2957", V
-     "https://monad.talentum.id/tasks/task/2921", 不让做
-     "https://monad.talentum.id/tasks/task/2876", @lootgo_official
-     *
-     * ---------------
-     *
-     * "https://monad.talentum.id/tasks/task/2964", V
-     * "https://monad.talentum.id/tasks/task/2912", V
-     * "https://monad.talentum.id/tasks/task/2907", V
-     * "https://monad.talentum.id/tasks/task/2958", X @naddotfun
-     * "https://monad.talentum.id/tasks/task/2933", 不让做
-     *
-     * "https://monad.talentum.id/tasks/task/2842", @TalentumID
-     * "https://monad.talentum.id/tasks/task/2908", 不让座
-     * "https://monad.talentum.id/tasks/task/2929", NFT
-     * "https://monad.talentum.id/tasks/task/2817", V
-     * "https://monad.talentum.id/tasks/task/2925", NFT
-     *
-     * "https://monad.talentum.id/tasks/task/2913", no
-     * "https://monad.talentum.id/tasks/task/2920", NFT
-     * "https://monad.talentum.id/tasks/task/2959", NFT
-     * "https://monad.talentum.id/tasks/task/2914", NFT
-     * "https://monad.talentum.id/tasks/task/2934", NFT
-     *
-     * "https://monad.talentum.id/tasks/task/2909", NFT
-     * "https://monad.talentum.id/tasks/task/2862", V
-     * "https://monad.talentum.id/tasks/task/2867", @chuienko
-     * "https://monad.talentum.id/tasks/task/2880", 拥有0.1的$DAK
-     * "https://monad.talentum.id/tasks/task/2991", no
-     *
-     * "https://monad.talentum.id/tasks/task/2844", @Kintsu_xyz
-     */
 
     public static List<Task> getTalentumVisitTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
@@ -273,12 +208,14 @@ public class Monad {
         //taskId - x,x,y
         //最平常的
         int workX = 550, verifyX = 1050;
-        map.put("2734,2906,2923,2927,2956,2816,2957", 710);
+        map.put("2734,2906,2923,2927,2956,2816,2957,2907,2817", 710);
         map.put("2917", 780);
         //map.put("2918", 780); //需要下滑动 https://monad.talentum.id/tasks/task/2918
         map.put("2931", 800);
-        map.put("2837", 750);
+        map.put("2837,2912", 750);
         map.put("2815", 820);
+        map.put("2964", 810);
+        map.put("2862", 970);
 
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String[] taskIds = entry.getKey().split(",");
@@ -304,6 +241,7 @@ public class Monad {
             }
         }
         Collections.shuffle(taskList);
+//        taskList = taskList.subList(0, taskList.size()/2);
         return taskList;
     }
 
@@ -394,7 +332,6 @@ public class Monad {
 
         //0.005 gas
         task = new Task(TaskConstant.Monad.AICRAFT, "vote", 0);
-        taskList.add(task);
         taskList.add(task);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -538,7 +475,7 @@ public class Monad {
 
         Collections.shuffle(taskList);
         int size = taskList.size();
-        size = random.nextInt(taskList.size() / 2 + 2);
+        size = random.nextInt(taskList.size() / 2 );
         System.out.println("Monad.getRandomTasks size=" + size);
         return taskList.subList(0, size);
     }
