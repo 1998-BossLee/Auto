@@ -69,6 +69,7 @@ public class Monad {
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
         taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 59));
         actionList.add(Task.Action.buildMoveClickAction(1300, 150));
@@ -76,12 +77,9 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
         actionList.add(Task.Action.buildMoveClickAction(950, 780));
-        actionList.add(Task.Action.buildSleepAction(40));
+        actionList.add(Task.Action.buildSleepAction(55));
         actionList.add(Task.Action.buildMoveClickAction(950, 665));
-        for (int i = 1; i <= 3; i++) {
-            actionList.add(Task.Action.buildSleepAction(5 * 60 + 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 665));
-        }
+        actionList.add(Task.Action.buildSleepAction(20));
         task.actionList = actionList;
 
 
@@ -100,35 +98,35 @@ public class Monad {
         String s = "2739,2745,2750,2760,2779,2812,2813,2857,2838,2778,2929,2925,2920,2959,2914,2934,2909";
         List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
         Collections.shuffle(talentumNFTTaskIds);
-        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
+//        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
         for (String talentumNFTTaskId : talentumNFTTaskIds) {
             String url = "https://monad.talentum.id/tasks/task/" + talentumNFTTaskId;
             task = new Task(TaskConstant.Monad.NFT_TALENTUM, talentumNFTTaskId, 0);
             taskList.add(task);
             actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction(url, 20));
+            actionList.add(Task.Action.buildOpenUrlAction(url, 10));
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));// 【start work】
             actionList.add(Task.Action.buildSleepAction(15));
 
             //位置可能不一样，为了方便直接两个坐标都走一遍
             //坐标1
-            actionList.add(Task.Action.buildMoveClickAction(550, 815));//【Mint】
-            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildMoveClickAction(550, 800));//【Mint】
+            actionList.add(Task.Action.buildSleepAction(1));
             actionList.add(Task.Action.buildSignAction());//【sign】
-            actionList.add(Task.Action.buildSleepAction(15));
-            actionList.add(Task.Action.buildMoveClickAction(1050, 815));//【verify】
-            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildSleepAction(5));
+//            actionList.add(Task.Action.buildMoveClickAction(1050, 815));//【verify】
+//            actionList.add(Task.Action.buildSleepAction(10));
             //坐标2
-            actionList.add(Task.Action.buildMoveClickAction(550, 850));//【Mint】
-            actionList.add(Task.Action.buildSleepAction(10));
-            actionList.add(Task.Action.buildSignAction());//【sign】
-            actionList.add(Task.Action.buildSleepAction(15));
-            actionList.add(Task.Action.buildMoveClickAction(1050, 850));//【verify】
-            actionList.add(Task.Action.buildSleepAction(10));
+//            actionList.add(Task.Action.buildMoveClickAction(550, 850));//【Mint】
+//            actionList.add(Task.Action.buildSleepAction(10));
+//            actionList.add(Task.Action.buildSignAction());//【sign】
+//            actionList.add(Task.Action.buildSleepAction(15));
+//            actionList.add(Task.Action.buildMoveClickAction(1050, 850));//【verify】
+//            actionList.add(Task.Action.buildSleepAction(10));
 
 
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
-            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildSleepAction(1));
             task.actionList = actionList;
         }
 
@@ -231,12 +229,11 @@ public class Monad {
                 actionList.add(Task.Action.buildMoveClickAction(1511, 932));//[stark work]
                 actionList.add(Task.Action.buildSleepAction(15));
                 actionList.add(Task.Action.buildMoveClickAction(workX, y));//[visit]
-                actionList.add(Task.Action.buildSleepAction(10));
                 actionList.add(Task.Action.buildCloseWindowAction());
                 actionList.add(Task.Action.buildMoveClickAction(verifyX, y));//[verify]
                 actionList.add(Task.Action.buildSleepAction(5));
                 actionList.add(Task.Action.buildMoveClickAction(1511, 932));
-                actionList.add(Task.Action.buildSleepAction(10));
+                actionList.add(Task.Action.buildSleepAction(5));
                 task.actionList = actionList;
             }
         }

@@ -54,6 +54,12 @@ public class Main {
 //            add("hub-48");
 //            add("hub-49");
 //            add("hub-50");
+//            add("hub-51");
+//            add("hub-52");
+//            add("hub-53");
+//            add("hub-54");
+//            add("hub-55");
+
         }
     };
 
@@ -64,29 +70,29 @@ public class Main {
             add(TaskConstant.Monad.FAUCET_TALENTUM);
 //            add(TaskConstant.Monad.FAUCET_MONAI);
 //            add(TaskConstant.Monad.FAUCET_NERZO);
-//
-            add(TaskConstant.Monad.NFT_TALENTUM);
+
+//            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
 //            add(TaskConstant.Monad.NFT_NERZO);
 //            add(TaskConstant.Monad.NFT_MAGICEDEN);
 //            add(TaskConstant.Monad.NFT_MORKIE);
 //            add(TaskConstant.Monad.NFT_NERZO);
-//
-            add(TaskConstant.Monad.VISIT_TALENTUM);
-            add(TaskConstant.Monad.A_PRIOR);
-            add(TaskConstant.Monad.BEAN);
-            add(TaskConstant.Monad.AICRAFT);
-            add(TaskConstant.Monad.BEBOP);
-            add(TaskConstant.Monad.SHMONAD);
-            add(TaskConstant.Monad.KINZA);
-            add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.MINTAIR);
-            add(TaskConstant.Monad.KURU);
-            add(TaskConstant.Monad.KINSU);
-            add(TaskConstant.Monad.MONORAIL);
-//
+
+//            add(TaskConstant.Monad.VISIT_TALENTUM);
+//            add(TaskConstant.Monad.A_PRIOR);
+//            add(TaskConstant.Monad.BEAN);
+//            add(TaskConstant.Monad.AICRAFT);
+//            add(TaskConstant.Monad.BEBOP);
+//            add(TaskConstant.Monad.SHMONAD);
+//            add(TaskConstant.Monad.KINZA);
+//            add(TaskConstant.Monad.OWLTO);
+//            add(TaskConstant.Monad.MINTAIR);
+//            add(TaskConstant.Monad.KURU);
+//            add(TaskConstant.Monad.KINSU);
+//            add(TaskConstant.Monad.MONORAIL);
+////
             add(TaskConstant.DeSpeed.SIGN);
-            add(TaskConstant.Human.SIGN);
+//            add(TaskConstant.Human.SIGN);
             add(TaskConstant.Human.FAUCET);
             add(TaskConstant.Sepolia.FAUCET);
             add(TaskConstant.Newton.SING);
@@ -123,14 +129,14 @@ public class Main {
                 for (Task.Action action : task.actionList) {
                     MouseUtil.executeAction(action);
                 }
+                Thread.sleep(5000+random.nextInt(15000));
                 Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
                 MouseUtil.executeAction(action);
             }
         }
     }
-
+    static Random random = new Random();
     private static void randomSleepMinutes(int min, int max) throws Exception {
-        Random random = new Random();
         long randomMinutes = random.nextInt(max - min + 1) + min;
         Thread.sleep(randomMinutes * 60 * 1000);
     }
