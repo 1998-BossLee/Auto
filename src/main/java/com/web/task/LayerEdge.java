@@ -1,5 +1,6 @@
 package com.web.task;
 
+import com.web.constant.Constants;
 import com.web.model.Account;
 import com.web.model.Task;
 
@@ -11,6 +12,9 @@ public class LayerEdge {
 
     public static List<Task> getDailyTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
+        if (!Constants.DP_ACCOUNTS.contains(account.name)) {
+            return taskList;
+        }
         Task task;
         List<Task.Action> actionList;
 
