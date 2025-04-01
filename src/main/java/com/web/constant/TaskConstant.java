@@ -28,7 +28,7 @@ public interface TaskConstant {
         String OWLTO = "monad-owlto";
         String MINTAIR = "monad-mintair";
         String KURU = "monad-kuru";
-        String KINSU = "monad-kinsu";
+        String KINTSU = "monad-kintsu";
         String MONORAIL = "monad-monorail";
     }
 
@@ -46,11 +46,11 @@ public interface TaskConstant {
     }
 
     interface Newton {
-        String SING = "newton-sign";
+        String SIGN = "newton-sign";
     }
 
     interface LayerEdge {
-        String SING = "layerEdge-sign";
+        String SIGN = "layerEdge-sign";
     }
 
     interface Twitter {

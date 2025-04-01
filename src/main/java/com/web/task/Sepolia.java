@@ -1,5 +1,6 @@
 package com.web.task;
 
+import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 
@@ -15,7 +16,7 @@ public class Sepolia {
     public static List<Task> getDailyTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
 
-        Task task = new Task("Sepolia-1", "谷歌领水", 0);
+        Task task = new Task(TaskConstant.Sepolia.FAUCET, "谷歌领水", 0);
         List<Task.Action> actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://cloud.google.com/application/web3/faucet/ethereum/sepolia", 20));
         actionList.add(Task.Action.buildInputTextAction(1251, 454, account.evm));

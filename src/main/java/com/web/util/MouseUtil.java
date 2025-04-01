@@ -44,7 +44,7 @@ public class MouseUtil {
 //        robot.delay(1000);
 ////        closeWindow();
         moveToAndClick(Task.Action.buildMoveClickAction(1800, 200));
-        robot.mouseWheel(3);
+        robot.mouseWheel(5);
 //        moveToAndClick(Task.Action.buildMoveClickAction(1754, 327));
 //        robot.mouseWheel(10);
 //        int x = 1067, y = 85;
@@ -325,7 +325,7 @@ public class MouseUtil {
             case SIGN:
                 action.x = config.getInteger("signX");
                 action.y = config.getInteger("signY");
-                robot.delay(5000);
+                robot.delay(12000);
                 moveToAndClick(action);
                 break;
             case CANCEL_SIGN:
@@ -347,7 +347,7 @@ public class MouseUtil {
             case CANCEL_META_MASK_SIGN:
                 action.x = config.getInteger("cancelMetaMaskX");
                 action.y = config.getInteger("cancelMetaMaskY");
-                robot.delay(5000);
+                robot.delay(15000);
                 moveToAndClick(action);
                 break;
 

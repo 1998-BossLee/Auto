@@ -1,6 +1,7 @@
 package com.web.task;
 
 import com.web.constant.Constants;
+import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 
@@ -19,7 +20,7 @@ public class LayerEdge {
         List<Task.Action> actionList;
 
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
-        task = new Task("LayerEdge-1", "LayerEdge签到", 0);
+        task = new Task(TaskConstant.LayerEdge.SIGN, "", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://dashboard.layeredge.io/", 30));

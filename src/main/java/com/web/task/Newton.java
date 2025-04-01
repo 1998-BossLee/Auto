@@ -1,9 +1,11 @@
 package com.web.task;
 
+import com.web.constant.Constants;
+import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author: liyangjin
@@ -16,9 +18,12 @@ import java.util.List;
  */
 public class Newton {
 
-    public static List<Task> getDailyTasks() {
-        List<Task> taskList = new java.util.ArrayList<>();
-        Task task = new Task("newton-1", "roll", 0);
+    public static List<Task> getDailyTasks(Account account) {
+        List<Task> taskList = new ArrayList<>();
+        if (!Constants.DP_ACCOUNTS.contains(account.name)) {
+            return taskList;
+        }
+        Task task = new Task(TaskConstant.Newton.SIGN, "roll", 0);
         List<Task.Action> actionList = new java.util.ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.magicnewton.com/portal/rewards", 15));
         actionList.add(Task.Action.buildMoveClickAction(1050, 700));
