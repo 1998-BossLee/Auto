@@ -5,7 +5,6 @@ import com.web.model.Account;
 import com.web.model.Task;
 import com.web.util.ToolUtil;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 
@@ -20,15 +19,16 @@ public class Monad {
         List<Task> taskList = new ArrayList<>();
         taskList.addAll(Monad.getTalentumVisitTasks(account));
         taskList.addAll(Monad.getRandomTasks(account));
-        taskList.addAll(Monad.getDailyTasks(account));
+        taskList.addAll(Monad.getFaucetTasks(account));
         taskList.addAll(Monad.getTestTasks(account));
         taskList.addAll(Monad.getMonadAINFTTasks());
         taskList.addAll(Monad.getNonceTasks(account));
+        taskList.addAll(Monad.getMorkieNFTTasks(account));
         return taskList;
     }
 
     //大号和小号，交互金额不一样
-    public static List<Task> getDailyTasks(Account account) {
+    public static List<Task> getFaucetTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList;
@@ -53,7 +53,7 @@ public class Monad {
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
         task = new Task(TaskConstant.Monad.FAUCET_MORKIE, "", 0);
-        String morkieAccounts = "ads-2,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51";
+        String morkieAccounts = "ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51,hub-52";
         if (morkieAccounts.contains(account.name)) {
             taskList.add(task);
             actionList = new ArrayList<>();
@@ -65,6 +65,21 @@ public class Monad {
                 actionList.add(Task.Action.buildMoveClickAction(950, 640));
                 actionList.add(Task.Action.buildSleepAction(10));
             }
+            task.actionList = actionList;
+        }
+
+        //10POL的NFT https://faucet.nerzo.xyz/ 0.25/24h
+        String nerzoAccounts = "hub-47,hub-48,hub-50";
+        task = new Task(TaskConstant.Monad.FAUCET_NERZO, "", 0);
+        if (nerzoAccounts.contains(account.name)) {
+            taskList.add(task);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.nerzo.xyz/", 10));
+            actionList.add(Task.Action.buildMoveClickAction(950, 600));
+            actionList.add(Task.Action.buildSleepAction(10));
+            actionList.add(Task.Action.buildMoveClickAction(890, 890));
+            actionList.add(Task.Action.buildSleepAction(5));
             task.actionList = actionList;
         }
 
@@ -81,16 +96,36 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
         actionList.add(Task.Action.buildMoveClickAction(950, 780));
-        actionList.add(Task.Action.buildSleepAction(30));
+        actionList.add(Task.Action.buildSleepAction(50));
         actionList.add(Task.Action.buildMoveClickAction(950, 665));
         actionList.add(Task.Action.buildSleepAction(30));
         task.actionList = actionList;
 
-
-        //monadAI领水 https://monai.gg/faucet 0.125/24h
-        //10POL的NFT https://faucet.nerzo.xyz/ 0.25/24h
-        String nerzoAccounts = "hub-47,hub-48,hub-50";
-
+        task = new Task(TaskConstant.Monad.FAUCET_DUSTED, "", 0);
+        String dustedAccountIds = "ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46";
+        if (dustedAccountIds.contains(account.name)) {
+            taskList.add(task);
+        }
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1750, 450));
+        actionList.add(Task.Action.buildSleepAction(7));
+        actionList.add(Task.Action.buildMoveClickAction(700, 450));
+        actionList.add(Task.Action.buildSleepAction(7));
+        actionList.add(Task.Action.buildMoveClickAction(700, 450));
+        actionList.add(Task.Action.buildSleepAction(7));
+        actionList.add(Task.Action.buildMoveClickAction(700, 450));
+        actionList.add(Task.Action.buildSleepAction(7));//start
+        actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
+        actionList.add(Task.Action.buildSleepAction(5));
+        for (int i = 1; i <= 4; i++) {
+            actionList.add(Task.Action.buildMoveClickAction(960, 650));//play again
+            actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
+            actionList.add(Task.Action.buildSleepAction(5));
+        }
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));//claim
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
         return taskList;
     }
 
@@ -145,31 +180,6 @@ public class Monad {
 //        task.actionList = actionList;
 
 
-//        //morkie假任务系列
-//        //https://morkie.xyz/nads
-//        List<String> morkieNFTs = Arrays.asList("nads", "monad", "monhog");
-//        Collections.shuffle(morkieNFTs);
-//        morkieNFTs = morkieNFTs.subList(0, 1);
-//        for (String morkieNFT : morkieNFTs) {
-//            task = new Task(TaskConstant.Monad.NFT_MORKIE, morkieNFT, 1);
-//            taskList.add(task);
-//            actionList = new ArrayList<>();
-//            actionList.add(Task.Action.buildOpenUrlAction("https://morkie.xyz/" + morkieNFT, 15));
-//            actionList.add(Task.Action.buildMoveClickAction(1800, 200));
-//            actionList.add(Task.Action.buildScrollDownAction(3));
-//            actionList.add(Task.Action.buildMoveClickAction(1505, 760));//
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1505, 816));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1505, 872));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1505, 930));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1200, 620));//Mint NFT
-//            actionList.add(Task.Action.buildSignAction());
-//            task.actionList = actionList;
-//        }
 //
 //        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
 //        Collections.shuffle(nerzoNFTs);
@@ -202,6 +212,38 @@ public class Monad {
         return taskList;
     }
 
+    public static List<Task> getMorkieNFTTasks(Account account) {
+        List<Task> taskList = new ArrayList<>();
+        Task task;
+        List<Task.Action> actionList;
+        //morkie假任务系列
+        //https://morkie.xyz/nads
+        List<String> morkieNFTs = Arrays.asList("nads", "monarch", "monhog", "monad");
+        Collections.shuffle(morkieNFTs);
+        for (String morkieNFT : morkieNFTs) {
+            task = new Task(TaskConstant.Monad.NFT_MORKIE, morkieNFT, 1);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://morkie.xyz/" + morkieNFT, 15));
+            actionList.add(Task.Action.buildMoveClickAction(1800, 200));
+            actionList.add(Task.Action.buildScrollDownAction(3));//往下滚动
+
+            actionList.add(Task.Action.buildMoveClickAction(1505, 760));//
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1505, 816));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1505, 872));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1505, 940));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildSleepAction(15));
+            actionList.add(Task.Action.buildMoveClickAction(1200, 620));//Mint NFT
+
+            actionList.add(Task.Action.buildSignAction());
+            task.actionList = actionList;
+        }
+        return taskList;
+    }
 
 
     public static List<Task> getTalentumVisitTasks(Account account) {
@@ -248,9 +290,6 @@ public class Monad {
         return taskList;
     }
 
-    public static List<Task> getTalentumFollowXTasks(Account account) {
-        return null;
-    }
 
     public static List<Task> getRandomTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
@@ -338,6 +377,8 @@ public class Monad {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 25));
+        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+        actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(5));
         actionList.add(Task.Action.buildMoveClickAction(1780, 705));//connect
@@ -354,6 +395,7 @@ public class Monad {
             actionList.add(Task.Action.buildMoveClickAction(x, y));
             actionList.add(Task.Action.buildSignAction());
             actionList.add(Task.Action.buildSignAction());
+            actionList.add(Task.Action.buildSleepAction(random.nextInt(10)));
         }
         task.actionList = actionList;
 
@@ -555,9 +597,9 @@ public class Monad {
     static Random random = new Random();
 
     private static String random(Account account, double min, double max, int digit) {
+        digit = 3;
         double d = max * account.quality + min + random.nextFloat() * (max - min);
         String s = String.format("%." + digit + "f", d);
-        System.out.println("random " + s);
         return s;
     }
 

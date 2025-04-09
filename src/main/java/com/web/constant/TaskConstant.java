@@ -6,7 +6,7 @@ public interface TaskConstant {
         String FAUCET = "monad-faucet";
         String FAUCET_MORKIE = "monad-faucet-morkie";
         String FAUCET_TALENTUM = "monad-faucet-talentum";
-        String FAUCET_MONAI = "monad-faucet-monai";
+        String FAUCET_DUSTED = "monad-faucet-dusted";
         String FAUCET_NERZO = "monad-faucet-nerzo";
 
 

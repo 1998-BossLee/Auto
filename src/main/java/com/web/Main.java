@@ -10,6 +10,7 @@ import com.web.util.MouseUtil;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.web.constant.Constants.*;
 
@@ -28,7 +29,7 @@ public class Main {
         taskList = new ArrayList<>();
         taskList.addAll(Sepolia.getDailyTasks(account));
         taskList.addAll(DeSpeed.getDailyTasks(account));
-        taskList.addAll(LayerEdge.getDailyTasks(account));
+//        taskList.addAll(LayerEdge.getDailyTasks(account));
         taskList.addAll(Human.getDailyTasks(account));
         taskList.addAll(Newton.getDailyTasks(account));
 
@@ -54,10 +55,10 @@ public class Main {
             add("hub-48");
             add("hub-49");
             add("hub-50");
-//            add("hub-51");
-//            add("hub-52");
-//            add("hub-53");
-//            add("hub-54");
+            add("hub-51");
+            add("hub-52");
+            add("hub-53");
+            add("hub-54");
 //            add("hub-55");
 
         }
@@ -65,11 +66,11 @@ public class Main {
 
     static HashSet<String> taskIds = new HashSet<>() {
         {
-            add(TaskConstant.Monad.FAUCET);
+//            add(TaskConstant.Monad.FAUCET);
             add(TaskConstant.Monad.FAUCET_MORKIE);
             add(TaskConstant.Monad.FAUCET_TALENTUM);
-            add(TaskConstant.Monad.FAUCET_MONAI);
-            add(TaskConstant.Monad.FAUCET_NERZO);
+            add(TaskConstant.Monad.FAUCET_DUSTED);
+//            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
@@ -92,17 +93,16 @@ public class Main {
             add(TaskConstant.Monad.MONORAIL);
 
             add(TaskConstant.DeSpeed.SIGN);
-            add(TaskConstant.Human.SIGN);
+//            add(TaskConstant.Human.SIGN);
             add(TaskConstant.Human.FAUCET);
             add(TaskConstant.Sepolia.FAUCET);
             add(TaskConstant.Newton.SIGN);
-            add(TaskConstant.LayerEdge.SIGN);
+//            add(TaskConstant.LayerEdge.SIGN);
         }
     };
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
-//        randomSleepMinutes(60, 120);
         Collections.shuffle(accountList);
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
@@ -122,7 +122,7 @@ public class Main {
                 if (!taskIds.contains(task.id)) {
                     continue;//打开就是单测任务
                 }
-                System.out.println("current task:" + task.id + "-" + task.name);
+                System.out.println(String.format("%s %s/%s current task:%s", getCurrentTime(), taskList.indexOf(task) + 1, taskList.size(), task.name));
                 if (!needToExecuteTask(account.name, task)) {
                     continue;
                 }
@@ -137,11 +137,6 @@ public class Main {
     }
 
     static Random random = new Random();
-
-    private static void randomSleepMinutes(int min, int max) throws Exception {
-        long randomMinutes = random.nextInt(max - min + 1) + min;
-        Thread.sleep(randomMinutes * 60 * 1000);
-    }
 
     public static String getCurrentTime() {
         // 获取当前时间
@@ -163,6 +158,15 @@ public class Main {
         }
         FileUtil.appendFinishedTask(taskUid);
         return true;
+    }
+
+    private static List<Task> randomTaskList(List<Task> taskList) {
+        List<Task> randomTaskList = taskList.stream().filter(it -> it.name.contains("faucet")).collect(Collectors.toList());
+        Collections.shuffle(randomTaskList);
+        List<Task> otherTaskList = taskList.stream().filter(it -> !it.name.contains("faucet")).collect(Collectors.toList());
+        Collections.shuffle(otherTaskList);
+        randomTaskList.addAll(otherTaskList);
+        return randomTaskList;
     }
 
 

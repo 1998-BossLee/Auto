@@ -24,6 +24,7 @@ public class Newton {
             return taskList;
         }
         Task task = new Task(TaskConstant.Newton.SIGN, "roll", 0);
+        taskList.add(task);
         List<Task.Action> actionList = new java.util.ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.magicnewton.com/portal/rewards", 15));
         actionList.add(Task.Action.buildMoveClickAction(1050, 700));
