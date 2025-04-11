@@ -24,6 +24,7 @@ public class Monad {
         taskList.addAll(Monad.getMonadAINFTTasks());
         taskList.addAll(Monad.getNonceTasks(account));
         taskList.addAll(Monad.getMorkieNFTTasks(account));
+        taskList.addAll(Monad.getNerzoNFTTasks(account));
         return taskList;
     }
 
@@ -53,7 +54,7 @@ public class Monad {
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
         task = new Task(TaskConstant.Monad.FAUCET_MORKIE, "", 0);
-        String morkieAccounts = "ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51,hub-52";
+        String morkieAccounts = "ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51,hub-52,hub-53,hub-54";
         if (morkieAccounts.contains(account.name)) {
             taskList.add(task);
             actionList = new ArrayList<>();
@@ -107,7 +108,7 @@ public class Monad {
             taskList.add(task);
         }
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 15));
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 20));
         actionList.add(Task.Action.buildMoveClickAction(1750, 450));
         actionList.add(Task.Action.buildSleepAction(7));
         actionList.add(Task.Action.buildMoveClickAction(700, 450));
@@ -118,10 +119,10 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(7));//start
         actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
         actionList.add(Task.Action.buildSleepAction(5));
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 10; i++) {
             actionList.add(Task.Action.buildMoveClickAction(960, 650));//play again
             actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
-            actionList.add(Task.Action.buildSleepAction(5));
+            actionList.add(Task.Action.buildSleepAction(8));
         }
         actionList.add(Task.Action.buildMoveClickAction(950, 700));//claim
         actionList.add(Task.Action.buildSignAction());
@@ -180,34 +181,7 @@ public class Monad {
 //        task.actionList = actionList;
 
 
-//
-//        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
-//        Collections.shuffle(nerzoNFTs);
-//        nerzoNFTs = nerzoNFTs.subList(0, 1);
-//        for (String nerzoNFT : nerzoNFTs) {
-//            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
-//            taskList.add(task);
-//            actionList = new ArrayList<>();
-//            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
-//            //两种位置
-//            if (nerzoNFT.equals("unlocked") || nerzoNFT.equals("monad")) {
-//
-//            } else {
-//
-//            }
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 570));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 610));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 650));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildMoveClickAction(1620, 690));
-//            actionList.add(Task.Action.buildCloseWindowAction());
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
-//            actionList.add(Task.Action.buildSignAction());
-//            task.actionList = actionList;
-//        }
+
 
         return taskList;
     }
@@ -240,6 +214,48 @@ public class Monad {
             actionList.add(Task.Action.buildMoveClickAction(1200, 620));//Mint NFT
 
             actionList.add(Task.Action.buildSignAction());
+            task.actionList = actionList;
+        }
+        return taskList;
+    }
+
+    public static List<Task> getNerzoNFTTasks(Account account) {
+        List<Task> taskList = new ArrayList<>();
+        Task task;
+        List<Task.Action> actionList;
+        List<String> nerzoNFTs = Arrays.asList("unlocked", "monad", "monadking", "monadian", "senera");
+        Collections.shuffle(nerzoNFTs);
+        for (String nerzoNFT : nerzoNFTs) {
+            task = new Task(TaskConstant.Monad.NFT_NERZO, nerzoNFT, 1);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://nerzo.xyz/" + nerzoNFT, 15));
+            //两种位置
+            if (nerzoNFT.equals("unlocked") || nerzoNFT.equals("monad")) {
+                actionList.add(Task.Action.buildMoveClickAction(1620, 600));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 640));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 680));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 720));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildSleepAction(25));
+                actionList.add(Task.Action.buildMoveClickAction(1000, 880));//Mint NFT
+                actionList.add(Task.Action.buildSignAction());
+            } else {
+                actionList.add(Task.Action.buildMoveClickAction(1620, 570));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 610));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 650));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildMoveClickAction(1620, 690));
+                actionList.add(Task.Action.buildCloseWindowAction());
+                actionList.add(Task.Action.buildSleepAction(25));
+                actionList.add(Task.Action.buildMoveClickAction(1000, 850));//Mint NFT
+                actionList.add(Task.Action.buildSignAction());
+            }
             task.actionList = actionList;
         }
         return taskList;
