@@ -316,6 +316,12 @@ public class MouseUtil {
                 moveToAndClick(action);
                 typeString(robot, action.text);
                 break;
+            case INPUT_TEXT_ENTER:
+                moveToAndClick(action);
+                typeString(robot, action.text);
+                robot.keyPress(KeyEvent.VK_ENTER);
+                robot.keyRelease(KeyEvent.VK_ENTER);
+                break;
             case SCROLL_DOWN:
                 scrollDown(action.h);
                 break;

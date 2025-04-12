@@ -68,6 +68,15 @@ public class Task {
             return action;
         }
 
+        public static Action buildInputTextEnterAction(int x, int y, String text) {
+            Action action = new Action();
+            action.op = INPUT_TEXT_ENTER;
+            action.x = x;
+            action.y = y;
+            action.text = text;
+            return action;
+        }
+
         public static Action buildScrollDownAction(int h) {
             Action action = new Action();
             action.op = SCROLL_DOWN;

@@ -27,7 +27,7 @@ public class Newton {
         taskList.add(task);
         List<Task.Action> actionList = new java.util.ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.magicnewton.com/portal/rewards", 15));
-        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+        actionList.add(Task.Action.buildMoveClickAction(1500, 620));
         actionList.add(Task.Action.buildMoveClickAction(950, 730));
         actionList.add(Task.Action.buildMoveClickAction(950, 620));
         actionList.add(Task.Action.buildSleepAction(10));

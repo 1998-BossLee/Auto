@@ -109,6 +109,15 @@ public class Monad {
         }
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 20));
+        //登录
+        actionList.add(Task.Action.buildMoveClickAction(950, 670));
+        actionList.add(Task.Action.buildMoveClickAction(950, 760));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(15));
+        //乞讨
+        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, "somebody can tip me 0.1 mon, thanks!"));
+        //打开游戏跳过对话
         actionList.add(Task.Action.buildMoveClickAction(1750, 450));
         actionList.add(Task.Action.buildSleepAction(7));
         actionList.add(Task.Action.buildMoveClickAction(700, 450));
@@ -116,15 +125,17 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(700, 450));
         actionList.add(Task.Action.buildSleepAction(7));
         actionList.add(Task.Action.buildMoveClickAction(700, 450));
+        //开始
         actionList.add(Task.Action.buildSleepAction(7));//start
         actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
         actionList.add(Task.Action.buildSleepAction(5));
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 1; i++) {
             actionList.add(Task.Action.buildMoveClickAction(960, 650));//play again
             actionList.add(Task.Action.buildMoveClickAction(960, 620));//打开宝箱
             actionList.add(Task.Action.buildSleepAction(8));
         }
-        actionList.add(Task.Action.buildMoveClickAction(950, 700));//claim
+        actionList.add(Task.Action.buildMoveClickAction(1885, 160));//close
+        actionList.add(Task.Action.buildMoveClickAction(1700, 520));//claim
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
         return taskList;
