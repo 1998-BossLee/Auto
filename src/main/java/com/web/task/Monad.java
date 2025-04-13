@@ -44,7 +44,7 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1754, 327));
         actionList.add(Task.Action.buildScrollDownAction(10));
         actionList.add(Task.Action.buildInputTextAction(1300, 320, account.evm));
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 2; i++) {
             actionList.add(Task.Action.buildMoveClickAction(1155, 420));
             actionList.add(Task.Action.buildSleepAction(3));
             actionList.add(Task.Action.buildMoveClickAction(1300, 500));
@@ -54,7 +54,7 @@ public class Monad {
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
         task = new Task(TaskConstant.Monad.FAUCET_MORKIE, "", 0);
-        String morkieAccounts = "ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51,hub-52,hub-53,hub-54";
+        String morkieAccounts = "ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48,hub-49,hub-50,hub-51,hub-52,hub-53,hub-54,hub-55";
         if (morkieAccounts.contains(account.name)) {
             taskList.add(task);
             actionList = new ArrayList<>();
@@ -88,8 +88,6 @@ public class Monad {
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
         taskList.add(task);
-        taskList.add(task);
-        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 40));
         actionList.add(Task.Action.buildMoveClickAction(1300, 150));
@@ -97,9 +95,9 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
         actionList.add(Task.Action.buildMoveClickAction(950, 780));
-        actionList.add(Task.Action.buildSleepAction(50));
-        actionList.add(Task.Action.buildMoveClickAction(950, 665));
         actionList.add(Task.Action.buildSleepAction(30));
+        actionList.add(Task.Action.buildMoveClickAction(950, 665));
+        actionList.add(Task.Action.buildSleepAction(20));
         task.actionList = actionList;
 
         task = new Task(TaskConstant.Monad.FAUCET_DUSTED, "", 0);

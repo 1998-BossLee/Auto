@@ -32,6 +32,10 @@ public interface TaskConstant {
         String MONORAIL = "monad-monorail";
     }
 
+    interface Sahara {
+        String FAUCET = "sahara-faucet";
+    }
+
     interface DeSpeed {
         String SIGN = "despeed-sign";
     }

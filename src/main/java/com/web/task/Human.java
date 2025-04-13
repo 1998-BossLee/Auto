@@ -12,6 +12,8 @@ import java.util.List;
  * @author: liyangjin
  * @create: 2025-03-07 03:01
  * @Description:
+ * 前10个号是谷歌邮箱登录
+ * 后续都是钱包登录
  */
 public class Human {
     public static List<Task> getDailyTasks(Account account) {

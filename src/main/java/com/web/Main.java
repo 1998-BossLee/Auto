@@ -32,6 +32,7 @@ public class Main {
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
         taskList.addAll(Human.getDailyTasks(account));
         taskList.addAll(Newton.getDailyTasks(account));
+        taskList.addAll(Sahara.getDailyTasks(account));
 
         taskList.addAll(Monad.getAllTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
@@ -41,21 +42,21 @@ public class Main {
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
-            add("ads-1");
+//            add("ads-1");
 //            add("ads-2");
-            add("ads-4");
-            add("ads-5");
-            add("ads-6");
-            add("hub-41");
-            add("hub-42");
-            add("hub-43");
-            add("hub-44");
-            add("hub-45");
-            add("hub-46");
-            add("hub-47");
-            add("hub-48");
-            add("hub-49");
-            add("hub-50");
+//            add("ads-4");
+//            add("ads-5");
+//            add("ads-6");
+//            add("hub-41");
+//            add("hub-42");
+//            add("hub-43");
+//            add("hub-44");
+//            add("hub-45");
+//            add("hub-46");
+//            add("hub-47");
+//            add("hub-48");
+//            add("hub-49");
+//            add("hub-50");
             add("hub-51");
             add("hub-52");
             add("hub-53");
@@ -68,9 +69,9 @@ public class Main {
     static HashSet<String> taskIds = new HashSet<>() {
         {
 //            add(TaskConstant.Monad.FAUCET);
-            add(TaskConstant.Monad.FAUCET_MORKIE);
-            add(TaskConstant.Monad.FAUCET_TALENTUM);
-            add(TaskConstant.Monad.FAUCET_DUSTED);
+//            add(TaskConstant.Monad.FAUCET_MORKIE);
+//            add(TaskConstant.Monad.FAUCET_TALENTUM);
+//            add(TaskConstant.Monad.FAUCET_DUSTED);
 //            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
@@ -81,30 +82,32 @@ public class Main {
 //            add(TaskConstant.Monad.NFT_NERZO);
 
 //            add(TaskConstant.Monad.VISIT_TALENTUM);
-            add(TaskConstant.Monad.A_PRIOR);
-            add(TaskConstant.Monad.BEAN);
-            add(TaskConstant.Monad.AICRAFT);
-            add(TaskConstant.Monad.BEBOP);
-            add(TaskConstant.Monad.SHMONAD);
-            add(TaskConstant.Monad.KINZA);
-            add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.MINTAIR);
-            add(TaskConstant.Monad.KURU);
-            add(TaskConstant.Monad.KINTSU);
-            add(TaskConstant.Monad.MONORAIL);
-
-            add(TaskConstant.DeSpeed.SIGN);
-            add(TaskConstant.Human.SIGN);
-            add(TaskConstant.Human.FAUCET);
-            add(TaskConstant.Sepolia.FAUCET);
-            add(TaskConstant.Newton.SIGN);
+//            add(TaskConstant.Monad.A_PRIOR);
+//            add(TaskConstant.Monad.BEAN);
+//            add(TaskConstant.Monad.AICRAFT);
+//            add(TaskConstant.Monad.BEBOP);
+//            add(TaskConstant.Monad.SHMONAD);
+//            add(TaskConstant.Monad.KINZA);
+//            add(TaskConstant.Monad.OWLTO);
+//            add(TaskConstant.Monad.MINTAIR);
+//            add(TaskConstant.Monad.KURU);
+//            add(TaskConstant.Monad.KINTSU);
+//            add(TaskConstant.Monad.MONORAIL);
+//
+//            add(TaskConstant.DeSpeed.SIGN);
+//            add(TaskConstant.Human.SIGN);
+//            add(TaskConstant.Human.FAUCET);
+//            add(TaskConstant.Sepolia.FAUCET);
+//            add(TaskConstant.Newton.SIGN);
 //            add(TaskConstant.LayerEdge.SIGN);
+            add(TaskConstant.Sahara.FAUCET);
         }
     };
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
 //        Collections.shuffle(accountList);
+        Collections.reverse(accountList);
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {

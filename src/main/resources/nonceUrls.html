@@ -1,0 +1,14 @@
+<button onclick="openAllUrls()">打开所有链接</button>
+<script>
+    function openAllUrls() {
+        let urls = [
+            "https://app.nad.domains/",
+            "https://testnet.lilchogstars.com/"
+        ];
+        urls.forEach((url, index) => {
+            setTimeout(() => {
+                window.open(url, "_blank");
+            }, index * 2000); // 每个链接间隔 2 秒打开
+        });
+    }
+</script>
