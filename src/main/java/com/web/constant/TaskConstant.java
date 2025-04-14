@@ -3,6 +3,8 @@ package com.web.constant;
 public interface TaskConstant {
 
     interface Monad {
+        String SWITCH = "monad-switch";
+
         String FAUCET = "monad-faucet";
         String FAUCET_MORKIE = "monad-faucet-morkie";
         String FAUCET_TALENTUM = "monad-faucet-talentum";
@@ -30,6 +32,7 @@ public interface TaskConstant {
         String KURU = "monad-kuru";
         String KINTSU = "monad-kintsu";
         String MONORAIL = "monad-monorail";
+        String CLOBER = "monad-clober";
     }
 
     interface Sahara {

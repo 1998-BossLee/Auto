@@ -30,44 +30,45 @@ public class Main {
         taskList.addAll(Sepolia.getDailyTasks(account));
         taskList.addAll(DeSpeed.getDailyTasks(account));
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
-        taskList.addAll(Human.getDailyTasks(account));
         taskList.addAll(Newton.getDailyTasks(account));
         taskList.addAll(Sahara.getDailyTasks(account));
 
         taskList.addAll(Monad.getAllTask(account));
         System.out.println("Main.initTask success size=" + taskList.size());
-        taskList = randomTaskList(taskList);
         return taskList;
     }
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
-//            add("ads-1");
-//            add("ads-2");
-//            add("ads-4");
-//            add("ads-5");
-//            add("ads-6");
-//            add("hub-41");
-//            add("hub-42");
-//            add("hub-43");
-//            add("hub-44");
-//            add("hub-45");
-//            add("hub-46");
-//            add("hub-47");
-//            add("hub-48");
-//            add("hub-49");
-//            add("hub-50");
+            add("ads-1");
+            add("ads-2");
+            add("ads-4");
+            add("ads-5");
+            add("ads-6");
+            add("hub-41");
+            add("hub-42");
+            add("hub-43");
+            add("hub-44");
+            add("hub-45");
+            add("hub-46");
+            add("hub-47");
+            add("hub-48");
+            add("hub-49");
+            add("hub-50");
             add("hub-51");
             add("hub-52");
             add("hub-53");
             add("hub-54");
-//            add("hub-55");
+            add("hub-55");
 
         }
     };
 
     static HashSet<String> taskIds = new HashSet<>() {
         {
+            add(TaskConstant.Monad.SWITCH);
+
+
 //            add(TaskConstant.Monad.FAUCET);
 //            add(TaskConstant.Monad.FAUCET_MORKIE);
 //            add(TaskConstant.Monad.FAUCET_TALENTUM);
@@ -89,18 +90,18 @@ public class Main {
 //            add(TaskConstant.Monad.SHMONAD);
 //            add(TaskConstant.Monad.KINZA);
 //            add(TaskConstant.Monad.OWLTO);
-//            add(TaskConstant.Monad.MINTAIR);
+            add(TaskConstant.Monad.MINTAIR);
 //            add(TaskConstant.Monad.KURU);
-//            add(TaskConstant.Monad.KINTSU);
+            add(TaskConstant.Monad.KINTSU);
 //            add(TaskConstant.Monad.MONORAIL);
-//
+
 //            add(TaskConstant.DeSpeed.SIGN);
 //            add(TaskConstant.Human.SIGN);
 //            add(TaskConstant.Human.FAUCET);
 //            add(TaskConstant.Sepolia.FAUCET);
 //            add(TaskConstant.Newton.SIGN);
 //            add(TaskConstant.LayerEdge.SIGN);
-            add(TaskConstant.Sahara.FAUCET);
+//            add(TaskConstant.Sahara.FAUCET);
         }
     };
 
@@ -162,15 +163,6 @@ public class Main {
         }
         FileUtil.appendFinishedTask(taskUid);
         return true;
-    }
-
-    private static List<Task> randomTaskList(List<Task> taskList) {
-        List<Task> randomTaskList = taskList.stream().filter(it -> it.id.contains("faucet")).collect(Collectors.toList());
-        Collections.shuffle(randomTaskList);
-        List<Task> otherTaskList = taskList.stream().filter(it -> !it.id.contains("faucet")).collect(Collectors.toList());
-        Collections.shuffle(otherTaskList);
-        randomTaskList.addAll(otherTaskList);
-        return randomTaskList;
     }
 
 
