@@ -39,8 +39,9 @@ public interface TaskConstant {
         String FAUCET = "sahara-faucet";
     }
 
-    interface DeSpeed {
-        String SIGN = "despeed-sign";
+    interface Depin {
+        String DESPEED = "despeed-sign";
+        String BLOCK_MESH = "blockMesh-liveness";
     }
 
     interface Human {

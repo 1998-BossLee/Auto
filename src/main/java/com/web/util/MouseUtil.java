@@ -329,11 +329,13 @@ public class MouseUtil {
                 Thread.sleep(action.h * 1000L);
                 break;
             case SIGN:
+                //签名两次后取消签名，防止现在钱包卡
                 action.x = config.getInteger("signX");
                 action.y = config.getInteger("signY");
-                robot.delay(12000);
+                robot.delay(1500);
                 moveToAndClick(action);
-                break;
+                robot.delay(1500);
+                moveToAndClick(action);
             case CANCEL_SIGN:
                 action.x = config.getInteger("cancelSignX");
                 action.y = config.getInteger("cancelSignY");

@@ -34,7 +34,7 @@ public class Main {
         taskList.addAll(Sahara.getDailyTasks(account));
 
         taskList.addAll(Monad.getAllTask(account));
-        System.out.println("Main.initTask success size=" + taskList.size());
+        taskList = taskList.stream().filter(task -> taskIds.contains(task.id)).collect(Collectors.toList());
         return taskList;
     }
 
@@ -50,17 +50,16 @@ public class Main {
             add("hub-43");
             add("hub-44");
             add("hub-45");
-            add("hub-46");
-            add("hub-47");
-            add("hub-48");
-            add("hub-49");
-            add("hub-50");
-            add("hub-51");
-            add("hub-52");
-            add("hub-53");
-            add("hub-54");
-            add("hub-55");
-
+//            add("hub-46");
+//            add("hub-47");
+//            add("hub-48");
+//            add("hub-49");
+//            add("hub-50");
+//            add("hub-51");
+//            add("hub-52");
+//            add("hub-53");
+//            add("hub-54");
+//            add("hub-55");
         }
     };
 
@@ -70,10 +69,10 @@ public class Main {
 
 
 //            add(TaskConstant.Monad.FAUCET);
-//            add(TaskConstant.Monad.FAUCET_MORKIE);
+            add(TaskConstant.Monad.FAUCET_MORKIE);
 //            add(TaskConstant.Monad.FAUCET_TALENTUM);
-//            add(TaskConstant.Monad.FAUCET_DUSTED);
-//            add(TaskConstant.Monad.FAUCET_NERZO);
+            add(TaskConstant.Monad.FAUCET_DUSTED);
+            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
@@ -83,25 +82,22 @@ public class Main {
 //            add(TaskConstant.Monad.NFT_NERZO);
 
 //            add(TaskConstant.Monad.VISIT_TALENTUM);
-//            add(TaskConstant.Monad.A_PRIOR);
-//            add(TaskConstant.Monad.BEAN);
-//            add(TaskConstant.Monad.AICRAFT);
-//            add(TaskConstant.Monad.BEBOP);
-//            add(TaskConstant.Monad.SHMONAD);
-//            add(TaskConstant.Monad.KINZA);
-//            add(TaskConstant.Monad.OWLTO);
+            add(TaskConstant.Monad.A_PRIOR);
+            add(TaskConstant.Monad.BEAN);
+            add(TaskConstant.Monad.AICRAFT);
+            add(TaskConstant.Monad.BEBOP);
+            add(TaskConstant.Monad.SHMONAD);
+            add(TaskConstant.Monad.KINZA);
+            add(TaskConstant.Monad.OWLTO);
             add(TaskConstant.Monad.MINTAIR);
-//            add(TaskConstant.Monad.KURU);
+            add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.KINTSU);
-//            add(TaskConstant.Monad.MONORAIL);
-
-//            add(TaskConstant.DeSpeed.SIGN);
-//            add(TaskConstant.Human.SIGN);
-//            add(TaskConstant.Human.FAUCET);
-//            add(TaskConstant.Sepolia.FAUCET);
-//            add(TaskConstant.Newton.SIGN);
-//            add(TaskConstant.LayerEdge.SIGN);
-//            add(TaskConstant.Sahara.FAUCET);
+            add(TaskConstant.Monad.MONORAIL);
+//
+            add(TaskConstant.Depin.DESPEED);
+            add(TaskConstant.Sepolia.FAUCET);
+            add(TaskConstant.Newton.SIGN);
+            add(TaskConstant.Sahara.FAUCET);
         }
     };
 
@@ -117,16 +113,12 @@ public class Main {
             if (account.evm == null || account.evm.isEmpty()) {
                 continue;
             }
-            System.out.println(String.format("%s %s/%s account:%s", getCurrentTime(), i + 1, accountList.size(), account.name));
             Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
             MouseUtil.executeAction(startAccountAction);
             taskList = initRandomTask(account);
 
             for (Task task : taskList) {
-                if (!taskIds.contains(task.id)) {
-                    continue;//打开就是单测任务
-                }
-                System.out.println(String.format("%s %s/%s current task:%s", getCurrentTime(), taskList.indexOf(task) + 1, taskList.size(), task.name));
+                System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" +task.name));
                 if (!needToExecuteTask(account.name, task)) {
                     continue;
                 }
