@@ -50,16 +50,16 @@ public class Main {
             add("hub-43");
             add("hub-44");
             add("hub-45");
-//            add("hub-46");
-//            add("hub-47");
-//            add("hub-48");
-//            add("hub-49");
-//            add("hub-50");
-//            add("hub-51");
-//            add("hub-52");
-//            add("hub-53");
-//            add("hub-54");
-//            add("hub-55");
+            add("hub-46");
+            add("hub-47");
+            add("hub-48");
+            add("hub-49");
+            add("hub-50");
+            add("hub-51");
+            add("hub-52");
+            add("hub-53");
+            add("hub-54");
+            add("hub-55");
         }
     };
 
@@ -70,7 +70,7 @@ public class Main {
 
 //            add(TaskConstant.Monad.FAUCET);
             add(TaskConstant.Monad.FAUCET_MORKIE);
-//            add(TaskConstant.Monad.FAUCET_TALENTUM);
+            add(TaskConstant.Monad.FAUCET_TALENTUM);
             add(TaskConstant.Monad.FAUCET_DUSTED);
             add(TaskConstant.Monad.FAUCET_NERZO);
 
@@ -82,6 +82,8 @@ public class Main {
 //            add(TaskConstant.Monad.NFT_NERZO);
 
 //            add(TaskConstant.Monad.VISIT_TALENTUM);
+
+            add(TaskConstant.Monad.TALENTUM_STREASK);
             add(TaskConstant.Monad.A_PRIOR);
             add(TaskConstant.Monad.BEAN);
             add(TaskConstant.Monad.AICRAFT);
@@ -93,8 +95,9 @@ public class Main {
             add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.KINTSU);
             add(TaskConstant.Monad.MONORAIL);
-//
+
             add(TaskConstant.Depin.DESPEED);
+            add(TaskConstant.Depin.BLOCK_MESH);
             add(TaskConstant.Sepolia.FAUCET);
             add(TaskConstant.Newton.SIGN);
             add(TaskConstant.Sahara.FAUCET);
@@ -105,6 +108,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
 //        Collections.shuffle(accountList);
         Collections.reverse(accountList);
+        List<Account> shuffleAccountList = new ArrayList<>(accountList);
+        accountList.addAll(shuffleAccountList);
+
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             if (!testAccounts.contains(account.name)) {
@@ -125,10 +131,10 @@ public class Main {
                 for (Task.Action action : task.actionList) {
                     MouseUtil.executeAction(action);
                 }
-                Thread.sleep(5000 + random.nextInt(15000));
+                Thread.sleep(5000 + random.nextInt(10000));
 //                Thread.sleep(5*60*1000);
-                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
-                MouseUtil.executeAction(action);
+//                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
+//                MouseUtil.executeAction(action);
             }
         }
     }

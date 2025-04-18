@@ -332,9 +332,9 @@ public class MouseUtil {
                 //签名两次后取消签名，防止现在钱包卡
                 action.x = config.getInteger("signX");
                 action.y = config.getInteger("signY");
-                robot.delay(1500);
+                robot.delay(15000);
                 moveToAndClick(action);
-                robot.delay(1500);
+                robot.delay(10000);
                 moveToAndClick(action);
             case CANCEL_SIGN:
                 action.x = config.getInteger("cancelSignX");

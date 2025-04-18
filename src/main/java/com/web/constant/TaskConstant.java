@@ -20,6 +20,7 @@ public interface TaskConstant {
 
 
         String VISIT_TALENTUM = "monad-visit-talentum";
+        String TALENTUM_STREASK = "monad-talentum-streak";
 
         String A_PRIOR = "monad-aprior";
         String BEAN = "monad-bean";
