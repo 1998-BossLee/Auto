@@ -411,7 +411,7 @@ public class Monad {
         task.actionList = actionList;
 
 
-        //美国，加拿大IP不能用
+        //美国，加拿大IP不能用 https://www.magmastaking.xyz/?invitedBy=OnFFFD
 //        task = new Task("monad-8", "magma-stake", 0);
 //        //taskList.add(task);
 //        actionList = new ArrayList<>();
