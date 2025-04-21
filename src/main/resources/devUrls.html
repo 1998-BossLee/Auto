@@ -1,0 +1,104 @@
+<button onclick="openAllUrls()">打开所有链接</button>
+<script>
+    function openAllUrls() {
+        let urls = [
+            "https://monad.talentum.id/tasks/task/3085",
+            "https://monad.talentum.id/tasks/task/2997",
+            "https://monad.talentum.id/tasks/task/3113",
+            "https://monad.talentum.id/tasks/task/3121",
+            "https://monad.talentum.id/tasks/task/3152",
+            "https://monad.talentum.id/tasks/task/3157",
+            "https://monad.talentum.id/tasks/task/3005",
+            "https://monad.talentum.id/tasks/task/3048",
+            "https://www.baidu.com/",
+
+            "https://monad.talentum.id/tasks/task/3122",
+            "https://monad.talentum.id/tasks/task/3154",
+            "https://monad.talentum.id/tasks/task/3158",
+            "https://monad.talentum.id/tasks/task/3175",
+            "https://monad.talentum.id/tasks/task/3049",
+            "https://monad.talentum.id/tasks/task/3116",
+            "https://monad.talentum.id/tasks/task/3124",
+            "https://monad.talentum.id/tasks/task/3156",
+            "https://monad.talentum.id/tasks/task/3159",
+            "https://www.baidu.com/",
+
+            "https://monad.talentum.id/tasks/task/3176",
+            "https://monad.talentum.id/tasks/task/3007",
+            "https://monad.talentum.id/tasks/task/3118",
+            "https://monad.talentum.id/tasks/task/3123",
+            "https://monad.talentum.id/tasks/task/3160",
+            "https://monad.talentum.id/tasks/task/3898",
+            "https://monad.talentum.id/tasks/task/4629",
+            "https://monad.talentum.id/tasks/task/3008",
+            "https://monad.talentum.id/tasks/task/3119",
+            "https://www.baidu.com/",
+
+            "https://monad.talentum.id/tasks/task/3161",
+            "https://monad.talentum.id/tasks/task/4624",
+            "https://monad.talentum.id/tasks/task/4630",
+            "https://monad.talentum.id/tasks/task/3120",
+            "https://monad.talentum.id/tasks/task/3162",
+            "https://monad.talentum.id/tasks/task/4625",
+            "https://monad.talentum.id/tasks/task/4631",
+            "https://monad.talentum.id/tasks/task/4680",
+            "https://monad.talentum.id/tasks/task/3163",
+            "https://www.baidu.com/",
+
+
+            "https://monad.talentum.id/tasks/task/4626",
+            "https://monad.talentum.id/tasks/task/4632",
+            "https://monad.talentum.id/tasks/task/4684",
+            "https://monad.talentum.id/tasks/task/3164",
+            "https://monad.talentum.id/tasks/task/4633",
+            "https://monad.talentum.id/tasks/task/4685",
+            "https://monad.talentum.id/tasks/task/3165",
+            "https://monad.talentum.id/tasks/task/4634",
+            "https://monad.talentum.id/tasks/task/3166",
+            "https://www.baidu.com/",
+
+
+            "https://monad.talentum.id/tasks/task/4635",
+            "https://monad.talentum.id/tasks/task/3167",
+            "https://monad.talentum.id/tasks/task/4636",
+            "https://monad.talentum.id/tasks/task/3168",
+            "https://monad.talentum.id/tasks/task/4637",
+            "https://monad.talentum.id/tasks/task/3169",
+            "https://monad.talentum.id/tasks/task/4638",
+            "https://monad.talentum.id/tasks/task/3170",
+            "https://monad.talentum.id/tasks/task/4639",
+            "https://www.baidu.com/",
+
+            "https://monad.talentum.id/tasks/task/3171",
+            "https://monad.talentum.id/tasks/task/4640",
+            "https://monad.talentum.id/tasks/task/3172",
+            "https://monad.talentum.id/tasks/task/4641",
+            "https://monad.talentum.id/tasks/task/4642",
+            "https://monad.talentum.id/tasks/task/4643",
+            "https://monad.talentum.id/tasks/task/4644",
+            "https://monad.talentum.id/tasks/task/4645",
+            "https://monad.talentum.id/tasks/task/4675",
+            "https://www.baidu.com/",
+
+
+            "https://monad.talentum.id/tasks/task/4676",
+            "https://monad.talentum.id/tasks/task/4677",
+            "https://monad.talentum.id/tasks/task/4678",
+            "https://monad.talentum.id/tasks/task/",
+            "https://monad.talentum.id/tasks/task/",
+            "https://monad.talentum.id/tasks/task/",
+            "https://monad.talentum.id/tasks/task/",
+            "https://monad.talentum.id/tasks/task/",
+            "https://monad.talentum.id/tasks/task/",
+            "https://www.baidu.com/",
+
+        ];
+        urls.forEach((url, index) => {
+            setTimeout(() => {
+                window.open(url, "_blank");
+            }, index * 2000); // 每个链接间隔 2 秒打开
+        });
+    }
+</script>
+
+<!-- 不方便自动化的任务，手动操作一次 -->
