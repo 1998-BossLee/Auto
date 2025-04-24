@@ -40,6 +40,7 @@ public class Main {
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
+            add("google");
             add("ads-1");
             add("ads-2");
             add("ads-4");
@@ -107,7 +108,7 @@ public class Main {
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
 //        Collections.shuffle(accountList);
-        Collections.reverse(accountList);
+//        Collections.reverse(accountList);
         List<Account> shuffleAccountList = new ArrayList<>(accountList);
         accountList.addAll(shuffleAccountList);
 
@@ -132,9 +133,6 @@ public class Main {
                     MouseUtil.executeAction(action);
                 }
                 Thread.sleep(5000 + random.nextInt(10000));
-//                Thread.sleep(5*60*1000);
-//                Task.Action action = new Task.Action(SLEEP, "", 0, 0, 10);
-//                MouseUtil.executeAction(action);
             }
         }
     }

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,7 @@ import static com.web.constant.Constants.*;
  * @Description: 鼠标移动与模拟键盘操作工具类
  */
 public class MouseUtil {
+    static Random random = new Random();
     static Robot robot;
     static JSONObject config;
 
@@ -334,12 +336,16 @@ public class MouseUtil {
                 action.y = config.getInteger("signY");
                 robot.delay(15000);
                 moveToAndClick(action);
+                if (random.nextInt(4) != 0) {
+                    break;
+                }
+                //1/4的概率多点一次
                 robot.delay(10000);
                 moveToAndClick(action);
             case CANCEL_SIGN:
                 action.x = config.getInteger("cancelSignX");
                 action.y = config.getInteger("cancelSignY");
-                robot.delay(15000);
+                robot.delay(10000);
                 moveToAndClick(action);
                 break;
             case CLOSE_WINDOW:
