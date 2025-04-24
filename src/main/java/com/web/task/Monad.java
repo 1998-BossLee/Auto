@@ -649,6 +649,9 @@ public class Monad {
         //360w融资 https://monad.curvance.com/monad 操作很多
 
 
+        //https://glacierfi.com/
+
+
         Collections.shuffle(taskList);
         int size = taskList.size();
         List<Task> doubleTaskList = new ArrayList<>();
