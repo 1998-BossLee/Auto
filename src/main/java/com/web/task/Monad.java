@@ -20,7 +20,7 @@ public class Monad {
         taskList.addAll(Monad.getTalentumVisitTasks(account));
         taskList.addAll(Monad.getRandomTasks(account));
         taskList.addAll(Monad.getMonadAINFTTasks());
-        taskList.addAll(Monad.getNonceTasks(account));
+        taskList.addAll(Monad.getTalentumNFTsTasks(account));
         taskList.addAll(Monad.getMorkieNFTTasks(account));
         taskList.addAll(Monad.getNerzoNFTTasks(account));
         Collections.shuffle(taskList);
@@ -102,17 +102,17 @@ public class Monad {
             task.actionList = actionList;
         }
 
-        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45";
-        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
-        if (glacierfiAccounts.contains(account.name)) {
-            taskList.add(task);
-            actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://glacierfi.com/faucet", 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 600));
-            actionList.add(Task.Action.buildSleepAction(10));
-            actionList.add(Task.Action.buildSignAction());
-            task.actionList = actionList;
-        }
+//        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45";
+//        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
+//        if (glacierfiAccounts.contains(account.name)) {
+//            taskList.add(task);
+//            actionList = new ArrayList<>();
+//            actionList.add(Task.Action.buildOpenUrlAction("https://glacierfi.com/faucet", 10));
+//            actionList.add(Task.Action.buildMoveClickAction(950, 600));
+//            actionList.add(Task.Action.buildSleepAction(10));
+//            actionList.add(Task.Action.buildSignAction());
+//            task.actionList = actionList;
+//        }
 
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
@@ -133,7 +133,7 @@ public class Monad {
         task.actionList = actionList;
 
         task = new Task(TaskConstant.Monad.FAUCET_DUSTED, "", 0);
-        String dustedAccountIds = "ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48";
+        String dustedAccountIds = "ads-1,ads-2,ads-4,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48";
         if (dustedAccountIds.contains(account.name)) {
             taskList.add(task);
         }
@@ -169,21 +169,21 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1700, 520));//claim
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
-
-
-
-
         return taskList;
     }
 
 
     //只能做一次的任务，例如NFT
-    public static List<Task> getNonceTasks(Account account) {
+    public static List<Task> getTalentumNFTsTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
+        String alreadyAccount = "google";
+        if (alreadyAccount.contains(account.name)) {
+            return taskList;
+        }
         Task task;
         List<Task.Action> actionList;
         //暂时没水，不做
-        String s = "2739,2745,2750,2760,2779,2812,2813,2857,2838,2778,2929,2925,2920,2959,2914,2934,2909";
+        String s = "2750,2812,2857,2838,2778,2925,2920,2959,2914,2934,2909";
         List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
         Collections.shuffle(talentumNFTTaskIds);
 //        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
@@ -198,38 +198,16 @@ public class Monad {
 
             //位置可能不一样，为了方便直接两个坐标都走一遍
             //坐标1
-            actionList.add(Task.Action.buildMoveClickAction(550, 800));//【Mint】
-            actionList.add(Task.Action.buildSleepAction(1));
+            actionList.add(Task.Action.buildMoveClickAction(550, 810));//【Mint】
+            actionList.add(Task.Action.buildSleepAction(5));
             actionList.add(Task.Action.buildSignAction());//【sign】
             actionList.add(Task.Action.buildSleepAction(5));
-//            actionList.add(Task.Action.buildMoveClickAction(1050, 815));//【verify】
-//            actionList.add(Task.Action.buildSleepAction(10));
-            //坐标2
-//            actionList.add(Task.Action.buildMoveClickAction(550, 850));//【Mint】
-//            actionList.add(Task.Action.buildSleepAction(10));
-//            actionList.add(Task.Action.buildSignAction());//【sign】
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1050, 850));//【verify】
-//            actionList.add(Task.Action.buildSleepAction(10));
-
-
+            actionList.add(Task.Action.buildMoveClickAction(1050, 810));//【verify】
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
-            actionList.add(Task.Action.buildSleepAction(1));
             task.actionList = actionList;
         }
-
-//        task = new Task(TaskConstant.Monad.NFT_MAGICEDEN, "1", 1);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://magiceden.us/mint-terminal/monad-testnet/0x3b46f41179ea285b386a2182e6168937ed52a458", 15));
-//        actionList.add(Task.Action.buildMoveClickAction(1200, 900));
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
-
-
-
-
-        return taskList;
+        Collections.shuffle(taskList);
+        return taskList.subList(0, random.nextInt(taskList.size()));
     }
 
     public static List<Task> getMorkieNFTTasks(Account account) {
@@ -320,9 +298,10 @@ public class Monad {
         //taskId - x,x,y
         //最平常的
         int workX = 550, verifyX = 1050;
-        map.put("2956,2957,3113,3116,3124,3156,3159,3120,3162,3165,3166,3168,3169,4638,3170,3171,3172,3152,3154,2960", 700);
+        //map.put("3085", 670);
+        map.put("2956,2957,3113,3116,3124,3156,3159,3120,3162,3165,3166,3168,3169,4638,3170,3171,3172,3152,3154,2960,2961,2955,3001,3158,3119,4651", 700);
         map.put("3159,3163,3164,4640,4642,4643,4645,3157", 730);
-        map.put("3160,3167,", 750);
+        map.put("3160,3167,3161", 750);
         map.put("4637", 800);
         map.put("4636,4641", 850);
         map.put("4639", 890);
@@ -676,7 +655,7 @@ public class Monad {
         int size = taskList.size();
         List<Task> doubleTaskList = new ArrayList<>();
         doubleTaskList.addAll(taskList);
-        return doubleTaskList.subList(0, 3 + (size / 2));
+        return doubleTaskList.subList(0, (size / 4) + random.nextInt(size / 2));
     }
 
     public static List<Task> getMonadAINFTTasks() {
