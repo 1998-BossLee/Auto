@@ -35,6 +35,7 @@ public interface TaskConstant {
         String KINTSU = "monad-kintsu";
         String MONORAIL = "monad-monorail";
         String CLOBER = "monad-clober";
+        String ATLANTIS = "monad-atlantis";
     }
 
     interface Sahara {
