@@ -46,7 +46,7 @@ public class MouseUtil {
 //        robot.delay(1000);
 ////        closeWindow();
         moveToAndClick(Task.Action.buildMoveClickAction(1800, 200));
-        robot.mouseWheel(3);
+        robot.mouseWheel(20);
 //        moveToAndClick(Task.Action.buildMoveClickAction(1754, 327));
 //        robot.mouseWheel(10);
 //        int x = 1067, y = 85;
