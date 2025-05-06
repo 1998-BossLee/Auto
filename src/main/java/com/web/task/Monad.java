@@ -124,7 +124,7 @@ public class Monad {
         task.actionList = actionList;
 
 
-//        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-49";
+//        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49";
 //        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
 //        if (glacierfiAccounts.contains(account.name)) {
 //            taskList.add(task);
@@ -146,12 +146,17 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 20));
         //登录
         actionList.add(Task.Action.buildMoveClickAction(950, 670));
-        actionList.add(Task.Action.buildMoveClickAction(950, 760));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(15));
+        actionList.add(Task.Action.buildMoveClickAction(950, 900));
+        actionList.add(Task.Action.buildSleepAction(5));
         //乞讨
-        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, "somebody can tip me 1 mon, thanks!"));
+        String[] tipWords = {"somebody can tip me some mon, thanks!", "please tip me some mon, thanks!", "who can tip me some mon, thanks!", "I need some mon, thanks!"};
+        int tipWordIndex = random.nextInt(tipWords.length);
+        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
+        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
         //打开游戏跳过对话
         actionList.add(Task.Action.buildMoveClickAction(1750, 450));
         actionList.add(Task.Action.buildSleepAction(7));

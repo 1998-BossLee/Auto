@@ -66,33 +66,34 @@ public class Main {
 
     static HashSet<String> taskIds = new HashSet<>() {
         {
-            add(TaskConstant.Monad.SWITCH);
+//            add(TaskConstant.Monad.SWITCH);
 
 
 //            add(TaskConstant.Monad.FAUCET);
-            add(TaskConstant.Monad.FAUCET_MORKIE);
-            add(TaskConstant.Monad.FAUCET_TALENTUM);
-            add(TaskConstant.Monad.FAUCET_DUSTED);
-            add(TaskConstant.Monad.FAUCET_NERZO);
+//            add(TaskConstant.Monad.FAUCET_MORKIE);
+//            add(TaskConstant.Monad.FAUCET_TALENTUM);
+//            add(TaskConstant.Monad.FAUCET_DUSTED);
+//            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
-            add(TaskConstant.Monad.NFT_MONAI);
+//            add(TaskConstant.Monad.NFT_MONAI);
 //            add(TaskConstant.Monad.NFT_NERZO);
 //            add(TaskConstant.Monad.NFT_MAGICEDEN);
 //            add(TaskConstant.Monad.NFT_MORKIE);
 
 //            add(TaskConstant.Monad.VISIT_TALENTUM);
 
+//            add(TaskConstant.Monad.MINTAIR);
+
             add(TaskConstant.Monad.TALENTUM_STREASK);
+            add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.A_PRIOR);
             add(TaskConstant.Monad.BEAN);
-//            add(TaskConstant.Monad.AICRAFT);
+            add(TaskConstant.Monad.AICRAFT);
             add(TaskConstant.Monad.BEBOP);
             add(TaskConstant.Monad.SHMONAD);
             add(TaskConstant.Monad.KINZA);
             add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.MINTAIR);
-            add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.KINTSU);
             add(TaskConstant.Monad.MONORAIL);
             add(TaskConstant.Monad.ATLANTIS);
