@@ -468,7 +468,7 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(15));//claim
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(12));
-        int aicraftCnt = account.quality * 5 + 1 + random.nextInt(10);
+        int aicraftCnt = account.quality * 10 + 1 + random.nextInt(10);
         System.out.println("aicraftCnt: " + aicraftCnt);
         while (aicraftCnt-- > 0) {
             int[] aicraftVoteYs = {200, 780};
