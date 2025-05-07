@@ -27,11 +27,11 @@ public class Main {
 
     private static List<Task> initRandomTask(Account account) {
         taskList = new ArrayList<>();
-        taskList.addAll(Sepolia.getDailyTasks(account));
-        taskList.addAll(DeSpeed.getDailyTasks(account));
+//        taskList.addAll(Sepolia.getDailyTasks(account));
+//        taskList.addAll(DeSpeed.getDailyTasks(account));
 //        taskList.addAll(LayerEdge.getDailyTasks(account));
-        taskList.addAll(Newton.getDailyTasks(account));
-        taskList.addAll(Sahara.getDailyTasks(account));
+//        taskList.addAll(Newton.getDailyTasks(account));
+//        taskList.addAll(Sahara.getDailyTasks(account));
 
         taskList.addAll(Monad.getAllTask(account));
         taskList = taskList.stream().filter(task -> taskIds.contains(task.id)).collect(Collectors.toList());
@@ -40,27 +40,27 @@ public class Main {
 
     static HashSet<String> testAccounts = new HashSet<>() {
         {
-//            add("google");
-//            add("ads-1");
-//            add("ads-2");
-//            add("ads-4");
-//            add("ads-5");
-//            add("ads-6");
-//            add("hub-41");
-//            add("hub-42");
-//            add("hub-43");
-//            add("hub-44");
-//            add("hub-45");
-//            add("hub-46");
-//            add("hub-47");
-//            add("hub-48");
-//            add("hub-49");
-//            add("hub-50");
-//            add("hub-51");
-//            add("hub-52");
-//            add("hub-53");
+            add("google");
+            add("ads-1");
+            add("ads-2");
+            add("ads-4");
+            add("ads-5");
+            add("ads-6");
+            add("hub-41");
+            add("hub-42");
+            add("hub-43");
+            add("hub-44");
+            add("hub-45");
+            add("hub-46");
+            add("hub-47");
+            add("hub-48");
+            add("hub-49");
+            add("hub-50");
+            add("hub-51");
+            add("hub-52");
+            add("hub-53");
             add("hub-54");
-//            add("hub-55");
+            add("hub-55");
         }
     };
 
@@ -80,23 +80,24 @@ public class Main {
 //            add(TaskConstant.Monad.NFT_NERZO);
 //            add(TaskConstant.Monad.NFT_MAGICEDEN);
 //            add(TaskConstant.Monad.NFT_MORKIE);
-//            add(TaskConstant.Monad.NFT_NERZO);
 
-            add(TaskConstant.Monad.VISIT_TALENTUM);
+//            add(TaskConstant.Monad.VISIT_TALENTUM);
 
-//            add(TaskConstant.Monad.TALENTUM_STREASK);
-//            add(TaskConstant.Monad.A_PRIOR);
-//            add(TaskConstant.Monad.BEAN);
-//            add(TaskConstant.Monad.AICRAFT);
-//            add(TaskConstant.Monad.BEBOP);
-//            add(TaskConstant.Monad.SHMONAD);
-//            add(TaskConstant.Monad.KINZA);
-//            add(TaskConstant.Monad.OWLTO);
 //            add(TaskConstant.Monad.MINTAIR);
-//            add(TaskConstant.Monad.KURU);
-//            add(TaskConstant.Monad.KINTSU);
-//            add(TaskConstant.Monad.MONORAIL);
-//
+
+            add(TaskConstant.Monad.TALENTUM_STREASK);
+            add(TaskConstant.Monad.KURU);
+            add(TaskConstant.Monad.A_PRIOR);
+            add(TaskConstant.Monad.BEAN);
+            add(TaskConstant.Monad.AICRAFT);
+            add(TaskConstant.Monad.BEBOP);
+            add(TaskConstant.Monad.SHMONAD);
+            add(TaskConstant.Monad.KINZA);
+            add(TaskConstant.Monad.OWLTO);
+            add(TaskConstant.Monad.KINTSU);
+            add(TaskConstant.Monad.MONORAIL);
+            add(TaskConstant.Monad.ATLANTIS);
+
 //            add(TaskConstant.Depin.DESPEED);
 //            add(TaskConstant.Depin.BLOCK_MESH);
 //            add(TaskConstant.Sepolia.FAUCET);
@@ -108,32 +109,36 @@ public class Main {
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
 //        Collections.shuffle(accountList);
-//        Collections.reverse(accountList);
-        List<Account> shuffleAccountList = new ArrayList<>(accountList);
-        accountList.addAll(shuffleAccountList);
+        Collections.reverse(accountList);
+        while (true) {
+            for (int i = 0; i < accountList.size(); i++) {
+                Account account = accountList.get(i);
+                try {
+                    if (!testAccounts.contains(account.name)) {
+                        continue;//打开就是单测任务
+                    }
+                    if (account.evm == null || account.evm.isEmpty()) {
+                        continue;
+                    }
+                    Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
+                    MouseUtil.executeAction(startAccountAction);
+                    taskList = initRandomTask(account);
 
-        for (int i = 0; i < accountList.size(); i++) {
-            Account account = accountList.get(i);
-            if (!testAccounts.contains(account.name)) {
-                continue;//打开就是单测任务
-            }
-            if (account.evm == null || account.evm.isEmpty()) {
-                continue;
-            }
-            Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
-            MouseUtil.executeAction(startAccountAction);
-            taskList = initRandomTask(account);
-
-            for (Task task : taskList) {
-                System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" +task.name));
-                if (!needToExecuteTask(account.name, task)) {
-                    continue;
+                    for (Task task : taskList) {
+                        System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" + task.name));
+                        if (!needToExecuteTask(account.name, task)) {
+                            continue;
+                        }
+                        for (Task.Action action : task.actionList) {
+                            MouseUtil.executeAction(action);
+                        }
+                        Thread.sleep(3000 + random.nextInt(10000));
+                    }
+                } catch (Exception e) {
+                    System.err.println("error:" + e.getMessage());
                 }
-                for (Task.Action action : task.actionList) {
-                    MouseUtil.executeAction(action);
-                }
-                Thread.sleep(5000 + random.nextInt(10000));
             }
+            Thread.sleep(10000);
         }
     }
 

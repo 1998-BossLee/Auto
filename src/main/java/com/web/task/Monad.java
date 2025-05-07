@@ -19,8 +19,8 @@ public class Monad {
         LinkedList<Task> taskList = new LinkedList<>();
         taskList.addAll(Monad.getTalentumVisitTasks(account));
         taskList.addAll(Monad.getRandomTasks(account));
-        taskList.addAll(Monad.getMonadAINFTTasks());
-        taskList.addAll(Monad.getNonceTasks(account));
+//        taskList.addAll(Monad.getMonadAINFTTasks());
+        taskList.addAll(Monad.getTalentumNFTsTasks(account));
         taskList.addAll(Monad.getMorkieNFTTasks(account));
         taskList.addAll(Monad.getNerzoNFTTasks(account));
         Collections.shuffle(taskList);
@@ -80,11 +80,11 @@ public class Monad {
             actionList = new ArrayList<>();
             actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 7));
             actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 570));
-            actionList.add(Task.Action.buildInputTextAction(950, 570, account.evm));
-            for (int i = 1; i <= 2; i++) {
-                actionList.add(Task.Action.buildMoveClickAction(950, 640));
-                actionList.add(Task.Action.buildSleepAction(15));
+            actionList.add(Task.Action.buildMoveClickAction(950, 600));
+            actionList.add(Task.Action.buildInputTextAction(950, 600, account.evm));
+            for (int i = 1; i <= 3; i++) {
+                actionList.add(Task.Action.buildMoveClickAction(950, 660));
+                actionList.add(Task.Action.buildSleepAction(5));
             }
             task.actionList = actionList;
         }
@@ -99,18 +99,9 @@ public class Monad {
             actionList.add(Task.Action.buildMoveClickAction(950, 840));
             actionList.add(Task.Action.buildSleepAction(5));
             actionList.add(Task.Action.buildMoveClickAction(950, 900));
-            task.actionList = actionList;
-        }
-
-        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45";
-        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
-        if (glacierfiAccounts.contains(account.name)) {
-            taskList.add(task);
-            actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://glacierfi.com/faucet", 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 600));
-            actionList.add(Task.Action.buildSleepAction(10));
-            actionList.add(Task.Action.buildSignAction());
+            actionList.add(Task.Action.buildMoveClickAction(950, 840));
+            actionList.add(Task.Action.buildSleepAction(5));
+            actionList.add(Task.Action.buildMoveClickAction(950, 900));
             task.actionList = actionList;
         }
 
@@ -132,8 +123,22 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
 
+
+//        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49";
+//        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
+//        if (glacierfiAccounts.contains(account.name)) {
+//            taskList.add(task);
+//            actionList = new ArrayList<>();
+//            actionList.add(Task.Action.buildOpenUrlAction("https://glacierfi.com/faucet", 10));
+//            actionList.add(Task.Action.buildMoveClickAction(950, 600));
+//            actionList.add(Task.Action.buildSleepAction(10));
+//            actionList.add(Task.Action.buildSignAction());
+//            task.actionList = actionList;
+//        }
+
+
         task = new Task(TaskConstant.Monad.FAUCET_DUSTED, "", 0);
-        String dustedAccountIds = "ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48";
+        String dustedAccountIds = "ads-1,ads-2,ads-4,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-47,hub-48";
         if (dustedAccountIds.contains(account.name)) {
             taskList.add(task);
         }
@@ -141,12 +146,17 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 20));
         //登录
         actionList.add(Task.Action.buildMoveClickAction(950, 670));
-        actionList.add(Task.Action.buildMoveClickAction(950, 760));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(15));
+        actionList.add(Task.Action.buildMoveClickAction(950, 900));
+        actionList.add(Task.Action.buildSleepAction(5));
         //乞讨
-        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, "somebody can tip me 1 mon, thanks!"));
+        String[] tipWords = {"somebody can tip me some mon, thanks!", "please tip me some mon, thanks!", "who can tip me some mon, thanks!", "I need some mon, thanks!"};
+        int tipWordIndex = random.nextInt(tipWords.length);
+        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
+        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
         //打开游戏跳过对话
         actionList.add(Task.Action.buildMoveClickAction(1750, 450));
         actionList.add(Task.Action.buildSleepAction(7));
@@ -169,21 +179,21 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1700, 520));//claim
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
-
-
-
-
         return taskList;
     }
 
 
     //只能做一次的任务，例如NFT
-    public static List<Task> getNonceTasks(Account account) {
+    public static List<Task> getTalentumNFTsTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
+        String alreadyAccount = "google";
+        if (alreadyAccount.contains(account.name)) {
+            return taskList;
+        }
         Task task;
         List<Task.Action> actionList;
         //暂时没水，不做
-        String s = "2739,2745,2750,2760,2779,2812,2813,2857,2838,2778,2929,2925,2920,2959,2914,2934,2909";
+        String s = "2750,2812,2857,2838,2778,2925,2920,2959,2914,2934,2909";
         List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
         Collections.shuffle(talentumNFTTaskIds);
 //        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
@@ -196,40 +206,16 @@ public class Monad {
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));// 【start work】
             actionList.add(Task.Action.buildSleepAction(15));
 
-            //位置可能不一样，为了方便直接两个坐标都走一遍
-            //坐标1
-            actionList.add(Task.Action.buildMoveClickAction(550, 800));//【Mint】
-            actionList.add(Task.Action.buildSleepAction(1));
+            actionList.add(Task.Action.buildMoveClickAction(550, 810));//【Mint】
+            actionList.add(Task.Action.buildSleepAction(5));
             actionList.add(Task.Action.buildSignAction());//【sign】
             actionList.add(Task.Action.buildSleepAction(5));
-//            actionList.add(Task.Action.buildMoveClickAction(1050, 815));//【verify】
-//            actionList.add(Task.Action.buildSleepAction(10));
-            //坐标2
-//            actionList.add(Task.Action.buildMoveClickAction(550, 850));//【Mint】
-//            actionList.add(Task.Action.buildSleepAction(10));
-//            actionList.add(Task.Action.buildSignAction());//【sign】
-//            actionList.add(Task.Action.buildSleepAction(15));
-//            actionList.add(Task.Action.buildMoveClickAction(1050, 850));//【verify】
-//            actionList.add(Task.Action.buildSleepAction(10));
-
-
+            actionList.add(Task.Action.buildMoveClickAction(1050, 810));//【verify】
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
-            actionList.add(Task.Action.buildSleepAction(1));
             task.actionList = actionList;
         }
-
-//        task = new Task(TaskConstant.Monad.NFT_MAGICEDEN, "1", 1);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://magiceden.us/mint-terminal/monad-testnet/0x3b46f41179ea285b386a2182e6168937ed52a458", 15));
-//        actionList.add(Task.Action.buildMoveClickAction(1200, 900));
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
-
-
-
-
-        return taskList;
+        Collections.shuffle(taskList);
+        return taskList.subList(0, random.nextInt(taskList.size()));
     }
 
     public static List<Task> getMorkieNFTTasks(Account account) {
@@ -320,9 +306,10 @@ public class Monad {
         //taskId - x,x,y
         //最平常的
         int workX = 550, verifyX = 1050;
-        map.put("2956,2957,3113,3116,3124,3156,3159,3120,3162,3165,3166,3168,3169,4638,3170,3171,3172,3152,3154,2960", 700);
+        //map.put("3085", 670);
+        map.put("2956,2957,3113,3116,3124,3156,3159,3120,3162,3165,3166,3168,3169,4638,3170,3171,3172,3152,3154,2960,2961,2955,3001,3158,3119,4651", 700);
         map.put("3159,3163,3164,4640,4642,4643,4645,3157", 730);
-        map.put("3160,3167,", 750);
+        map.put("3160,3167,3161", 750);
         map.put("4637", 800);
         map.put("4636,4641", 850);
         map.put("4639", 890);
@@ -366,7 +353,7 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 600));//切换到monad链
         actionList.add(Task.Action.buildMoveClickAction(660, 444));//打勾
         actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
-        actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.01, 0.03, 4)));
+        actionList.add(Task.Action.buildInputTextAction(950, 414, random(account, 0.001, 0.005, 4)));
         actionList.add(Task.Action.buildSleepAction(10));//需要一点时间计算质押对应的金额
         actionList.add(Task.Action.buildMoveClickAction(950, 655));
         actionList.add(Task.Action.buildSleepAction(15));
@@ -387,6 +374,7 @@ public class Monad {
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
+        //TODO 对不准
         task = new Task(TaskConstant.Monad.A_PRIOR, "withdrawals-claim", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -394,8 +382,10 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 600));//切链
         actionList.add(Task.Action.buildMoveClickAction(660, 444));//打勾
         actionList.add(Task.Action.buildMoveClickAction(950, 780));//同意
-        actionList.add(Task.Action.buildMoveClickAction(660, 490));
-        actionList.add(Task.Action.buildMoveClickAction(950, 670));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 300));
+        actionList.add(Task.Action.buildScrollDownAction(30));
+        actionList.add(Task.Action.buildMoveClickAction(660, 705));//勾选最后一个
+        actionList.add(Task.Action.buildMoveClickAction(950, 820));//claim
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -425,6 +415,33 @@ public class Monad {
         task.actionList = actionList;
 
 
+        task = new Task(TaskConstant.Monad.ATLANTIS, "swap", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://app.atlantisdex.xyz/mint-nft", 10));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 300));
+        actionList.add(Task.Action.buildScrollDownAction(20));
+        actionList.add(Task.Action.buildMoveClickAction(950, 720));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildOpenUrlAction("https://app.atlantisdex.xyz/swap/v4/?inputCurrency=0x0000000000000000000000000000000000000000&outputCurrency=0x1eA9099E3026e0b3F8Dd6FbacAa45f30fCe67431", 15));
+        String amount = random(account, 0.0001, 0.0005, 4);
+        int atlantiCnt = 10 + random.nextInt(5);
+        for (int i = 1; i <= atlantiCnt; i++) {
+            actionList.add(Task.Action.buildInputTextAction(900, 440, amount));
+            actionList.add(Task.Action.buildSleepAction(5));
+            actionList.add(Task.Action.buildMoveClickAction(950, 680));
+            actionList.add(Task.Action.buildSignAction());
+            actionList.add(Task.Action.buildSleepAction(3 + random.nextInt(7)));
+        }
+        actionList.add(Task.Action.buildOpenUrlAction("https://app.atlantisdex.xyz/mint-nft", 10));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 300));
+        actionList.add(Task.Action.buildScrollDownAction(20));
+        actionList.add(Task.Action.buildMoveClickAction(950, 720));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+
+
+
         //美国，加拿大IP不能用 https://www.magmastaking.xyz/?invitedBy=OnFFFD
 //        task = new Task("monad-8", "magma-stake", 0);
 //        //taskList.add(task);
@@ -451,7 +468,7 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(15));//claim
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(12));
-        int aicraftCnt = account.quality * 5 + 1 + random.nextInt(10);
+        int aicraftCnt = account.quality * 10 + 1 + random.nextInt(10);
         System.out.println("aicraftCnt: " + aicraftCnt);
         while (aicraftCnt-- > 0) {
             int[] aicraftVoteYs = {200, 780};
@@ -515,6 +532,7 @@ public class Monad {
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
+        //TODO 报风险
         //https://monad-test.kinza.finance/#/details/MON 还有其他任务
 //        task = new Task(TaskConstant.Monad.KINZA, "supply", 0);
 //        taskList.add(task);
@@ -527,6 +545,7 @@ public class Monad {
 //        actionList.add(Task.Action.buildSleepAction(25)); //等得比较久
 //        task.actionList = actionList;
 //
+        //TODO 报风险
 //        task = new Task(TaskConstant.Monad.KINZA, "withdraw", 0);
 //        taskList.add(task);
 //        actionList = new ArrayList<>();
@@ -539,7 +558,7 @@ public class Monad {
 //        task.actionList = actionList;
 
 
-        //owlto
+        //owlto TODO 连不上
         task = new Task(TaskConstant.Monad.OWLTO, "deploy", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -550,15 +569,15 @@ public class Monad {
         task.actionList = actionList;
 
 
-        //https://contracts.mintair.xyz/ 以后og也可以部署
-        task = new Task(TaskConstant.Monad.MINTAIR, "deploy", 0);
-        taskList.add(task);
-        actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://contracts.mintair.xyz/", 20));
-        actionList.add(Task.Action.buildMoveClickAction(750, 530));//monad
-        actionList.add(Task.Action.buildMoveClickAction(950, 830));//switch chian 或者 deploy
-        actionList.add(Task.Action.buildSignAction());
-        task.actionList = actionList;
+        //https://contracts.mintair.xyz/ 位置老是变
+//        task = new Task(TaskConstant.Monad.MINTAIR, "deploy", 0);
+//        taskList.add(task);
+//        actionList = new ArrayList<>();
+//        actionList.add(Task.Action.buildOpenUrlAction("https://contracts.mintair.xyz/", 20));
+//        actionList.add(Task.Action.buildMoveClickAction(750, 530));//monad
+//        actionList.add(Task.Action.buildMoveClickAction(950, 830));//switch chian 或者 deploy
+//        actionList.add(Task.Action.buildSignAction());
+//        task.actionList = actionList;
 
 
         //200w融资 https://www.kuru.io/markets  卡死
@@ -628,7 +647,7 @@ public class Monad {
         task.actionList = actionList;
 
         task = new Task(TaskConstant.Monad.KINTSU, "useDefi", 0);
-//        taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://kintsu.xyz/unstaking", 15));
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
@@ -663,6 +682,7 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 790));//streak now!
         actionList.add(Task.Action.buildMoveClickAction(1666, 322));//选钱包
         actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(5));
         task.actionList = actionList;
 
 
@@ -676,31 +696,33 @@ public class Monad {
         int size = taskList.size();
         List<Task> doubleTaskList = new ArrayList<>();
         doubleTaskList.addAll(taskList);
-        return doubleTaskList.subList(0, 3 + (size / 2));
+//        return doubleTaskList.subList(0, (size / 4) + random.nextInt(size / 2));
+        return doubleTaskList;
     }
 
     public static List<Task> getMonadAINFTTasks() {
         List<Task> taskList = new ArrayList<>();
         Task task;
         List<Task.Action> actionList = new ArrayList<>();
-//        List<String> refUrls = new ArrayList<>();
-//        refUrls.add("https://monai.gg/nft?ref-code=WGVGJA");
-//        refUrls.add("https://monai.gg/nft?ref-code=8EM4H5");
-//        refUrls.add("https://monai.gg/nft?ref-code=ME3CNK");
-//        Collections.shuffle(refUrls);
-//        task = new Task("monad-12", "monai-nft-week1", 1);
-//        taskList.add(task);
-//        actionList.add(Task.Action.buildOpenUrlAction(refUrls.get(0), 15)); //选好mon和wmon了
-//        actionList.add(Task.Action.buildMoveClickAction(885,585));
-//        actionList.add(Task.Action.buildCloseWindowAction());
-//        actionList.add(Task.Action.buildMoveClickAction(885, 650));
-//        actionList.add(Task.Action.buildCloseWindowAction());
-//        actionList.add(Task.Action.buildMoveClickAction(885, 715));
-//        actionList.add(Task.Action.buildCloseWindowAction());
-//        actionList.add(Task.Action.buildSleepAction(30));
-//        actionList.add(Task.Action.buildMoveClickAction(1200, 860));
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
+        List<String> refUrls = new ArrayList<>();
+        refUrls.add("https://monai.gg/nft?ref-code=WGVGJA");
+        refUrls.add("https://monai.gg/nft?ref-code=8EM4H5");
+        refUrls.add("https://monai.gg/nft?ref-code=ME3CNK");
+        refUrls.add("https://monai.gg/nft?ref-code=QN7P0G");
+        Collections.shuffle(refUrls);
+        task = new Task(TaskConstant.Monad.NFT_MONAI, "week6", 1);
+        taskList.add(task);
+        actionList.add(Task.Action.buildOpenUrlAction(refUrls.get(0), 15));
+        actionList.add(Task.Action.buildMoveClickAction(885,585));
+        actionList.add(Task.Action.buildCloseWindowAction());
+        actionList.add(Task.Action.buildMoveClickAction(885, 650));
+        actionList.add(Task.Action.buildCloseWindowAction());
+        actionList.add(Task.Action.buildMoveClickAction(885, 715));
+        actionList.add(Task.Action.buildCloseWindowAction());
+        actionList.add(Task.Action.buildSleepAction(30));
+        actionList.add(Task.Action.buildMoveClickAction(1200, 860));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
 
 
         return taskList;
@@ -710,7 +732,7 @@ public class Monad {
     static Random random = new Random();
 
     private static String random(Account account, double min, double max, int digit) {
-        double d = max * account.quality + min + random.nextFloat() * (max - min);
+        double d = min * account.quality + min + random.nextFloat() * (max - min);
         String s = String.format("%." + digit + "f", d);
         return s;
     }
