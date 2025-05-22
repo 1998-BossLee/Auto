@@ -41,7 +41,7 @@ public class Monad {
         Task task = new Task(TaskConstant.Monad.SWITCH, "", 0);
         List<Task.Action> actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
-        actionList.add(Task.Action.buildMoveClickAction(1700, 230));//
+        actionList.add(Task.Action.buildMoveClickAction(1700, 160));//
         actionList.add(Task.Action.buildMoveClickAction(830, 600));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
@@ -107,13 +107,10 @@ public class Monad {
 
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
-        String talentumAccounts = "hub-44,hub-46,hub-47,hub-48";
-        if (talentumAccounts.contains(account.name)) {
-            taskList.add(task);
-        }
+        taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 30));
-        actionList.add(Task.Action.buildMoveClickAction(1300, 150));
+        actionList.add(Task.Action.buildMoveClickAction(1200, 150));
         actionList.add(Task.Action.buildMoveClickAction(950, 660));
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
@@ -517,8 +514,8 @@ public class Monad {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
-        actionList.add(Task.Action.buildInputTextAction(950, 690, random(account, 0.01, 0.02, 4)));
-        actionList.add(Task.Action.buildMoveClickAction(950, 780));
+        actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.01, 0.02, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -526,8 +523,8 @@ public class Monad {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://www.shmonad.xyz/", 15));
-        actionList.add(Task.Action.buildMoveClickAction(1000, 420));
-        actionList.add(Task.Action.buildInputTextAction(950, 680, random(account, 0.001, 0.01, 4)));
+        actionList.add(Task.Action.buildMoveClickAction(1000, 350));
+        actionList.add(Task.Action.buildInputTextAction(950, 610, random(account, 0.001, 0.01, 4)));
         actionList.add(Task.Action.buildMoveClickAction(950, 700));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
@@ -697,7 +694,7 @@ public class Monad {
         List<Task> doubleTaskList = new ArrayList<>();
         doubleTaskList.addAll(taskList);
 //        return doubleTaskList.subList(0, (size / 4) + random.nextInt(size / 2));
-        return doubleTaskList;
+        return doubleTaskList.subList(0, size/2);
     }
 
     public static List<Task> getMonadAINFTTasks() {

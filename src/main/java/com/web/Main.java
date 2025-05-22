@@ -70,10 +70,10 @@ public class Main {
 
 
 //            add(TaskConstant.Monad.FAUCET);
-//            add(TaskConstant.Monad.FAUCET_MORKIE);
-//            add(TaskConstant.Monad.FAUCET_TALENTUM);
-//            add(TaskConstant.Monad.FAUCET_DUSTED);
-//            add(TaskConstant.Monad.FAUCET_NERZO);
+            add(TaskConstant.Monad.FAUCET_MORKIE);
+            add(TaskConstant.Monad.FAUCET_TALENTUM);
+            add(TaskConstant.Monad.FAUCET_DUSTED);
+            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
@@ -108,8 +108,8 @@ public class Main {
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
-//        Collections.shuffle(accountList);
-        Collections.reverse(accountList);
+        Collections.shuffle(accountList);
+//        Collections.reverse(accountList);
         while (true) {
             for (int i = 0; i < accountList.size(); i++) {
                 Account account = accountList.get(i);
@@ -138,7 +138,8 @@ public class Main {
                     System.err.println("error:" + e.getMessage());
                 }
             }
-            Thread.sleep(10000);
+            Thread.sleep(20*60*1000);
+//            break;
         }
     }
 
