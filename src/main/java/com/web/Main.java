@@ -86,17 +86,17 @@ public class Main {
 //            add(TaskConstant.Monad.MINTAIR);
 
             add(TaskConstant.Monad.TALENTUM_STREASK);
-            add(TaskConstant.Monad.KURU);
-            add(TaskConstant.Monad.A_PRIOR);
-            add(TaskConstant.Monad.BEAN);
-            add(TaskConstant.Monad.AICRAFT);
-            add(TaskConstant.Monad.BEBOP);
-            add(TaskConstant.Monad.SHMONAD);
-            add(TaskConstant.Monad.KINZA);
-            add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.KINTSU);
-            add(TaskConstant.Monad.MONORAIL);
-            add(TaskConstant.Monad.ATLANTIS);
+//            add(TaskConstant.Monad.KURU);
+//            add(TaskConstant.Monad.A_PRIOR);
+//            add(TaskConstant.Monad.BEAN);
+//            add(TaskConstant.Monad.AICRAFT);
+//            add(TaskConstant.Monad.BEBOP);
+//            add(TaskConstant.Monad.SHMONAD);
+//            add(TaskConstant.Monad.KINZA);
+//            add(TaskConstant.Monad.OWLTO);
+//            add(TaskConstant.Monad.KINTSU);
+//            add(TaskConstant.Monad.MONORAIL);
+//            add(TaskConstant.Monad.ATLANTIS);
 
 //            add(TaskConstant.Depin.DESPEED);
 //            add(TaskConstant.Depin.BLOCK_MESH);
@@ -139,7 +139,7 @@ public class Main {
                 }
             }
             Thread.sleep(20*60*1000);
-//            break;
+            break;
         }
     }
 

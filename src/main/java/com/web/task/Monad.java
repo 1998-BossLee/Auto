@@ -693,8 +693,11 @@ public class Monad {
         int size = taskList.size();
         List<Task> doubleTaskList = new ArrayList<>();
         doubleTaskList.addAll(taskList);
-//        return doubleTaskList.subList(0, (size / 4) + random.nextInt(size / 2));
-        return doubleTaskList.subList(0, size/2);
+        if (account.quality == 0) {
+            return taskList;
+        } else {
+            return doubleTaskList;
+        }
     }
 
     public static List<Task> getMonadAINFTTasks() {
