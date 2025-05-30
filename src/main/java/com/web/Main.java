@@ -85,7 +85,7 @@ public class Main {
 
 //            add(TaskConstant.Monad.MINTAIR);
 
-            add(TaskConstant.Monad.TALENTUM_STREASK);
+            add(TaskConstant.Monad.TALENTUM_STREASK);//
 //            add(TaskConstant.Monad.KURU);
 //            add(TaskConstant.Monad.A_PRIOR);
 //            add(TaskConstant.Monad.BEAN);
