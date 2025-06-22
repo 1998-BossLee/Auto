@@ -11,7 +11,7 @@ public interface TaskConstant {
         String FAUCET_DUSTED = "monad-faucet-dusted";
         String FAUCET_NERZO = "monad-faucet-nerzo";
         String FAUCET_GLACIERFI = "monad-faucet-glacierfi";
-
+        String FAUCET_MEME = "monad-faucet-meme";
 
         String NFT_TALENTUM = "monad-NFT-talentum";
         String NFT_MONAI = "monad-NFT-monai";

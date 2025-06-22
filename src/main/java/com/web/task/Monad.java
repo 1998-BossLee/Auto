@@ -25,11 +25,17 @@ public class Monad {
         taskList.addAll(Monad.getNerzoNFTTasks(account));
         Collections.shuffle(taskList);
 
-        //全部打乱，领水任务重中之重，前后各一次
+        //穷鬼账号只做2个任务
+        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
+        if (poorAccountIds.contains(account.name)) {
+            taskList = new LinkedList<>();
+            taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
+        }
+        //全部打乱，领水任务重中之重，放在最前
         List<Task> faucetTasks = Monad.getFaucetTasks(account);
         for (Task task : faucetTasks) {
             taskList.addFirst(task);
-            taskList.add(task);
+//            taskList.add(task);
         }
 
         //最后加上switch任务
@@ -80,12 +86,37 @@ public class Monad {
             actionList = new ArrayList<>();
             actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 7));
             actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 600));
-            actionList.add(Task.Action.buildInputTextAction(950, 600, account.evm));
+            actionList.add(Task.Action.buildMoveClickAction(950, 570));
+            actionList.add(Task.Action.buildInputTextAction(950, 570, account.evm));
             for (int i = 1; i <= 3; i++) {
-                actionList.add(Task.Action.buildMoveClickAction(950, 660));
+                actionList.add(Task.Action.buildMoveClickAction(950, 630));
                 actionList.add(Task.Action.buildSleepAction(5));
             }
+            task.actionList = actionList;
+        }
+
+
+        String memeBridgeAccounts = "google,ads-1,ads-2";
+        task = new Task(TaskConstant.Monad.FAUCET_MEME, "google,ads-1,ads-2,hub-41,hub-42,hub-43", 0);
+        if (memeBridgeAccounts.contains(account.name)) {
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://www.memebridge.xyz/faucet/monad", 10));
+            actionList.add(Task.Action.buildInputTextAction(1300, 570, account.evm));
+
+            actionList.add(Task.Action.buildMoveClickAction(1300, 680));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1630, 680));
+            actionList.add(Task.Action.buildSleepAction(5));
+
+            actionList.add(Task.Action.buildMoveClickAction(1300, 770));
+            actionList.add(Task.Action.buildCloseWindowAction());
+            actionList.add(Task.Action.buildMoveClickAction(1630, 770));
+            actionList.add(Task.Action.buildSleepAction(5));
+
+
+            actionList.add(Task.Action.buildMoveClickAction(1300, 850));
+            actionList.add(Task.Action.buildSleepAction(5));
             task.actionList = actionList;
         }
 
@@ -108,9 +139,10 @@ public class Monad {
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
         taskList.add(task);
+        taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 30));
-        actionList.add(Task.Action.buildMoveClickAction(1200, 150));
+        actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1240, 160));
         actionList.add(Task.Action.buildMoveClickAction(950, 660));
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
@@ -132,6 +164,7 @@ public class Monad {
 //            actionList.add(Task.Action.buildSignAction());
 //            task.actionList = actionList;
 //        }
+
 
 
         task = new Task(TaskConstant.Monad.FAUCET_DUSTED, "", 0);
