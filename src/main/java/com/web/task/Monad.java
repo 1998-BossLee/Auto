@@ -96,8 +96,8 @@ public class Monad {
         }
 
 
-        String memeBridgeAccounts = "google,ads-1,ads-2";
-        task = new Task(TaskConstant.Monad.FAUCET_MEME, "google,ads-1,ads-2,hub-41,hub-42,hub-43", 0);
+        String memeBridgeAccounts = "google,ads-1,ads-2,ads-4";
+        task = new Task(TaskConstant.Monad.FAUCET_MEME, "", 0);
         if (memeBridgeAccounts.contains(account.name)) {
             taskList.add(task);
             actionList = new ArrayList<>();
