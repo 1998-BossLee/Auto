@@ -18,13 +18,13 @@ public class Somnia {
 
     public static List<Task> getDailyTasks(Account account) {
         List<Task> taskList = new ArrayList<>();
-        Task task = new Task(TaskConstant.Sahara.FAUCET, "", 0);
-        taskList.add(task);
-        List<Task.Action> actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.somnia.network/", 15 ));
-        actionList.add(Task.Action.buildMoveClickAction(660, 700));
-        actionList.add(Task.Action.buildMoveClickAction(1220, 630));
-        task.actionList = actionList;
+//        Task task = new Task(TaskConstant.Sahara.FAUCET, "", 0);
+//        taskList.add(task);
+//        List<Task.Action> actionList = new ArrayList<>();
+//        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.somnia.network/", 15 ));
+//        actionList.add(Task.Action.buildMoveClickAction(660, 700));
+//        actionList.add(Task.Action.buildMoveClickAction(1220, 630));
+//        task.actionList = actionList;
 
 
 //        task = new Task(TaskConstant.Monad.MINTAIR, "deploy", 0);

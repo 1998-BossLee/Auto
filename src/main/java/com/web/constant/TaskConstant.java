@@ -38,31 +38,16 @@ public interface TaskConstant {
         String ATLANTIS = "monad-atlantis";
     }
 
-    interface Sahara {
-        String FAUCET = "sahara-faucet";
-    }
 
     interface Depin {
         String DESPEED = "despeed-sign";
         String BLOCK_MESH = "blockMesh-liveness";
     }
 
-    interface Human {
-        String SIGN = "human-sign";
-        String FAUCET = "human-faucet";
-    }
-
     interface Sepolia {
         String FAUCET = "sepolia-faucet";
     }
 
-    interface Newton {
-        String SIGN = "newton-sign";
-    }
-
-    interface LayerEdge {
-        String SIGN = "layerEdge-sign";
-    }
 
     interface Twitter {
         String BROWSE = "browse";

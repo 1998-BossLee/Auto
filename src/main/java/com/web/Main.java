@@ -29,9 +29,6 @@ public class Main {
         taskList = new ArrayList<>();
 //        taskList.addAll(Sepolia.getDailyTasks(account));
 //        taskList.addAll(DeSpeed.getDailyTasks(account));
-//        taskList.addAll(LayerEdge.getDailyTasks(account));
-//        taskList.addAll(Newton.getDailyTasks(account));
-//        taskList.addAll(Sahara.getDailyTasks(account));
 
         taskList.addAll(Monad.getAllTask(account));
         taskList = taskList.stream().filter(task -> taskIds.contains(task.id)).collect(Collectors.toList());
@@ -41,11 +38,11 @@ public class Main {
     static HashSet<String> testAccounts = new HashSet<>() {
         {
             add("google");
-            add("ads-1");
-            add("ads-2");
-            add("ads-4");
-            add("ads-5");
-            add("ads-6");
+//            add("ads-1");
+//            add("ads-2");
+//            add("ads-4");
+//            add("ads-5");
+//            add("ads-6");
             add("hub-41");
             add("hub-42");
             add("hub-43");
