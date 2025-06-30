@@ -73,7 +73,7 @@ public class Main {
             add(TaskConstant.Monad.FAUCET_DUSTED);
             add(TaskConstant.Monad.FAUCET_NERZO);
 
-            add(TaskConstant.Monad.NFT_TALENTUM);
+//            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
 //            add(TaskConstant.Monad.NFT_NERZO);
 //            add(TaskConstant.Monad.NFT_MAGICEDEN);
@@ -87,7 +87,7 @@ public class Main {
             add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.A_PRIOR);
             add(TaskConstant.Monad.BEAN);
-//            add(TaskConstant.Monad.AICRAFT);
+            add(TaskConstant.Monad.AICRAFT);
             add(TaskConstant.Monad.BEBOP);
             add(TaskConstant.Monad.SHMONAD);
 //            add(TaskConstant.Monad.KINZA);
@@ -104,7 +104,7 @@ public class Main {
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
-//        Collections.shuffle(accountList);
+        Collections.shuffle(accountList);
 //        Collections.reverse(accountList);
         while (true) {
             for (int i = 0; i < accountList.size(); i++) {

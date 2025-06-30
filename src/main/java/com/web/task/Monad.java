@@ -26,11 +26,11 @@ public class Monad {
         Collections.shuffle(taskList);
 
         //穷鬼账号只做2个任务
-//        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
-//        if (poorAccountIds.contains(account.name)) {
-//            taskList = new LinkedList<>();
-//            taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
-//        }
+        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
+        if (poorAccountIds.contains(account.name)) {
+            taskList = new LinkedList<>();
+            taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
+        }
         //全部打乱，领水任务重中之重，放在最前
         List<Task> faucetTasks = Monad.getFaucetTasks(account);
         for (Task task : faucetTasks) {
@@ -60,6 +60,7 @@ public class Monad {
         Task task;
         List<Task.Action> actionList;
 
+        String monadAccounts = "google,ads-2,ads-4,hub-49";
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
         task = new Task(TaskConstant.Monad.FAUCET, "", 0);
         taskList.add(task);
