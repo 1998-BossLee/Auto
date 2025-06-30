@@ -1,5 +1,7 @@
 package com.web;
 
+import java.util.Arrays;
+
 /**
  * @author: liyangjin
  * @create: 2025-03-07 16:31
@@ -8,9 +10,13 @@ package com.web;
 public class Test {
 
     public static void main(String[] args) {
-        String line = "OAID_84467FEA0A28B4A2C355DC599AFDE419   2       f82d8660-1d68-4401-902a-84dc4210d59e    HUAWEI  1747230317";
-        String[] parts = line.trim().split("\\s+");
-        System.out.println("parts.length=" + parts.length);
+        String s = "4648,2842,4759,3063,3118,4760,2867,4761,4795,2724,2922,2843,3121,4759,2998,2999,3122,4804,4805,2963,4809,4762,4817,3060,3156";
+        String[] parts = s.split(",");
+        Arrays.sort(parts);
+        for (String part : parts) {
+            System.out.println(part);
+        }
+        System.out.println(parts.length);
     }
 
     /**

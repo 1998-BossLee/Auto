@@ -26,11 +26,11 @@ public class Monad {
         Collections.shuffle(taskList);
 
         //穷鬼账号只做2个任务
-        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
-        if (poorAccountIds.contains(account.name)) {
-            taskList = new LinkedList<>();
-            taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
-        }
+//        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
+//        if (poorAccountIds.contains(account.name)) {
+//            taskList = new LinkedList<>();
+//            taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
+//        }
         //全部打乱，领水任务重中之重，放在最前
         List<Task> faucetTasks = Monad.getFaucetTasks(account);
         for (Task task : faucetTasks) {
@@ -96,7 +96,7 @@ public class Monad {
         }
 
 
-        String memeBridgeAccounts = "google,ads-1,ads-2,ads-4";
+        String memeBridgeAccounts = "google,ads-1,ads-2,ads-4,hub-49";
         task = new Task(TaskConstant.Monad.FAUCET_MEME, "", 0);
         if (memeBridgeAccounts.contains(account.name)) {
             taskList.add(task);
@@ -224,6 +224,7 @@ public class Monad {
         List<Task.Action> actionList;
         //暂时没水，不做
         String s = "2750,2812,2857,2838,2778,2925,2920,2959,2914,2934,2909";
+        s = "4648,2842,4759,3063,3118,4760,2867,4761,4795,2724,2922,2843,3121,4759,2998,2999,3122,4804,4805,2963,4809,4762,4817,3060,3156,3154,4651,3124,3120,4788,3119";
         List<String> talentumNFTTaskIds = Arrays.asList(s.split(","));
         Collections.shuffle(talentumNFTTaskIds);
 //        talentumNFTTaskIds = talentumNFTTaskIds.subList(0, random.nextInt(talentumNFTTaskIds.size() / 3));
@@ -234,18 +235,18 @@ public class Monad {
             actionList = new ArrayList<>();
             actionList.add(Task.Action.buildOpenUrlAction(url, 10));
             actionList.add(Task.Action.buildMoveClickAction(1511, 932));// 【start work】
-            actionList.add(Task.Action.buildSleepAction(15));
-
-            actionList.add(Task.Action.buildMoveClickAction(550, 810));//【Mint】
-            actionList.add(Task.Action.buildSleepAction(5));
-            actionList.add(Task.Action.buildSignAction());//【sign】
-            actionList.add(Task.Action.buildSleepAction(5));
-            actionList.add(Task.Action.buildMoveClickAction(1050, 810));//【verify】
-            actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
+//            actionList.add(Task.Action.buildSleepAction(15));
+//
+//            actionList.add(Task.Action.buildMoveClickAction(550, 810));//【Mint】
+//            actionList.add(Task.Action.buildSleepAction(5));
+//            actionList.add(Task.Action.buildSignAction());//【sign】
+//            actionList.add(Task.Action.buildSleepAction(5));
+//            actionList.add(Task.Action.buildMoveClickAction(1050, 810));//【verify】
+//            actionList.add(Task.Action.buildMoveClickAction(1511, 932));//【claim reward】
             task.actionList = actionList;
         }
         Collections.shuffle(taskList);
-        return taskList.subList(0, random.nextInt(taskList.size()));
+        return taskList;
     }
 
     public static List<Task> getMorkieNFTTasks(Account account) {
