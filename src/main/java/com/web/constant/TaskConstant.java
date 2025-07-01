@@ -46,6 +46,7 @@ public interface TaskConstant {
 
     interface Sepolia {
         String FAUCET = "sepolia-faucet";
+        String QUICK_NODE = "sepolia-quick-node";
     }
 
 

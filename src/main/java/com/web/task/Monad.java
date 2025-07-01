@@ -65,18 +65,29 @@ public class Monad {
         task = new Task(TaskConstant.Monad.FAUCET, "", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 20));
-        actionList.add(Task.Action.buildMoveClickAction(1754, 227));
-        actionList.add(Task.Action.buildScrollDownAction(-20));
-        actionList.add(Task.Action.buildMoveClickAction(1754, 327));
-        actionList.add(Task.Action.buildScrollDownAction(10));
-        actionList.add(Task.Action.buildInputTextAction(1300, 320, account.evm));
+        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.monad.xyz/", 10));
         for (int i = 1; i <= 2; i++) {
-            actionList.add(Task.Action.buildMoveClickAction(1155, 420));
-            actionList.add(Task.Action.buildSleepAction(3));
-            actionList.add(Task.Action.buildMoveClickAction(1300, 500));
-            actionList.add(Task.Action.buildSleepAction(20));
+            actionList.add(Task.Action.buildInputTextAction(950, 0, account.evm)); //input
+            actionList.add(Task.Action.buildSleepAction(10));//reload
+            actionList.add(Task.Action.buildMoveClickAction(0, 0));//human
+            actionList.add(Task.Action.buildSleepAction(5));//reload
+            actionList.add(Task.Action.buildMoveClickAction(0, 0));//get token
+            actionList.add(Task.Action.buildSleepAction(5));//wait for submit
         }
+        task.actionList = actionList;
+
+
+        task = new Task(TaskConstant.Sepolia.QUICK_NODE, "", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.quicknode.com/drip", 10));
+        actionList.add(Task.Action.buildMoveClickAction(0, 0));//Connect Wallet
+        actionList.add(Task.Action.buildMoveClickAction(0, 0));//Connect Metamask
+        actionList.add(Task.Action.buildMoveClickAction(1800, 200));
+        actionList.add(Task.Action.buildScrollDownAction(3));//往下滚动
+        actionList.add(Task.Action.buildMoveClickAction(0, 0));//Continue
+        actionList.add(Task.Action.buildInputTextAction(0, 0, "https://x.com/NePbYF6hKc73025/status/1922475877398380677"));//Tweet URL
+        actionList.add(Task.Action.buildMoveClickAction(0, 0));//Claim
         task.actionList = actionList;
 
         //打开网址-对焦钱包输入框-输入钱包地址-send
