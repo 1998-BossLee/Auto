@@ -13,6 +13,7 @@ public interface Constants {
     String SIGN = "sign";
     String CANCEL_SIGN = "cancelSign";
     String CLOSE_WINDOW = "closeWindow";
+    String REFRESH = "refresh";
     String META_MASK_SIGN = "metaMaskSign";
     String CANCEL_META_MASK_SIGN = "cancelMetaMaskSign";
 

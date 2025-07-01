@@ -364,6 +364,11 @@ public class MouseUtil {
                 robot.delay(15000);
                 moveToAndClick(action);
                 break;
+            case REFRESH:
+                action.x = config.getInteger("refreshX");
+                action.y = config.getInteger("refreshY");
+                robot.delay(15000);
+                break;
 
         }
     }

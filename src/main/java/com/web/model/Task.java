@@ -109,6 +109,12 @@ public class Task {
             return action;
         }
 
+        public static Action refreshPageAction() {
+            Action action = new Action();
+            action.op = REFRESH;
+            return action;
+        }
+
     }
 
     public Task(String id, String name, int type) {
