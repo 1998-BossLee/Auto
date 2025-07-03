@@ -51,6 +51,14 @@ public class Task {
             return action;
         }
 
+        public static Action buildMoveWithoutClickAction(int x, int y) {
+            Action action = new Action();
+            action.op = MOVE;
+            action.x = x;
+            action.y = y;
+            return action;
+        }
+
         public static Action buildMoveClickAction(int x, int y) {
             Action action = new Action();
             action.op = MOVE_AND_CLICK;

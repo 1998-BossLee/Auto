@@ -442,6 +442,8 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1000, 650));//切链，如果没有也不影响
         actionList.add(Task.Action.buildInputTextAction(950, 508, random(account, 0.001, 0.005, 4)));
         actionList.add(Task.Action.buildMoveClickAction(730, 547));
+        int roll = random.nextInt(100) % 4;
+//        actionList.add(Task.Action.buildScrollDownAction(roll));
         List<Integer> swapCoinYs = new ArrayList<>();
         swapCoinYs.add(550);
         swapCoinYs.add(550 + 62);

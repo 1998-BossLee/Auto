@@ -5,6 +5,7 @@ import java.util.HashSet;
 public interface Constants {
 
     String OPEN_URL = "openUrl";
+    String MOVE = "move";
     String MOVE_AND_CLICK = "moveAndClick";
     String INPUT_TEXT = "inputText";
     String INPUT_TEXT_ENTER = "inputTextEnter";

@@ -311,6 +311,9 @@ public class MouseUtil {
             case OPEN_URL:
                 openUrl(action);
                 break;
+            case MOVE:
+                move(action.x, action.y);
+                break;
             case MOVE_AND_CLICK:
                 moveToAndClick(action);
                 break;
