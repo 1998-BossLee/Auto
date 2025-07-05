@@ -66,7 +66,7 @@ public class Main {
 //            add(TaskConstant.Monad.SWITCH);
 
 
-//            add(TaskConstant.Monad.FAUCET);
+            add(TaskConstant.Monad.FAUCET);
             add(TaskConstant.Monad.FAUCET_MORKIE);
             add(TaskConstant.Monad.FAUCET_MEME);
             add(TaskConstant.Monad.FAUCET_TALENTUM);
@@ -83,7 +83,7 @@ public class Main {
 
 //            add(TaskConstant.Monad.MINTAIR);
 
-//            add(TaskConstant.Monad.TALENTUM_STREASK);//
+            add(TaskConstant.Monad.TALENTUM_STREASK);//
             add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.A_PRIOR);
             add(TaskConstant.Monad.BEAN);

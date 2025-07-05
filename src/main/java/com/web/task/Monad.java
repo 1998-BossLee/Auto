@@ -60,21 +60,23 @@ public class Monad {
         Task task;
         List<Task.Action> actionList;
 
-        String monadAccounts = "google,ads-2,ads-4,hub-49";
+        String monadAccounts = "google,ads-2,ads-4,ads-5,hub-49";
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
-        task = new Task(TaskConstant.Monad.FAUCET, "", 0);
-        taskList.add(task);
-        actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://faucet.monad.xyz/", 10));
-        for (int i = 1; i <= 2; i++) {
-            actionList.add(Task.Action.buildInputTextAction(950, 0, account.evm)); //input
-            actionList.add(Task.Action.buildSleepAction(10));//reload
-            actionList.add(Task.Action.buildMoveClickAction(0, 0));//human
-            actionList.add(Task.Action.buildSleepAction(5));//reload
-            actionList.add(Task.Action.buildMoveClickAction(0, 0));//get token
-            actionList.add(Task.Action.buildSleepAction(5));//wait for submit
+        if (monadAccounts.contains(account.name)) {
+            task = new Task(TaskConstant.Monad.FAUCET, "", 0);
+            taskList.add(task);
+            actionList = new ArrayList<>();
+            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.monad.xyz/", 10));
+            for (int i = 1; i <= 3; i++) {
+                actionList.add(Task.Action.buildInputTextAction(950, 460, account.evm)); //input
+                actionList.add(Task.Action.buildSleepAction(10));//load
+                actionList.add(Task.Action.buildMoveClickAction(780, 570));//human
+                actionList.add(Task.Action.buildSleepAction(5));//reload
+                actionList.add(Task.Action.buildMoveClickAction(950, 660));//get token
+                actionList.add(Task.Action.buildSleepAction(5));//wait for submit
+            }
+            task.actionList = actionList;
         }
-        task.actionList = actionList;
 
 
         task = new Task(TaskConstant.Sepolia.QUICK_NODE, "", 0);
