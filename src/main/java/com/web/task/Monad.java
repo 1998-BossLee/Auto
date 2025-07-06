@@ -39,7 +39,7 @@ public class Monad {
         }
 
         //最后加上switch任务
-        taskList.addFirst(switchMonadTask());
+//        taskList.addFirst(switchMonadTask());
         return taskList;
     }
 
@@ -66,14 +66,14 @@ public class Monad {
             task = new Task(TaskConstant.Monad.FAUCET, "", 0);
             taskList.add(task);
             actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.monad.xyz/", 10));
+            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.monad.xyz/", 20));
             for (int i = 1; i <= 3; i++) {
-                actionList.add(Task.Action.buildInputTextAction(950, 460, account.evm)); //input
-                actionList.add(Task.Action.buildSleepAction(10));//load
-                actionList.add(Task.Action.buildMoveClickAction(780, 570));//human
-                actionList.add(Task.Action.buildSleepAction(5));//reload
-                actionList.add(Task.Action.buildMoveClickAction(950, 660));//get token
-                actionList.add(Task.Action.buildSleepAction(5));//wait for submit
+//                actionList.add(Task.Action.buildInputTextAction(950, 460, account.evm)); //input
+//                actionList.add(Task.Action.buildSleepAction(10));//load
+                actionList.add(Task.Action.buildMoveClickAction(780, 585));//human
+                actionList.add(Task.Action.buildSleepAction(10));//reload
+                actionList.add(Task.Action.buildMoveClickAction(950, 650));//get token
+                actionList.add(Task.Action.buildSleepAction(10));//wait for submit
             }
             task.actionList = actionList;
         }
@@ -510,6 +510,7 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(5));
         actionList.add(Task.Action.buildMoveClickAction(1780, 705));//connect
+        actionList.add(Task.Action.buildMoveClickAction(1050, 435));//okx
         actionList.add(Task.Action.buildMoveClickAction(1050, 700));//sign
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(15));//claim

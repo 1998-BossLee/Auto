@@ -39,7 +39,7 @@ public class Main {
         {
             add("google");
             add("ads-1");
-//            add("ads-2");
+            add("ads-2");
             add("ads-4");
             add("ads-5");
             add("ads-6");
@@ -90,9 +90,10 @@ public class Main {
             add(TaskConstant.Monad.AICRAFT);
             add(TaskConstant.Monad.BEBOP);
             add(TaskConstant.Monad.SHMONAD);
+            add(TaskConstant.Monad.KINTSU);
+
 //            add(TaskConstant.Monad.KINZA);
 //            add(TaskConstant.Monad.OWLTO);
-            add(TaskConstant.Monad.KINTSU);
 //            add(TaskConstant.Monad.MONORAIL);
 //            add(TaskConstant.Monad.ATLANTIS);
 
@@ -104,7 +105,7 @@ public class Main {
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
-        Collections.shuffle(accountList);
+//        Collections.shuffle(accountList);
 //        Collections.reverse(accountList);
         while (true) {
             for (int i = 0; i < accountList.size(); i++) {
@@ -128,7 +129,7 @@ public class Main {
                         for (Task.Action action : task.actionList) {
                             MouseUtil.executeAction(action);
                         }
-                        Thread.sleep(100);
+                        Thread.sleep(3000);
                     }
                 } catch (Exception e) {
                     System.err.println("error:" + e.getMessage());
