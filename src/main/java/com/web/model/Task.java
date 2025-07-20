@@ -117,9 +117,10 @@ public class Task {
             return action;
         }
 
-        public static Action refreshPageAction() {
+        public static Action refreshPageAction(int sleepSecond) {
             Action action = new Action();
             action.op = REFRESH;
+            action.h = sleepSecond;
             return action;
         }
 

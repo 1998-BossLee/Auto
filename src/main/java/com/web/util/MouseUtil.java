@@ -370,7 +370,8 @@ public class MouseUtil {
             case REFRESH:
                 action.x = config.getInteger("refreshX");
                 action.y = config.getInteger("refreshY");
-                robot.delay(15000);
+                moveToAndClick(action);
+                Thread.sleep(action.h * 1000L);
                 break;
 
         }

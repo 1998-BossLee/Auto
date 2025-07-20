@@ -70,7 +70,7 @@ public class Monad {
             for (int i = 1; i <= 3; i++) {
 //                actionList.add(Task.Action.buildInputTextAction(950, 460, account.evm)); //input
 //                actionList.add(Task.Action.buildSleepAction(10));//load
-                actionList.add(Task.Action.buildMoveClickAction(780, 585));//human
+                actionList.add(Task.Action.buildMoveClickAction(780, 570));//human
                 actionList.add(Task.Action.buildSleepAction(10));//reload
                 actionList.add(Task.Action.buildMoveClickAction(950, 650));//get token
                 actionList.add(Task.Action.buildSleepAction(10));//wait for submit
@@ -98,8 +98,8 @@ public class Monad {
         if (morkieAccounts.contains(account.name)) {
             taskList.add(task);
             actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 7));
-            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 10));
+            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.morkie.xyz/monad#google_vignette", 5));
+            actionList.add(Task.Action.refreshPageAction(7));
             actionList.add(Task.Action.buildMoveClickAction(950, 570));
             actionList.add(Task.Action.buildInputTextAction(950, 570, account.evm));
             for (int i = 1; i <= 3; i++) {
@@ -116,20 +116,20 @@ public class Monad {
             taskList.add(task);
             actionList = new ArrayList<>();
             actionList.add(Task.Action.buildOpenUrlAction("https://www.memebridge.xyz/faucet/monad", 10));
-            actionList.add(Task.Action.buildInputTextAction(1300, 570, account.evm));
+            actionList.add(Task.Action.buildInputTextAction(1220, 550, account.evm));
 
-            actionList.add(Task.Action.buildMoveClickAction(1300, 680));
+            actionList.add(Task.Action.buildMoveClickAction(1220, 655));
             actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1630, 680));
+            actionList.add(Task.Action.buildMoveClickAction(1630, 655));
             actionList.add(Task.Action.buildSleepAction(5));
 
-            actionList.add(Task.Action.buildMoveClickAction(1300, 770));
+            actionList.add(Task.Action.buildMoveClickAction(1220, 745));
             actionList.add(Task.Action.buildCloseWindowAction());
-            actionList.add(Task.Action.buildMoveClickAction(1630, 770));
+            actionList.add(Task.Action.buildMoveClickAction(1630, 745));
             actionList.add(Task.Action.buildSleepAction(5));
 
 
-            actionList.add(Task.Action.buildMoveClickAction(1300, 850));
+            actionList.add(Task.Action.buildMoveClickAction(1300, 830));
             actionList.add(Task.Action.buildSleepAction(5));
             task.actionList = actionList;
         }
@@ -507,12 +507,13 @@ public class Monad {
         actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 25));
         actionList.add(Task.Action.buildMoveClickAction(1050, 700));
         actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(10));
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(5));
         actionList.add(Task.Action.buildMoveClickAction(1780, 705));//connect
         actionList.add(Task.Action.buildMoveClickAction(1050, 435));//okx
-        actionList.add(Task.Action.buildMoveClickAction(1050, 700));//sign
         actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildMoveClickAction(1050, 700));//sign
         actionList.add(Task.Action.buildSleepAction(15));//claim
         actionList.add(Task.Action.buildMoveClickAction(1700, 300));
         actionList.add(Task.Action.buildScrollDownAction(12));
