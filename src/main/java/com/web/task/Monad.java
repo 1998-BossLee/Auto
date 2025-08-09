@@ -26,7 +26,7 @@ public class Monad {
         Collections.shuffle(taskList);
 
         //穷鬼账号只做2个任务
-        String  poorAccountIds = "ads-2,ads-4,ads-5,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49,hub-52,hub-53,hub-54,hub-55";
+        String  poorAccountIds = "hub-51,hub-52,hub-53,hub-54,hub-55";
         if (poorAccountIds.contains(account.name)) {
             taskList = new LinkedList<>();
             taskList.addAll(Monad.getRandomTasks(account).subList(0, 3));
@@ -156,12 +156,21 @@ public class Monad {
         taskList.add(task);
         actionList = new ArrayList<>();
         actionList.add(Task.Action.buildOpenUrlAction("https://monad.talentum.id/", 20));
+        actionList.add(Task.Action.buildMoveClickAction(1210, 270));
+        actionList.add(Task.Action.buildSleepAction(5));
+        actionList.add(Task.Action.buildMoveClickAction(1770, 150));
+        actionList.add(Task.Action.buildSleepAction(5));
+        actionList.add(Task.Action.buildMoveClickAction(910, 770));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSleepAction(10));
+
+
         actionList.add(Task.Action.buildMoveClickAction(1240, 160));
         actionList.add(Task.Action.buildMoveClickAction(950, 660));
         actionList.add(Task.Action.buildMoveClickAction(950, 580));
         actionList.add(Task.Action.buildMoveClickAction(950, 690));
         actionList.add(Task.Action.buildMoveClickAction(950, 780));
-        actionList.add(Task.Action.buildSleepAction(20));
+        actionList.add(Task.Action.buildSleepAction(15));
         actionList.add(Task.Action.buildMoveClickAction(950, 665));
         actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
@@ -187,20 +196,20 @@ public class Monad {
             taskList.add(task);
         }
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://www.dusted.app/login", 15));
         //登录
         actionList.add(Task.Action.buildMoveClickAction(950, 670));
         actionList.add(Task.Action.buildMoveClickAction(950, 700));
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSignAction());
-        actionList.add(Task.Action.buildSleepAction(15));
-        actionList.add(Task.Action.buildMoveClickAction(950, 900));
-        actionList.add(Task.Action.buildSleepAction(5));
+//        actionList.add(Task.Action.buildSleepAction(15));
+//        actionList.add(Task.Action.buildMoveClickAction(950, 900));
+//        actionList.add(Task.Action.buildSleepAction(5));
         //乞讨
-        String[] tipWords = {"somebody can tip me some mon, thanks!", "please tip me some mon, thanks!", "who can tip me some mon, thanks!", "I need some mon, thanks!"};
-        int tipWordIndex = random.nextInt(tipWords.length);
-        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
-        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
+//        String[] tipWords = {"somebody can tip me some mon, thanks!", "please tip me some mon, thanks!", "who can tip me some mon, thanks!", "I need some mon, thanks!"};
+//        int tipWordIndex = random.nextInt(tipWords.length);
+//        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
+//        actionList.add(Task.Action.buildInputTextEnterAction(950, 1000, tipWords[tipWordIndex]));
         //打开游戏跳过对话
         actionList.add(Task.Action.buildMoveClickAction(1750, 450));
         actionList.add(Task.Action.buildSleepAction(7));
@@ -439,7 +448,8 @@ public class Monad {
         task = new Task(TaskConstant.Monad.BEAN, "swap", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://swap.bean.exchange/swap", 15));
+        actionList.add(Task.Action.buildOpenUrlAction("https://swap.bean.exchange/swap", 7));
+        actionList.add(Task.Action.refreshPageAction(7));
         actionList.add(Task.Action.buildMoveClickAction(1666, 322));//OKX和小狐狸二选一
         actionList.add(Task.Action.buildMoveClickAction(1000, 650));//切链，如果没有也不影响
         actionList.add(Task.Action.buildInputTextAction(950, 508, random(account, 0.001, 0.005, 4)));
@@ -611,7 +621,10 @@ public class Monad {
         task = new Task(TaskConstant.Monad.OWLTO, "deploy", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://owlto.finance/deploy/?chain=MonadTestnet", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://owlto.finance/deploy/?chain=MonadTestnet", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 170)); //Connect Wallet
+        actionList.add(Task.Action.buildMoveClickAction(1150, 500)); //okx
+        actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildMoveClickAction(1300, 700));
         actionList.add(Task.Action.buildSleepAction(5)); //等得比较久
         actionList.add(Task.Action.buildSignAction());
