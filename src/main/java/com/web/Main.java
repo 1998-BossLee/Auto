@@ -105,8 +105,8 @@ public class Main {
 
     //TODO 提前打开一个没有用的页面
     public static void main(String[] args) throws Exception {
-//        Collections.shuffle(accountList);
-        Collections.reverse(accountList);
+        Collections.shuffle(accountList);
+//        Collections.reverse(accountList);
         while (true) {
             for (int i = 0; i < accountList.size(); i++) {
                 Account account = accountList.get(i);

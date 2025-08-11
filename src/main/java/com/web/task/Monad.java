@@ -134,21 +134,7 @@ public class Monad {
             task.actionList = actionList;
         }
 
-        //10POL的NFT https://faucet.nerzo.xyz/ 0.25/24h
-        String nerzoAccounts = "google,hub-47,hub-48,hub-50";
-        task = new Task(TaskConstant.Monad.FAUCET_NERZO, "", 0);
-        if (nerzoAccounts.contains(account.name)) {
-            taskList.add(task);
-            actionList = new ArrayList<>();
-            actionList.add(Task.Action.buildOpenUrlAction("https://faucet.nerzo.xyz/monad", 10));
-            actionList.add(Task.Action.buildMoveClickAction(950, 840));
-            actionList.add(Task.Action.buildSleepAction(5));
-            actionList.add(Task.Action.buildMoveClickAction(950, 900));
-            actionList.add(Task.Action.buildMoveClickAction(950, 840));
-            actionList.add(Task.Action.buildSleepAction(5));
-            actionList.add(Task.Action.buildMoveClickAction(950, 900));
-            task.actionList = actionList;
-        }
+
 
         //六连击
         task = new Task(TaskConstant.Monad.FAUCET_TALENTUM, "", 0);
@@ -499,15 +485,6 @@ public class Monad {
 
 
 
-        //美国，加拿大IP不能用 https://www.magmastaking.xyz/?invitedBy=OnFFFD
-//        task = new Task("monad-8", "magma-stake", 0);
-//        //taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://www.magmastaking.xyz/", 15));
-//        actionList.add(Task.Action.buildInputTextAction(0, 0, random(account, 0.001, 0.005, 4)));
-//        actionList.add(Task.Action.buildMoveClickAction(0, 0));
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
 
 
         //0.005 gas
@@ -591,30 +568,19 @@ public class Monad {
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
-        //TODO 报风险
-        //https://monad-test.kinza.finance/#/details/MON 还有其他任务
-//        task = new Task(TaskConstant.Monad.KINZA, "supply", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://monad-test.kinza.finance/#/details/MON", 15)); //选好mon和wmon了
-//        actionList.add(Task.Action.buildMoveClickAction(1550, 750));
-//        actionList.add(Task.Action.buildInputTextAction(800, 410, random(account, 0.01, 0.03, 4)));
-//        actionList.add(Task.Action.buildMoveClickAction(950, 675));
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildSleepAction(25)); //等得比较久
-//        task.actionList = actionList;
-//
-        //TODO 报风险
-//        task = new Task(TaskConstant.Monad.KINZA, "withdraw", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://monad-test.kinza.finance/#/details/MON", 15)); //选好mon和wmon了
-//        actionList.add(Task.Action.buildMoveClickAction(1550, 930));
-//        actionList.add(Task.Action.buildInputTextAction(800, 410, random(account, 0.01, 0.03, 4)));
-//        actionList.add(Task.Action.buildMoveClickAction(950, 675));
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildSleepAction(25)); //等得比较久
-//        task.actionList = actionList;
+
+        task = new Task(TaskConstant.Monad.A_PRIOR, "checkIn", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://of.apr.io/dashboard", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1796, 159));
+        actionList.add(Task.Action.buildMoveClickAction(950, 460));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
+
 
 
         //owlto TODO 连不上
