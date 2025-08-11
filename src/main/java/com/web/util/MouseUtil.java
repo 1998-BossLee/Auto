@@ -339,6 +339,7 @@ public class MouseUtil {
                 action.y = config.getInteger("signY");
                 robot.delay(15000);
                 moveToAndClick(action);
+                robot.delay(5000);
                 if (random.nextInt(4) != 0) {
                     break;
                 }

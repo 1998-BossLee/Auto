@@ -491,7 +491,7 @@ public class Monad {
         task = new Task(TaskConstant.Monad.AICRAFT, "vote", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 25));
+        actionList.add(Task.Action.buildOpenUrlAction("https://aicraft.fun/projects/fizen", 20));
         actionList.add(Task.Action.buildMoveClickAction(1050, 700));
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(10));
@@ -613,44 +613,38 @@ public class Monad {
         task = new Task(TaskConstant.Monad.KURU, "kuru-lite-sawp", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.kuru.io/swap?from=0x0000000000000000000000000000000000000000&to=0xf817257fed379853cDe0fa4F97AB987181B1E5Ea", 20));
-        actionList.add(Task.Action.buildMoveClickAction(950, 590));//选monad
-        actionList.add(Task.Action.buildMoveClickAction(1700, 300));//随便点掉
-        int[] kuruSwapCoinYs = {530, 600, 670, 740};
-        if (!ToolUtil.randomBoolean(5)) {
-            //4/5的概率进来选其他币，因此外面的USDC也有1/5的概率被选到
-            actionList.add(Task.Action.buildMoveClickAction(800, 515));
-            int kuruSwapCoinY = kuruSwapCoinYs[random.nextInt(4)];
-            actionList.add(Task.Action.buildMoveClickAction(950, kuruSwapCoinY));//选币
-        }
-        actionList.add(Task.Action.buildInputTextAction(950, 330, random(account, 0.003, 0.01, 4))); //输入mon
-        actionList.add(Task.Action.buildSleepAction(10));
-        actionList.add(Task.Action.buildMoveClickAction(950, 670));
-        actionList.add(Task.Action.buildSleepAction(10));
+        //随机选个币
+        String[] kuruSwapCoin = {"0xf817257fed379853cDe0fa4F97AB987181B1E5Ea", "0xe0590015a873bf326bd645c3e1266d4db41c4e6b", "0xe1d2439b75fb9746e7bc6cb777ae10aa7f7ef9c5",
+                "0x3a98250f98dd388c211206983453837c8365bdc1", "0xfe140e1dce99be9f4f15d657cd9b7bf622270c50", "0x0f0bdebf0f83cd1ee3974779bcb7315f9808c714",
+                "0x34d1ae6076aee4072f54e1156d2e507dd564a355", "0x73a58b73018c1a417534232529b57b99132b13d2", "0xb2f82d0f38dc453d596ad40a37799446cc89274a",
+                "0x268e4e24e0051ec27b3d27a95977e71ce6875a05", "0x07aabd925866e8353407e67c1d157836f7ad923e", "0x760afe86e5de5fa0ee542fc7b7b713e1c5425701",
+                "0xabd7afa2161eb7254c0a9dbb5fe79216b7c28e03", "0x39e95286dd43f8da34cbda8e4b656da9f53ca644", "0x743cef7ccc8ac56605c8404607142e5b35efa11d",
+                "0x4c10428ed0410dfb2de62fc007f7c1105ae861e9", "0x2fa2c507289be90ca50a8802f8d436d43001b521", "0x2bb4219b8e85c111613f3ee192a115676f230d35",
+                "0x8507f576eb214d172012065d58cfb38a4540b0a6", "0x91d00559ecda52d8d5ea87c2ccdc8d7d2abcb684"};
+        String kuruUrl = "https://www.kuru.io/swap?from=0x0000000000000000000000000000000000000000&to="+kuruSwapCoin[random.nextInt(kuruSwapCoin.length)];
+
+        actionList.add(Task.Action.buildOpenUrlAction(kuruUrl, 15));
+        actionList.add(Task.Action.buildInputTextAction(1120, 350, random(account, 0.003, 0.01, 4))); //输入mon
+        actionList.add(Task.Action.buildSleepAction(random.nextInt(5) + 5));
+        actionList.add(Task.Action.buildMoveClickAction(950, 700)); //swap
         actionList.add(Task.Action.buildSignAction());
-        actionList.add(Task.Action.buildSleepAction(10));
+        actionList.add(Task.Action.buildSleepAction(random.nextInt(5) + 2));
+
+
+//        int[] kuruSwapCoinYs = {530, 600, 670, 740};
+//        if (!ToolUtil.randomBoolean(5)) {
+//            //4/5的概率进来选其他币，因此外面的USDC也有1/5的概率被选到
+//            actionList.add(Task.Action.buildMoveClickAction(800, 515));
+//            int kuruSwapCoinY = kuruSwapCoinYs[random.nextInt(4)];
+//            actionList.add(Task.Action.buildMoveClickAction(950, kuruSwapCoinY));//选币
+//        }
+//        actionList.add(Task.Action.buildSleepAction(10));
+//        actionList.add(Task.Action.buildMoveClickAction(950, 670));
+//        actionList.add(Task.Action.buildSleepAction(10));
+//        actionList.add(Task.Action.buildSignAction());
+//        actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
 
-        //如果有wmon会有弹窗，把尺寸变了
-        task = new Task(TaskConstant.Monad.KURU, "kuru-lite-sawp", 0);
-        taskList.add(task);
-        actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://www.kuru.io/swap?from=0x0000000000000000000000000000000000000000&to=0xf817257fed379853cDe0fa4F97AB987181B1E5Ea", 20));
-        actionList.add(Task.Action.buildMoveClickAction(950, 590));//选monad
-        actionList.add(Task.Action.buildMoveClickAction(1700, 300));//随便点掉
-        if (!ToolUtil.randomBoolean(5)) {
-            //4/5的概率进来选其他币，因此外面的USDC也有1/5的概率被选到
-            actionList.add(Task.Action.buildMoveClickAction(800, 550));
-            int kuruSwapCoinY = kuruSwapCoinYs[random.nextInt(4)];
-            actionList.add(Task.Action.buildMoveClickAction(950, kuruSwapCoinY));//选币
-        }
-        actionList.add(Task.Action.buildInputTextAction(950, 350, random(account, 0.003, 0.01, 4))); //输入mon
-        actionList.add(Task.Action.buildSleepAction(10));
-        actionList.add(Task.Action.buildMoveClickAction(950, 690));
-        actionList.add(Task.Action.buildSignAction());
-        actionList.add(Task.Action.buildSleepAction(10));
-        task.actionList = actionList;
-        //TODO 过一段时间再把币换回来
 
         //400w融资
         task = new Task(TaskConstant.Monad.KINTSU, "staking", 0);
