@@ -569,17 +569,17 @@ public class Monad {
         task.actionList = actionList;
 
 
-        task = new Task(TaskConstant.Monad.A_PRIOR, "checkIn", 0);
-        taskList.add(task);
-        actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://of.apr.io/dashboard", 15));
-        actionList.add(Task.Action.buildMoveClickAction(1796, 159));
-        actionList.add(Task.Action.buildMoveClickAction(950, 460));
-        actionList.add(Task.Action.buildSignAction());
-        actionList.add(Task.Action.buildSignAction());
-        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
-        actionList.add(Task.Action.buildSignAction());
-        task.actionList = actionList;
+//        task = new Task(TaskConstant.Monad.A_PRIOR, "checkIn", 0);
+//        taskList.add(task);
+//        actionList = new ArrayList<>();
+//        actionList.add(Task.Action.buildOpenUrlAction("https://of.apr.io/dashboard", 15));
+//        actionList.add(Task.Action.buildMoveClickAction(1796, 159));
+//        actionList.add(Task.Action.buildMoveClickAction(950, 460));
+//        actionList.add(Task.Action.buildSignAction());
+//        actionList.add(Task.Action.buildSignAction());
+//        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+//        actionList.add(Task.Action.buildSignAction());
+//        task.actionList = actionList;
 
 
 

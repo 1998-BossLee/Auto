@@ -1,6 +1,7 @@
 package com.web.util;
 
 import com.alibaba.fastjson.JSONObject;
+import com.web.model.Account;
 import com.web.model.Task;
 
 import java.awt.*;
@@ -304,9 +305,17 @@ public class MouseUtil {
         }
     }
 
-    public static void executeAction(Task.Action action) throws Exception {
+    public static void executeAction(Account account, Task.Action action) throws Exception {
         robot.delay(1000);
         //System.out.println(String.format("executeAction op=%s text=%s x=%s y=%s h=%s", action.op, action.text, action.x, action.y, action.h));
+//        if (account.name.equals("ads-4")) {
+//            if (action.op.equals(SIGN)) {
+//                action.op = META_MASK_SIGN;
+//            }
+//            if (action.op.equals(CANCEL_SIGN)) {
+//                action.op = CANCEL_META_MASK_SIGN;
+//            }
+//        }
         switch (action.op) {
             case OPEN_URL:
                 openUrl(action);
@@ -361,7 +370,10 @@ public class MouseUtil {
                 action.y = config.getInteger("metaMaskY");
                 robot.delay(15000);
                 moveToAndClick(action);
-                break;
+                robot.delay(3000);
+                if (random.nextInt(4) != 0) {
+                    break;
+                }
             case CANCEL_META_MASK_SIGN:
                 action.x = config.getInteger("cancelMetaMaskX");
                 action.y = config.getInteger("cancelMetaMaskY");

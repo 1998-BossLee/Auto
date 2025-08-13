@@ -40,7 +40,7 @@ public class Main {
             add("google");
             add("ads-1");
             add("ads-2");
-//            add("ads-4");
+            add("ads-4");
             add("ads-5");
             add("ads-6");
             add("hub-41");
@@ -48,7 +48,7 @@ public class Main {
             add("hub-43");
             add("hub-44");
             add("hub-45");
-            add("hub-46");
+//            add("hub-46");
             add("hub-47");
             add("hub-48");
             add("hub-49");
@@ -118,7 +118,7 @@ public class Main {
                         continue;
                     }
                     Task.Action startAccountAction = new Task.Action(MOVE_AND_CLICK, "", account.x, account.y, 0);
-                    MouseUtil.executeAction(startAccountAction);
+                    MouseUtil.executeAction(account, startAccountAction);
                     taskList = initRandomTask(account);
 
                     for (Task task : taskList) {
@@ -127,7 +127,7 @@ public class Main {
                             continue;
                         }
                         for (Task.Action action : task.actionList) {
-                            MouseUtil.executeAction(action);
+                            MouseUtil.executeAction(account, action);
                         }
                         Thread.sleep(3000);
                     }
