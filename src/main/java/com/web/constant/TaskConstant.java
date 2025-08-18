@@ -36,6 +36,7 @@ public interface TaskConstant {
         String MONORAIL = "monad-monorail";
         String CLOBER = "monad-clober";
         String ATLANTIS = "monad-atlantis";
+        String MONAD = "monad.xyz";
     }
 
 

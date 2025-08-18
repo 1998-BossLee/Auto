@@ -63,7 +63,7 @@ public class Main {
 
     static HashSet<String> taskIds = new HashSet<>() {
         {
-//            add(TaskConstant.Monad.SWITCH);行393别82の6锕33370行393别82の6嗄333787850啊0都被别搭0奥尔a87850啊0电报别嗒0奥尔a
+//            add(TaskConstant.Monad.SWITCH);
 
 
             add(TaskConstant.Monad.FAUCET);
@@ -71,7 +71,7 @@ public class Main {
 //            add(TaskConstant.Monad.FAUCET_MEME);
             add(TaskConstant.Monad.FAUCET_TALENTUM);
             add(TaskConstant.Monad.FAUCET_DUSTED);
-            add(TaskConstant.Monad.FAUCET_NERZO);
+//            add(TaskConstant.Monad.FAUCET_NERZO);
 
 //            add(TaskConstant.Monad.NFT_TALENTUM);
 //            add(TaskConstant.Monad.NFT_MONAI);
@@ -79,10 +79,10 @@ public class Main {
 //            add(TaskConstant.Monad.NFT_MAGICEDEN);
 //            add(TaskConstant.Monad.NFT_MORKIE);
 
-//            add(TaskConstant.Monad.VISIT_TALENTUM);
+            add(TaskConstant.Monad.VISIT_TALENTUM);
 
-//            add(TaskConstant.Monad.MINTAIR);
-//
+            add(TaskConstant.Monad.MINTAIR);
+
             add(TaskConstant.Monad.TALENTUM_STREASK);//
             add(TaskConstant.Monad.KURU);
             add(TaskConstant.Monad.A_PRIOR);
@@ -92,9 +92,10 @@ public class Main {
             add(TaskConstant.Monad.SHMONAD);
             add(TaskConstant.Monad.KINTSU);
             add(TaskConstant.Monad.OWLTO);
+            add(TaskConstant.Monad.MONORAIL);
+            add(TaskConstant.Monad.MONAD);
 
 //            add(TaskConstant.Monad.KINZA);
-//            add(TaskConstant.Monad.MONORAIL);
 //            add(TaskConstant.Monad.ATLANTIS);
 
 //            add(TaskConstant.Depin.DESPEED);

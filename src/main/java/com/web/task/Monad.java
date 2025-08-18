@@ -535,18 +535,6 @@ public class Monad {
         task.actionList = actionList;
 
 
-        //clober gas太贵做不起 mon换usdc
-        //https://alpha.clober.io/earn?chain=10143
-//        task = new Task(TaskConstant.Monad.CLOBER, "swap", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://alpha.clober.io/trade", 25));
-//        actionList.add(Task.Action.buildInputTextAction(1300, 425, random(account, 0.001, 0.02, 3)));
-//        actionList.add(Task.Action.buildMoveClickAction(1300, 850));
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
-
 
         //0.003gas 这个要研究一下 830w融资
         task = new Task(TaskConstant.Monad.SHMONAD, "stake", 0);
@@ -569,21 +557,21 @@ public class Monad {
         task.actionList = actionList;
 
 
-//        task = new Task(TaskConstant.Monad.A_PRIOR, "checkIn", 0);
-//        taskList.add(task);
-//        actionList = new ArrayList<>();
-//        actionList.add(Task.Action.buildOpenUrlAction("https://of.apr.io/dashboard", 15));
-//        actionList.add(Task.Action.buildMoveClickAction(1796, 159));
-//        actionList.add(Task.Action.buildMoveClickAction(950, 460));
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
-//        actionList.add(Task.Action.buildSignAction());
-//        task.actionList = actionList;
+        task = new Task(TaskConstant.Monad.A_PRIOR, "checkIn", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://of.apr.io/dashboard", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1796, 159));
+        actionList.add(Task.Action.buildMoveClickAction(950, 460));
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildSignAction());
+        actionList.add(Task.Action.buildMoveClickAction(1050, 700));
+        actionList.add(Task.Action.buildSignAction());
+        task.actionList = actionList;
 
 
 
-        //owlto TODO 连不上
+        //owlto
         task = new Task(TaskConstant.Monad.OWLTO, "deploy", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
@@ -629,20 +617,6 @@ public class Monad {
         actionList.add(Task.Action.buildMoveClickAction(950, 700)); //swap
         actionList.add(Task.Action.buildSignAction());
         actionList.add(Task.Action.buildSleepAction(random.nextInt(5) + 2));
-
-
-//        int[] kuruSwapCoinYs = {530, 600, 670, 740};
-//        if (!ToolUtil.randomBoolean(5)) {
-//            //4/5的概率进来选其他币，因此外面的USDC也有1/5的概率被选到
-//            actionList.add(Task.Action.buildMoveClickAction(800, 515));
-//            int kuruSwapCoinY = kuruSwapCoinYs[random.nextInt(4)];
-//            actionList.add(Task.Action.buildMoveClickAction(950, kuruSwapCoinY));//选币
-//        }
-//        actionList.add(Task.Action.buildSleepAction(10));
-//        actionList.add(Task.Action.buildMoveClickAction(950, 670));
-//        actionList.add(Task.Action.buildSleepAction(10));
-//        actionList.add(Task.Action.buildSignAction());
-//        actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
 
 
@@ -678,21 +652,20 @@ public class Monad {
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
-        // TODO 换回来，巨亏 https://pandaria.lfj.gg/monad-testnet/swap?outputCurrency=MON&inputCurrency=0x07AabD925866E8353407E67C1D157836f7Ad923e
 
-        //质押 https://testnet-preview.monorail.xyz/
+        //质押 https://testnet-preview.monorail.xyz/ 垃圾项目，dc才几千人
         task = new Task(TaskConstant.Monad.MONORAIL, "swap", 0);
         taskList.add(task);
         actionList = new ArrayList<>();
-        actionList.add(Task.Action.buildOpenUrlAction("https://testnet-preview.monorail.xyz/", 20));
+        actionList.add(Task.Action.buildOpenUrlAction("https://testnet-preview.monorail.xyz/", 15));
         actionList.add(Task.Action.buildInputTextAction(850, 440, random(account, 0.002, 0.007, 4)));
-        if (!ToolUtil.randomBoolean(2)) {
-            actionList.add(Task.Action.buildMoveClickAction(630, 570));
-            int[] cionYs = {580, 650};
-            actionList.add(Task.Action.buildMoveClickAction(800, cionYs[random.nextInt(cionYs.length)]));
-        }
-        actionList.add(Task.Action.buildSleepAction(10));
-        actionList.add(Task.Action.buildMoveClickAction(750, 670));
+        actionList.add(Task.Action.buildMoveClickAction(650, 590));
+        actionList.add(Task.Action.buildMoveClickAction(580, 510));//verified
+        actionList.add(Task.Action.buildMoveWithoutClickAction(750, 500));
+        actionList.add(Task.Action.buildScrollDownAction(random.nextInt(10)));
+        actionList.add(Task.Action.buildMoveClickAction(800, 500));
+        actionList.add(Task.Action.buildMoveClickAction(750, 700));
+        actionList.add(Task.Action.buildSleepAction(random.nextInt(7)));
         actionList.add(Task.Action.buildSignAction());
         task.actionList = actionList;
 
@@ -707,6 +680,13 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(5));
         task.actionList = actionList;
 
+        task = new Task(TaskConstant.Monad.MONAD, "swap", 0);
+        taskList.add(task);
+        actionList = new ArrayList<>();
+        actionList.add(Task.Action.buildOpenUrlAction("https://testnet.monad.xyz/", 15));
+        actionList.add(Task.Action.buildMoveClickAction(1700, 300));
+        actionList.add(Task.Action.buildScrollDownAction(3));
+        task.actionList = actionList;
 
         //360w融资 https://monad.curvance.com/monad 操作很多
 
@@ -757,7 +737,7 @@ public class Monad {
     static Random random = new Random();
 
     private static String random(Account account, double min, double max, int digit) {
-        double d = min * account.quality + min + random.nextFloat() * (max - min);
+        double d = max * account.quality + min + random.nextFloat() * (max - min);
         String s = String.format("%." + digit + "f", d);
         return s;
     }
