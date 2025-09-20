@@ -4,6 +4,7 @@ import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
 import com.web.task.*;
+import com.web.util.BalanceCheckerUtil;
 import com.web.util.FileUtil;
 import com.web.util.MouseUtil;
 
@@ -124,6 +125,10 @@ public class Main {
 
                     for (Task task : taskList) {
                         System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" + task.name));
+                        if (BalanceCheckerUtil.getChainNativeBalance("monad", account.evm) < 0.05) {
+                            System.out.println("balance enough, break");
+                            break;
+                        }
                         if (!needToExecuteTask(account.name, task)) {
                             continue;
                         }
@@ -141,7 +146,6 @@ public class Main {
         }
     }
 
-    static Random random = new Random();
 
     public static String getCurrentTime() {
         // 获取当前时间
