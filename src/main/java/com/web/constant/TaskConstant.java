@@ -1,5 +1,7 @@
 package com.web.constant;
 
+import java.util.Set;
+
 public interface TaskConstant {
 
     interface Monad {
@@ -9,7 +11,6 @@ public interface TaskConstant {
         String FAUCET_MORKIE = "monad-faucet-morkie";
         String FAUCET_TALENTUM = "monad-faucet-talentum";
         String FAUCET_DUSTED = "monad-faucet-dusted";
-        String FAUCET_NERZO = "monad-faucet-nerzo";
         String FAUCET_GLACIERFI = "monad-faucet-glacierfi";
         String FAUCET_MEME = "monad-faucet-meme";
 
@@ -38,6 +39,15 @@ public interface TaskConstant {
         String ATLANTIS = "monad-atlantis";
         String MONAD = "monad.xyz";
     }
+
+    Set<String> MONAD_FAUCETS = Set.of(
+            Monad.FAUCET,
+            Monad.FAUCET_MORKIE,
+            Monad.FAUCET_TALENTUM,
+            Monad.FAUCET_DUSTED,
+            Monad.FAUCET_GLACIERFI,
+            Monad.FAUCET_MEME
+    );
 
 
     interface Depin {

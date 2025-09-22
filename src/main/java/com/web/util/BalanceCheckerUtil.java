@@ -85,15 +85,19 @@ public class BalanceCheckerUtil {
         return FunctionReturnDecoder.decode(response.getValue(), function.getOutputParameters());
     }
 
-    public static double getChainNativeBalance(String chain, String wallet) throws Exception {
-        ChainConfig cfg = CHAINS.get(chain);
-        if (cfg == null) {
-            throw new Exception("Unsupported chain: " + chain);
+    public static double getChainNativeBalance(String chain, String wallet) {
+        try {
+            ChainConfig cfg = CHAINS.get(chain);
+
+            Web3j web3 = Web3j.build(new HttpService(cfg.rpc));
+            EthGetBalance ethGetBalance = web3.ethGetBalance(wallet, DefaultBlockParameterName.LATEST).send();
+            BigInteger balanceWei = ethGetBalance.getBalance();
+            return balanceWei.doubleValue() / Math.pow(10, 18);
+        } catch (Exception e) {
+            System.err.println("BalanceCheckerUtil.getChainNativeBalance error chain=" + chain + " wallet=" + wallet + " error=" + e.getMessage());
+            return 0;
         }
-        Web3j web3 = Web3j.build(new HttpService(cfg.rpc));
-        EthGetBalance ethGetBalance = web3.ethGetBalance(wallet, DefaultBlockParameterName.LATEST).send();
-        BigInteger balanceWei = ethGetBalance.getBalance();
-        return balanceWei.doubleValue() / Math.pow(10, 18);
+
     }
 
 

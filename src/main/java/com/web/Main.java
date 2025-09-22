@@ -125,10 +125,14 @@ public class Main {
 
                     for (Task task : taskList) {
                         System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" + task.name));
-                        if (BalanceCheckerUtil.getChainNativeBalance("monad", account.evm) < 0.05) {
-                            System.out.println("balance enough, break");
-                            break;
+                        //非水龙头任务
+                        if (!TaskConstant.MONAD_FAUCETS.contains(task.id)) {
+                            if (BalanceCheckerUtil.getChainNativeBalance("monad", account.evm) < 0.05) {
+                                System.out.println("balance enough, break");
+                                break;
+                            }
                         }
+
                         if (!needToExecuteTask(account.name, task)) {
                             continue;
                         }

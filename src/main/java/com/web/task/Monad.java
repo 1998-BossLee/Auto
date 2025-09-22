@@ -3,6 +3,7 @@ package com.web.task;
 import com.web.constant.TaskConstant;
 import com.web.model.Account;
 import com.web.model.Task;
+import com.web.util.BalanceCheckerUtil;
 import com.web.util.ToolUtil;
 
 import java.util.*;
@@ -60,9 +61,8 @@ public class Monad {
         Task task;
         List<Task.Action> actionList;
 
-        String monadAccounts = "google,ads-2,ads-4,ads-5,hub-49";
         //打开网址-随便找个地方对焦-往下滚动-对焦钱包输入框-输入钱包地址-真人识别-点击领取
-        if (monadAccounts.contains(account.name)) {
+        if (BalanceCheckerUtil.getChainNativeBalance("eth", account.evm) > 0.03) {
             task = new Task(TaskConstant.Monad.FAUCET, "", 0);
             taskList.add(task);
             actionList = new ArrayList<>();
@@ -161,18 +161,6 @@ public class Monad {
         actionList.add(Task.Action.buildSleepAction(10));
         task.actionList = actionList;
 
-
-//        String glacierfiAccounts = "google,ads-1,ads-2,ads-4,ads-5,ads-6,hub-41,hub-42,hub-43,hub-44,hub-45,hub-46,hub-49";
-//        task = new Task(TaskConstant.Monad.FAUCET_GLACIERFI, "", 0);
-//        if (glacierfiAccounts.contains(account.name)) {
-//            taskList.add(task);
-//            actionList = new ArrayList<>();
-//            actionList.add(Task.Action.buildOpenUrlAction("https://glacierfi.com/faucet", 10));
-//            actionList.add(Task.Action.buildMoveClickAction(950, 600));
-//            actionList.add(Task.Action.buildSleepAction(10));
-//            actionList.add(Task.Action.buildSignAction());
-//            task.actionList = actionList;
-//        }
 
 
 
