@@ -1,8 +1,8 @@
-package com.web.task;
+package com.web3.task;
 
-import com.web.constant.TaskConstant;
-import com.web.model.Account;
-import com.web.model.Task;
+import com.web3.constant.TaskConstant;
+import com.web3.model.Account;
+import com.web3.model.Task;
 
 import java.util.*;
 

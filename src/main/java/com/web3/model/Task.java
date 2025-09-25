@@ -1,8 +1,8 @@
-package com.web.model;
+package com.web3.model;
 
 import java.util.List;
 
-import static com.web.constant.Constants.*;
+import static com.web3.constant.Constants.*;
 
 /**
  * @author: liyangjin

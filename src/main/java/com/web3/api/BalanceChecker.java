@@ -1,22 +1,31 @@
-package com.web.util;
+package com.web3.api;
 
-import org.web3j.protocol.Web3j;
-import org.web3j.protocol.http.HttpService;
-import org.web3j.protocol.core.DefaultBlockParameterName;
-import org.web3j.tx.ReadonlyTransactionManager;
-import org.web3j.abi.datatypes.Address;
-import org.web3j.abi.datatypes.Function;
-import org.web3j.abi.TypeReference;
-import org.web3j.abi.datatypes.Type;
+import com.web3.util.BalanceCheckerUtil;
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.FunctionReturnDecoder;
+import org.web3j.abi.TypeReference;
+import org.web3j.abi.datatypes.Address;
+import org.web3j.abi.datatypes.Function;
+import org.web3j.abi.datatypes.Type;
+import org.web3j.abi.datatypes.generated.Uint8;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthCall;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
+import org.web3j.protocol.http.HttpService;
+import org.web3j.tx.ReadonlyTransactionManager;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class BalanceCheckerUtil {
+/**
+ * @author: liyangjin
+ * @create: 2025-09-25 18:12
+ * @Description:
+ */
+public class BalanceChecker {
 
     // 链配置
     private static final Map<String, ChainConfig> CHAINS = new HashMap<>();
@@ -59,7 +68,7 @@ public class BalanceCheckerUtil {
         ReadonlyTransactionManager txManager = new ReadonlyTransactionManager(web3, wallet);
 
         // decimals()
-        Function decimalsFunc = new Function("decimals", List.of(), List.of(new TypeReference<org.web3j.abi.datatypes.generated.Uint8>() {
+        Function decimalsFunc = new Function("decimals", List.of(), List.of(new TypeReference<Uint8>() {
         }));
         BigInteger decimals = callFunction(web3, tokenAddr, decimalsFunc).get(0).getValue() instanceof BigInteger
                 ? (BigInteger) callFunction(web3, tokenAddr, decimalsFunc).get(0).getValue()
@@ -94,7 +103,7 @@ public class BalanceCheckerUtil {
             BigInteger balanceWei = ethGetBalance.getBalance();
             return balanceWei.doubleValue() / Math.pow(10, 18);
         } catch (Exception e) {
-            System.err.println("BalanceCheckerUtil.getChainNativeBalance error chain=" + chain + " wallet=" + wallet + " error=" + e.getMessage());
+            System.err.println("getChainNativeBalance error chain=" + chain + " wallet=" + wallet + " error=" + e.getMessage());
             return 0;
         }
 
@@ -113,4 +122,5 @@ public class BalanceCheckerUtil {
             this.tokens = tokens;
         }
     }
+    
 }

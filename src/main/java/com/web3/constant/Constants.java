@@ -1,4 +1,4 @@
-package com.web.constant;
+package com.web3.constant;
 
 import java.util.HashSet;
 

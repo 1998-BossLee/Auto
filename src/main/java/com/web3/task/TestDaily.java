@@ -1,4 +1,4 @@
-package com.web.task;
+package com.web3.task;
 
 /**
  * @author: liyangjin

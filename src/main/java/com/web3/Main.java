@@ -1,19 +1,19 @@
-package com.web;
+package com.web3;
 
-import com.web.constant.TaskConstant;
-import com.web.model.Account;
-import com.web.model.Task;
-import com.web.task.*;
-import com.web.util.BalanceCheckerUtil;
-import com.web.util.FileUtil;
-import com.web.util.MouseUtil;
+import com.web3.constant.TaskConstant;
+import com.web3.model.Account;
+import com.web3.model.Task;
+import com.web3.task.*;
+import com.web3.util.BalanceCheckerUtil;
+import com.web3.util.FileUtil;
+import com.web3.util.MouseUtil;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.web.constant.Constants.*;
+import static com.web3.constant.Constants.*;
 
 /**
  * @author: liyangjin
