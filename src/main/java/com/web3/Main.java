@@ -48,13 +48,13 @@ public class Main {
             add("hub-42");
             add("hub-43");
             add("hub-44");
-            add("hub-45");
+//            add("hub-45");
 //            add("hub-46");
             add("hub-47");
             add("hub-48");
-            add("hub-49");
+//            add("hub-49");
             add("hub-50");
-            add("hub-51");
+//            add("hub-51");
             add("hub-52");
             add("hub-53");
             add("hub-54");
