@@ -5,16 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>yangjin.li</groupId>
-    <artifactId>DemoTest</artifactId>
+    <artifactId>Auto</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.kafka</groupId>-->
-        <!--            <artifactId>kafka-clients</artifactId>-->
-        <!--            <version>2.0.0</version>-->
-        <!--        </dependency>-->
-        <!-- ssspdates -->
+
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -25,6 +20,13 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.73</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>4.9.8</version>
+        </dependency>
+
 
 
         <dependency>

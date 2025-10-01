@@ -1,4 +1,4 @@
-package com.web.util;
+package com.web3.util;
 
 import java.util.Random;
 

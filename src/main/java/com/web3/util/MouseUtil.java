@@ -1,8 +1,8 @@
-package com.web.util;
+package com.web3.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.web.model.Account;
-import com.web.model.Task;
+import com.web3.model.Account;
+import com.web3.model.Task;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import static com.web.constant.Constants.*;
+import static com.web3.constant.Constants.*;
 
 /**
  * @author:

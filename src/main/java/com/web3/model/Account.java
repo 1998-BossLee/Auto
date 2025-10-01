@@ -1,4 +1,4 @@
-package com.web.model;
+package com.web3.model;
 
 /**
  * @author: liyangjin

@@ -1,18 +1,19 @@
-package com.web;
+package com.web3;
 
-import com.web.constant.TaskConstant;
-import com.web.model.Account;
-import com.web.model.Task;
-import com.web.task.*;
-import com.web.util.FileUtil;
-import com.web.util.MouseUtil;
+import com.web3.constant.TaskConstant;
+import com.web3.model.Account;
+import com.web3.model.Task;
+import com.web3.task.*;
+import com.web3.util.BalanceCheckerUtil;
+import com.web3.util.FileUtil;
+import com.web3.util.MouseUtil;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.web.constant.Constants.*;
+import static com.web3.constant.Constants.*;
 
 /**
  * @author: liyangjin
@@ -124,6 +125,14 @@ public class Main {
 
                     for (Task task : taskList) {
                         System.out.println(String.format("%s account:%s %s/%s currentTask:%s", getCurrentTime(), account.name, taskList.indexOf(task) + 1, taskList.size(), task.id + "_" + task.name));
+                        //非水龙头任务
+                        if (!TaskConstant.MONAD_FAUCETS.contains(task.id)) {
+                            if (BalanceCheckerUtil.getChainNativeBalance("monad", account.evm) < 0.05) {
+                                System.out.println("balance enough, break");
+                                break;
+                            }
+                        }
+
                         if (!needToExecuteTask(account.name, task)) {
                             continue;
                         }
@@ -141,7 +150,6 @@ public class Main {
         }
     }
 
-    static Random random = new Random();
 
     public static String getCurrentTime() {
         // 获取当前时间

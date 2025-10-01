@@ -1,9 +1,9 @@
-package com.web.util;
+package com.web3.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.web.model.Account;
+import com.web3.model.Account;
 
 import java.io.IOException;
 import java.nio.file.Files;
